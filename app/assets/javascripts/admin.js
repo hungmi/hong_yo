@@ -1,0 +1,12 @@
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require admin/core/jquery.min.js
+//= require admin/core/popper.min.js
+//= require admin/bootstrap-material-design.min.js
+//= require admin/plugins/perfect-scrollbar.jquery.min.js
+//= require admin/plugins/chartist.min.js
+//= require admin/plugins/arrive.min.js
+//= require admin/plugins/bootstrap-notify.js
+//= require admin/material-dashboard.js
+//= require admin/plugins/demo.js
