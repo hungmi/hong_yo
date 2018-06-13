@@ -1,33 +1,77 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
-en:
-  hello: "Hello world"
+zh-TW:
+  text:
+    index: 列表
+    cancel: 取消
+    show: 檢視
+    edit: 編輯
+    new: 新增
+    search: 搜尋
+    search_placeholder: 輸入關鍵字
+    destroy: 刪除
+    back: 返回
+    hint: 提示
+    attr_no_value: 尚未填寫
+    confirm_destroy: 確認刪除？
+    search_result: 搜尋結果
+    filter: 篩選器
+    apply: 應用
+    clear: 清除
+    filter:
+      id_eq: ID 等於
+  activerecord:
+    models:
+      story:
+        one: News
+        other: News List
+      product:
+        one: Product
+        other: Product List
+      catalogue:
+        one: Catalogue
+        other: Catalogues
+      tag:
+        one: Tag
+        other: Tags
+      user:
+        one: User
+        other: Users
+    attributes:
+      story:
+        id: "#"
+        title: Title
+        content: Content
+        status: Status
+      tag:
+        id: "#"
+        name: Name
+        icon: Icon
+      catalogue:
+        id: "#"
+        name: Name
+        description: Description
+        status: Status
+      product:
+        id: "#"
+        name: Name
+        description: Description
+        status: Status
+      user:
+        name: Name
+        password: Password
+        password_confirmation: Password Confirmation
+        new_password: New Password
+        new_password_confirmation: New Password Confirmation
+    story_status:
+      draft: Draft
+      published: Published
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: Please enter a valid name to login admin panel
+              taken: This name is taken
+            password:
+              blank: Password can't be blank
+            password_confirmation:
+              confirmation: Please make sure you enter the same password 

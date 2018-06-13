@@ -6,4 +6,9 @@ class Admin::PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get home at root" do
+    get admin_root_url
+    assert_response :success
+  end
+
 end

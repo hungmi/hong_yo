@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+300.times do |i|
+	Story.create(title: "#{rand(1000..9999)} 2010 / 5 / 23 與訊聯生物科技合作邀請 Dr. Mark 舉辦 PGD 演講，並由本公司提供Research Instrutments產品", content: "世每參用時成放到？我我上了先大怎作是道關高雜英想存源商童明收效數分用一同念一？著書。
+
+	麼對年自部外好中那，部食理好之育好當定們車時心爾用錯帶時？
+
+	故是我，西開女經木，而實寶：委我腦統見而本公系點入因布一交電，場青會中有細教吃報前知邊，法孩是五價你萬費來種裡演散推研想記有的卻車輪不響也得工種此則此。的值半德？模要遠所頭本改回公全面各費多開。的復經打體道場新，例果生當輕為還。金品選……爭位去團難熱畫器了是方以事能了品……金能營難怎；望不圖界全為現！角的不化維且形人選媽理間一愛出、家藝容功怕天來分他吃加正看縣問太整水國劇是麼計趣我致間化屋路北老倒而……理用有從入生面起創風麼不企願當。農國信日里發去只出事點。大輪的實跟選說水信力味環康謝的高實靜病公於是內國奇不分，統線本少，輕傳黨，好我統，會麼座來可正意足合聽飯好能岸持年深土期一發打前北接列體美景讓才是女作樂施去空然、美看動，力間風什大？水一員爾師表營品。",
+	status: 0)
+end
+
+300.times do |i|
+	Story.create(title: "#{rand(1000..9999)} 2010 / 5 / 23 與訊聯生物科技合作邀請 Dr. Mark 舉辦 PGD 演講，並由本公司提供Research Instrutments產品", content: "世每參用時成放到？我我上了先大怎作是道關高雜英想存源商童明收效數分用一同念一？著書。
+
+	麼對年自部外好中那，部食理好之育好當定們車時心爾用錯帶時？
+
+	故是我，西開女經木，而實寶：委我腦統見而本公系點入因布一交電，場青會中有細教吃報前知邊，法孩是五價你萬費來種裡演散推研想記有的卻車輪不響也得工種此則此。的值半德？模要遠所頭本改回公全面各費多開。的復經打體道場新，例果生當輕為還。金品選……爭位去團難熱畫器了是方以事能了品……金能營難怎；望不圖界全為現！角的不化維且形人選媽理間一愛出、家藝容功怕天來分他吃加正看縣問太整水國劇是麼計趣我致間化屋路北老倒而……理用有從入生面起創風麼不企願當。農國信日里發去只出事點。大輪的實跟選說水信力味環康謝的高實靜病公於是內國奇不分，統線本少，輕傳黨，好我統，會麼座來可正意足合聽飯好能岸持年深土期一發打前北接列體美景讓才是女作樂施去空然、美看動，力間風什大？水一員爾師表營品。",
+	status: 1)
+end
+
+600.times do |i|
+	Product.create(name: "ASTEC 培養箱 #{i}")
+end
+
+600.times do |i|
+	Catalogue.create(name: "2018 第 #{i} 期目錄")
+end

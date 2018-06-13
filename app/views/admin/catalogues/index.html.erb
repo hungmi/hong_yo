@@ -1,0 +1,64 @@
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-warning card-header-icon">
+						<div class="card-icon">
+							<i class="material-icons">library_books</i>
+						</div>
+						<h4 class="card-title"><%= Catalogue.model_name.human count: 2 %></h4>
+					</div>
+					<div class="card-body">
+						<div class="toolbar">
+							<!--        Here you can write extra buttons/actions for the toolbar         -->
+						</div>
+						<div class="material-datatables">
+							<table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+								<thead>
+									<tr>
+										<th class="disabled-sorting"></th>
+										<th class="all" style="min-width: 30px;"><%= Catalogue.human_attribute_name(:id) %></th>
+										<th class="all" style="min-width: 500px;"><%= Catalogue.human_attribute_name(:name) %></th>
+										<th class="none"><%= Catalogue.human_attribute_name(:description) %></th>
+										<th style="min-width: 80px;"><%= Catalogue.human_attribute_name(:status) %></th>  
+										<th class="disabled-sorting text-right" style="min-width: 170px;"><%= I18n.t("text.actions") %></th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr>
+										<th class="disabled-sorting"></th>
+										<th class="all" style="min-width: 30px;"><%= Catalogue.human_attribute_name(:id) %></th>
+										<th class="all" style="min-width: 500px;"><%= Catalogue.human_attribute_name(:name) %></th>
+										<th class="none"><%= Catalogue.human_attribute_name(:description) %></th>
+										<th style="min-width: 80px;"><%= Catalogue.human_attribute_name(:status) %></th>  
+										<th class="disabled-sorting text-right" style="min-width: 170px;"><%= I18n.t("text.actions") %></th>
+									</tr>
+								</tfoot>
+								<tbody>
+									<% @catalogues.each_with_index do |catalogue, index| %>
+									<tr>
+										<td></td>
+										<td><%= index + 1 %></td>
+										<td><%= catalogue.name %></td>
+										<td><%= simple_format catalogue.description.to_s.truncate(120) %></td>
+										<td class="text-primary"><button class="btn btn-sm"><%= I18n.t("activerecord.catalogue_status.#{catalogue.status}") %></button></td>
+										<td class="text-right">
+											<%= link_to edit_admin_catalogue_path(catalogue), class: "btn btn-link btn-primary btn-just-icon" do %>
+												<i class="material-icons">edit</i>
+											<% end %>
+											<%= link_to admin_catalogue_path(catalogue), method: :delete, data: { confirm: I18n.t("text.confirm_destory") }, class: "btn btn-link btn-danger btn-just-icon" do %>
+												<i class="material-icons">delete_forever</i>
+											<% end %>
+										</td>
+									</tr>
+									<% end %>
+								</tbody>
+							</table>
+						</div>
+					</div><!-- end content-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
