@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_06_12_174802) do
   enable_extension "plpgsql"
 
   create_table "catalogues", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.text "description"
     t.integer "status", default: 0
     t.datetime "created_at", null: false

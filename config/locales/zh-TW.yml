@@ -11,7 +11,7 @@ zh-TW:
     back: 返回
     hint: 提示
     attr_no_value: 尚未填寫
-    confirm_destroy: 確認刪除？
+    confirm_destroy: 刪除後無法復原，確認刪除嗎？
     search_result: 搜尋結果
     no_search_result: 沒有找到任何結果
     filter: 篩選器
@@ -26,8 +26,8 @@ zh-TW:
         one: 消息
         other: 消息列表
       product:
-        one: 商品
-        other: 商品列表
+        one: 產品
+        other: 產品列表
       catalogue:
         one: 目錄
         other: 目錄集
