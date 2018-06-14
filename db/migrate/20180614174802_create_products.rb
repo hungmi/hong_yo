@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :description
       t.integer :status
+      t.integer :category_id, index: true, foreign_key: true
 
       t.timestamps
     end

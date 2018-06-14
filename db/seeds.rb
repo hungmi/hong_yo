@@ -16,8 +16,20 @@ end
 	status: 1)
 end
 
-600.times do |i|
-	Product.create(name: "ASTEC 培養箱 #{i}")
+4.times do |i|
+	l1_cat = Category.create(name: "level 1 #{rand(100..999)}")
+	4.times do |i|
+		l2_cat = l1_cat.children.create(name: "level 2 #{rand(100..999)}")
+		4.times do |j|
+			l3_cat = l2_cat.children.create(name: "level 3 #{rand(100..999)}")
+			4.times do |j|
+				l4_cat = l3_cat.children.create(name: "level 4 #{rand(100..999)}")
+				4.times do |j|
+					l4_cat.products.create(name: "products #{rand(100..999)}")
+				end
+			end
+		end
+	end
 end
 
 600.times do |i|
