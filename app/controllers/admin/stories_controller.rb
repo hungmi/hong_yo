@@ -4,11 +4,11 @@ class Admin::StoriesController < ApplicationController
 
 	def index
 		@nav_title = "最新消息"
-		@stories = Story.all.order(id: :asc)
+		@stories = Story.all.order(id: :desc)
 	end
 
 	def new
-		@story = Story.new(story_params)
+		@story = Story.new
 	end
 
 	def create
@@ -28,7 +28,13 @@ class Admin::StoriesController < ApplicationController
 	end
 
 	def update
-		if @story.update(story_params)
+		# 因為當 front end js 移除檔案時
+		story_params2 = story_params
+		if story_params.has_key?(:cover) && story_params[:cover].blank?
+			story_params2 = story_params.except(:cover)
+			@story.cover.purge_later if @story.cover.attached?
+		end
+		if @story.update(story_params2)
       flash[:success] = "更新成功。 "
       redirect_to admin_stories_url
     else

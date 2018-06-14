@@ -28,5 +28,8 @@ module Hongyo
     # the framework and any gems in your application.
     config.i18n.default_locale = "zh-TW"
     config.i18n.available_locales = [:en, :"zh-TW"]
+    
+		# Use Vips for processing variants.
+		config.active_storage.variant_processor = :vips
   end
 end

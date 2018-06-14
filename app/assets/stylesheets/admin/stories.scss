@@ -1,0 +1,25 @@
+th.storyTitle {
+	@media screen and (min-width: 1024px) {
+		min-width: 500px;	
+	}
+	@media screen and (min-width: 768px) and (max-width: 1023px) {
+		min-width: 400px;	
+	}
+	@media screen and (min-width: 375px) and (max-width: 767px) {
+		min-width: 200px;	
+	}
+	@media screen and (min-width: 320px) and (max-width: 374px) {
+		min-width: 150px;	
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 414px) {
+	div.content > div.container-fluid {
+		padding-left: 0px;
+		padding-right: 0px;
+		#datatables_wrapper {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+	}
+}

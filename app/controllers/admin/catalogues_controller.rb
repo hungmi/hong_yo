@@ -4,18 +4,18 @@ class Admin::CataloguesController < ApplicationController
 
 	def index
 		@nav_title = "產品目錄"
-		@catalogues = Catalogue.all.order(id: :asc)
+		@catalogues = Catalogue.all.order(id: :desc)
 	end
 
 	def new
-		@catalogue = Catalogue.new(catalogue_params)
+		@catalogue = Catalogue.new
 	end
 
 	def create
 		@catalogue = Catalogue.new(catalogue_params)
 		if @catalogue.save
       flash[:success] = "建立成功。 "
-      redirect_to [:admin, :index]
+      redirect_to admin_catalogues_url
     else
       render :new
     end
@@ -28,7 +28,13 @@ class Admin::CataloguesController < ApplicationController
 	end
 
 	def update
-		if @catalogue.update(catalogue_params)
+		# 因為當 front end js 移除檔案時
+		catalogue_params2 = catalogue_params
+		if catalogue_params.has_key?(:file) && catalogue_params[:file].blank?
+			catalogue_params2 = catalogue_params.except(:file)
+			@catalogue.file.purge_later if @catalogue.file.attached?
+		end
+		if @catalogue.update(catalogue_params2)
       flash[:success] = "更新成功。"
       redirect_to admin_catalogues_url
     else
@@ -52,6 +58,6 @@ class Admin::CataloguesController < ApplicationController
 	end
 
 	def catalogue_params
-		params.require(:catalogue).permit(:name, :description, :status, :file)
+		params.require(:catalogue).permit(:name, :description, :status, :file, :remove_file)
 	end
 end

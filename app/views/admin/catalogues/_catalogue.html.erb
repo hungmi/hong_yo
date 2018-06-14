@@ -1,0 +1,16 @@
+<tr>
+	<td></td>
+	<td class="truncate"><%= catalogue.name %></td>
+	<td><%= simple_format catalogue.description.to_s.truncate(120) %></td>
+	<td>
+		<span class="badge<%= catalogue.published? ? ' btn-brand' : ' btn-secondary' %>"><%= I18n.t("activerecord.catalogue_status.#{catalogue.status}") %></span>
+	</td>
+	<td class="text-right">
+		<%= link_to edit_admin_catalogue_path(catalogue), class: "btn btn-link btn-primary btn-just-icon" do %>
+			<i class="material-icons">edit</i>
+		<% end %>
+		<%= link_to admin_catalogue_path(catalogue), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, class: "btn btn-link btn-danger btn-just-icon" do %>
+			<i class="material-icons">delete_forever</i>
+		<% end %>
+	</td>
+</tr>

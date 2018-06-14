@@ -1,6 +1,6 @@
 $color-brand: #e91e63;
 
-.togglebutton label input[type=checkbox]:checked + .toggle.bg-rose {
+.togglebutton label input[type=checkbox]:checked + .toggle.bg-brand {
 	background-color: $color-brand !important;
 	&:after {
 		border-color: $color-brand !important;
@@ -8,8 +8,19 @@ $color-brand: #e91e63;
 }
 
 .btn-brand {
-	@extend .btn-rose;
 	background-color: $color-brand !important;
 	border-color: $color-brand !important;
 	box-shadow: 0 2px 2px 0 rgba(233, 30, 99, 0.14), 0 3px 1px -2px rgba(233, 30, 99, 0.2), 0 1px 5px 0 rgba(233, 30, 99, 0.12);
+}
+
+.fileinput .thumbnail img {
+	width: 100%;
+}
+
+div.dataTables_processing { z-index: 1; }
+
+.truncate {
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
