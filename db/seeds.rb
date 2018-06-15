@@ -1,4 +1,4 @@
-300.times do |i|
+30.times do |i|
 	Story.create(title: "#{rand(1000..9999)} 2010 / 5 / 23 與訊聯生物科技合作邀請 Dr. Mark 舉辦 PGD 演講，並由本公司提供Research Instrutments產品", content: "世每參用時成放到？我我上了先大怎作是道關高雜英想存源商童明收效數分用一同念一？著書。
 
 	麼對年自部外好中那，部食理好之育好當定們車時心爾用錯帶時？
@@ -7,7 +7,7 @@
 	status: 0)
 end
 
-300.times do |i|
+30.times do |i|
 	Story.create(title: "#{rand(1000..9999)} 2010 / 5 / 23 與訊聯生物科技合作邀請 Dr. Mark 舉辦 PGD 演講，並由本公司提供Research Instrutments產品", content: "世每參用時成放到？我我上了先大怎作是道關高雜英想存源商童明收效數分用一同念一？著書。
 
 	麼對年自部外好中那，部食理好之育好當定們車時心爾用錯帶時？
@@ -16,15 +16,15 @@ end
 	status: 1)
 end
 
-4.times do |i|
+3.times do |i|
 	l1_cat = Category.create(name: "root #{rand(100..999)}")
-	4.times do |i|
+	3.times do |i|
 		l2_cat = l1_cat.children.create(name: "level 2 #{rand(100..999)}")
-		4.times do |j|
+		3.times do |j|
 			l3_cat = l2_cat.children.create(name: "level 3 #{rand(100..999)}")
-			4.times do |j|
+			3.times do |j|
 				l4_cat = l3_cat.children.create(name: "level 4 #{rand(100..999)}")
-				4.times do |j|
+				3.times do |j|
 					l4_cat.products.create(name: "products #{rand(100..999)}")
 				end
 			end
@@ -32,6 +32,6 @@ end
 	end
 end
 
-600.times do |i|
+30.times do |i|
 	Catalogue.create(name: "2018 第 #{i} 期目錄", description: "產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。")
 end
