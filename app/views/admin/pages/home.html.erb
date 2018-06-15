@@ -2,59 +2,65 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="card card-stats">
-					<div class="card-header card-header-warning card-header-icon">
-						<div class="card-icon">
-							<i class="material-icons">library_books</i>
+				<%= link_to admin_catalogues_path do %>
+					<div class="card card-stats">
+						<div class="card-header card-header-warning card-header-icon">
+							<div class="card-icon">
+								<i class="material-icons">library_books</i>
+							</div>
+							<p class="card-category">目錄總計</p>
+							<h3 class="card-title"> <%= Catalogue.all.size %>
+								<small>冊</small>
+							</h3>
 						</div>
-						<p class="card-category">目錄總計</p>
-						<h3 class="card-title"> <%= Catalogue.all.size %>
-							<small>冊</small>
-						</h3>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-							<i class="material-icons">update</i> <%= Catalogue.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+						<div class="card-footer">
+							<div class="stats">
+								<i class="material-icons">update</i> <%= Catalogue.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+							</div>
 						</div>
 					</div>
-				</div>
+				<% end %>
 			</div>
 			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="card card-stats">
-					<div class="card-header card-header-danger card-header-icon">
-						<div class="card-icon">
-							<i class="material-icons">store</i>
+				<%= link_to admin_products_path do %>
+					<div class="card card-stats">
+						<div class="card-header card-header-danger card-header-icon">
+							<div class="card-icon">
+								<i class="material-icons">store</i>
+							</div>
+							<p class="card-category">產品數量</p>
+							<h3 class="card-title"> <%= Product.all.size %>
+								<small>個</small>
+							</h3>
 						</div>
-						<p class="card-category">產品數量</p>
-						<h3 class="card-title"> <%= Product.all.size %>
-							<small>個</small>
-						</h3>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-							<i class="material-icons">update</i> <%= Product.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+						<div class="card-footer">
+							<div class="stats">
+								<i class="material-icons">update</i> <%= Product.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+							</div>
 						</div>
 					</div>
-				</div>
+				<% end %>
 			</div>
 			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="card card-stats">
-					<div class="card-header card-header-info card-header-icon">
-						<div class="card-icon">
-							<i class="material-icons">info_outline</i>
+				<%= link_to admin_stories_path do %>
+					<div class="card card-stats">
+						<div class="card-header card-header-info card-header-icon">
+							<div class="card-icon">
+								<i class="material-icons">info_outline</i>
+							</div>
+							<p class="card-category">消息總計</p>
+							<h3 class="card-title"><%= Story.all.size %>
+								<small>則</small>
+							</h3>
 						</div>
-						<p class="card-category">消息總計</p>
-						<h3 class="card-title"><%= Story.all.size %>
-							<small>則</small>
-						</h3>
-					</div>
-					<div class="card-footer">
-						<div class="stats">
-							<i class="material-icons">update</i> <%= Story.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+						<div class="card-footer">
+							<div class="stats">
+								<i class="material-icons">update</i> <%= Story.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			<% end %>
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="card card-stats">
 					<div class="card-header card-header-primary card-header-icon">

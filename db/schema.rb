@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2018_06_14_174802) do
   end
 
   create_table "catalogues", force: :cascade do |t|
-    t.text "name"
+    t.text "name", null: false
     t.text "description"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 2018_06_14_174802) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.integer "status"
+    t.integer "status", default: 0
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_06_14_174802) do
   end
 
   create_table "stories", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.text "content"
     t.integer "status", default: 0
     t.datetime "created_at", null: false

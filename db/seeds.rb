@@ -17,7 +17,7 @@ end
 end
 
 4.times do |i|
-	l1_cat = Category.create(name: "level 1 #{rand(100..999)}")
+	l1_cat = Category.create(name: "root #{rand(100..999)}")
 	4.times do |i|
 		l2_cat = l1_cat.children.create(name: "level 2 #{rand(100..999)}")
 		4.times do |j|
@@ -33,5 +33,5 @@ end
 end
 
 600.times do |i|
-	Catalogue.create(name: "2018 第 #{i} 期目錄")
+	Catalogue.create(name: "2018 第 #{i} 期目錄", description: "產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。")
 end

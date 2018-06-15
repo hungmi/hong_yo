@@ -1,0 +1,61 @@
+<div class="card-body ">
+	<%= form_for [:admin, product] do |f| %>
+		<% @form_id = f.options[:html][:id] %>
+		<div class="form-group bmd-form-group">
+	    <label>目錄檔案</label><br>
+	    <% images_exist = product.images.attached? %>
+	    <div class="fileinput <%= images_exist ? 'fileinput-exists' : 'fileinput-new' %> text-center" data-provides="fileinput">
+        <div class="fileinput-preview fileinput-exists thumbnail" style="">
+        	<% if images_exist %>
+	        	<% if product.file.previewable? %>
+			        <%= link_to(image_tag(product.file.preview(resize: "600x600>")),  rails_blob_path(product.file, disposition: "attachment"))
+			        %>
+			      <% elsif product.file.variable? %>
+			        <%= link_to(image_tag(product.file.variant(resize: "600x600")), rails_blob_path(product.file, disposition: "attachment"))%>
+			      <% else %>
+			      	<div class="my-3">
+			        	<%= link_to "下載附件 #{product.file.filename.to_s}", rails_blob_path(product.file, disposition: "attachment") %>
+			        </div>
+			      <% end %>
+			     <% end %>
+        </div>
+        <div>
+          <span class="btn btn-rose btn-round btn-file">
+            <span class="fileinput-new">選擇檔案</span>
+            <span class="fileinput-exists">更換</span>
+            <input type="hidden">
+            <%= f.file_field :file %>
+          	<div class="ripple-container"></div>
+        	</span>
+          <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
+        </div>
+	    </div>
+	  </div>
+		<div class="form-group bmd-form-group">
+			<%= f.label :name, class: "bmd-label-floating" %>
+			<%= f.text_field :name, class: "form-control", required: true, aria: { required: true } %>
+		</div>
+		<div class="form-group bmd-form-group">
+			<%= f.label :description, class: "bmd-label-floating" %>
+			<%= f.text_area :description, class: "form-control", rows: 10 %>
+		</div>
+		<div class="form-group bmd-form-group">
+			<div class="togglebutton">
+		  	<label>
+		  			<%= f.check_box :status, {}, "published", "draft" %>
+	          <span class="toggle bg-brand"></span>
+	            上架至前台
+		  	</label>
+		  </div>
+		</div>
+	<% end %>
+</div>
+<div class="card-footer ">
+	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: dom_id(@product, action_name.to_sym) %>
+</div>
+
+<script>
+	$(document).on('turbolinks:load', function() {
+		setFormValidation("<%= '#' + @form_id %>");
+	})
+</script>

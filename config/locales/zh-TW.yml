@@ -65,6 +65,7 @@ zh-TW:
         name: 名稱
         description: 敘述
         status: 狀態
+        category: 分類
       user:
         name: 使用者名稱
         password: 密碼
@@ -76,6 +77,9 @@ zh-TW:
       published: 已公開
     catalogue_status:
       draft: 草稿
+      published: 已公開
+    product_status:
+      draft: 未上架
       published: 已公開
     errors:
       models:

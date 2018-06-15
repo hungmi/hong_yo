@@ -10,6 +10,11 @@
 						<div class="card-icon">
 							<i class="material-icons">library_books</i>
 						</div>
+						<%= link_to new_admin_catalogue_path do %>
+							<div class="card-icon rounded-circle float-right newBtn">
+								<i class="material-icons">add</i>
+							</div>
+						<% end %>
 						<h4 class="card-title"><%= Catalogue.model_name.human count: 2 %></h4>
 					</div>
 					<div class="card-body">
@@ -21,19 +26,19 @@
 								<thead>
 									<tr>
 										<th class="disabled-sorting"></th>
-										<th class="all storyTitle"><%= Catalogue.human_attribute_name(:name) %></th>
+										<th><%= Catalogue.human_attribute_name(:name) %></th>
 										<th class="none"><%= Catalogue.human_attribute_name(:description) %></th>
-										<th style="min-width: 80px;"><%= Catalogue.human_attribute_name(:status) %></th>  
-										<th class="disabled-sorting text-right" style="min-width: 170px;"><%= I18n.t("text.actions") %></th>
+										<th><%= Catalogue.human_attribute_name(:status) %></th>  
+										<th class="disabled-sorting text-right"><%= I18n.t("text.actions") %></th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
 										<th class="disabled-sorting"></th>
-										<th class="all storyTitle"><%= Catalogue.human_attribute_name(:name) %></th>
+										<th><%= Catalogue.human_attribute_name(:name) %></th>
 										<th class="none"><%= Catalogue.human_attribute_name(:description) %></th>
-										<th style="min-width: 80px;"><%= Catalogue.human_attribute_name(:status) %></th>  
-										<th class="disabled-sorting text-right" style="min-width: 170px;"><%= I18n.t("text.actions") %></th>
+										<th><%= Catalogue.human_attribute_name(:status) %></th>  
+										<th class="disabled-sorting text-right"><%= I18n.t("text.actions") %></th>
 									</tr>
 								</tfoot>
 								<tbody>

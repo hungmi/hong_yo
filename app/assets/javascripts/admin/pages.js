@@ -1,12 +1,18 @@
 $(document).on('turbolinks:load', function(){
 	$('#datatables').DataTable({
 		"destroy": true,
-		"pagingType": "simple",
+		"pagingType": "full_numbers",
 		"lengthMenu": [
 		[10, 25, 50, -1],
 		[10, 25, 50, "全部"]
 		],
 		responsive: true,
+    "columnDefs": [
+      { "width": "5%", "targets": 0 },
+      { "width": "10%", "targets": -2 },
+      { "width": "15%", "targets": -1 }
+    ],
+    autoWidth: false,
 		language: {
 			search: "_INPUT_",
 			searchPlaceholder: "搜尋表格內容",

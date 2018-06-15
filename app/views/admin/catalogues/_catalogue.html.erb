@@ -1,7 +1,7 @@
 <tr>
 	<td></td>
 	<td class="truncate"><%= catalogue.name %></td>
-	<td><%= simple_format catalogue.description.to_s.truncate(120) %></td>
+	<td class="truncate"><%= simple_format catalogue.description %></td>
 	<td>
 		<span class="badge<%= catalogue.published? ? ' btn-brand' : ' btn-secondary' %>"><%= I18n.t("activerecord.catalogue_status.#{catalogue.status}") %></span>
 	</td>
