@@ -1,0 +1,57 @@
+<% content_for :head do %>
+	<meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card ">
+					<div class="card-header ">
+						<h4 class="card-title">產品分類 - <small class="description">由左往右為大分類 - 標題 - 種類 - 系列</small></h4>
+					</div>
+					<div class="card-body ">
+						<div class="row">
+							<div class="col-md-3">
+								<ul class="nav nav-pills nav-pills-rose flex-column" role="tablist">
+									<li class="nav-item text-center">
+										<h5><%= I18n.t("activerecord.category_level.level0") %></h5>
+									</li>
+									<% Category.roots.each do |root| %>
+									<li class="nav-item">
+										<a class="nav-link" data-toggle="tab" href="#link<%= root.id %>" role="tablist">
+											<%= root.name %>
+										</a>
+									</li>
+									<% end %>
+								</ul>
+							</div>
+							<% (Category.total_level - 1).times do |i| %>
+								<div class="col-md-3">
+									<div class="tab-content">
+										<% Category.where(depth: i).each do |category| %>
+											<div class="tab-pane" id="link<%= category.id %>">
+												<ul class="nav nav-pills nav-pills-rose flex-column" role="tablist">
+													<li class="nav-item text-center">
+														<h5><%= I18n.t("activerecord.category_level.level#{i + 1}") %></h5>
+													</li>
+													<% category.children.each do |child| %>
+													<li class="nav-item">
+														<% has_children = child.children.size > 0 %>
+														<a class="nav-link" data-toggle="<%= 'tab' if has_children %>" href="<%= has_children ? ('#link' + child.id.to_s) : 'javascript:void(0)' %>" role="tablist">
+															<%= child.name %>
+														</a>
+													</li>
+													<% end %>
+												</ul>
+											</div>
+										<% end %>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

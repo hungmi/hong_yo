@@ -36,6 +36,9 @@ zh-TW:
       product:
         one: 產品
         other: 產品列表
+      category:
+        one: 分類
+        other: 分類總覽
       catalogue:
         one: 目錄
         other: 目錄集
@@ -81,6 +84,11 @@ zh-TW:
     product_status:
       draft: 未上架
       published: 已公開
+    category_level:
+      level0: 大分類
+      level1: 標題
+      level2: 種類 
+      level3: 系列
     errors:
       models:
         user:
