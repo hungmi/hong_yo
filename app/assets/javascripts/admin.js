@@ -26,4 +26,5 @@
 //= require admin/plugins/jasny-bootstrap.min.js
 //= require admin/plugins/fullcalendar.min.js
 //= require admin/plugins/demo.js
+//= require jquery.fixedheadertable.min
 //= require admin/pages.js

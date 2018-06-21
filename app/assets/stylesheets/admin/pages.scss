@@ -49,3 +49,41 @@ div.dataTables_processing { z-index: 1; }
 		box-shadow: 0 2px 2px 0 rgba(76,175,80,.14), 0 3px 1px -2px rgba(76,175,80,.2), 0 1px 5px 0 rgba(76,175,80,.12);
 	}
 }
+
+table.table-vertical {
+	display: flex;
+	overflow: visible;
+	thead {
+		display: flex;
+		flex-shrink: 0;
+		z-index: 10;
+		tr {
+    	box-shadow: 28px 0px 28px -10px rgba(61,82,104,0.1);
+    }
+	}
+	tbody {
+		display: flex;
+    overflow-x: auto;
+    position: static;
+    overflow-y: hidden;
+    flex-grow: 1;
+    tr:first-child {
+    	margin-left: 13px;
+    }
+  }
+	tr {
+		display: flex;
+		flex-direction: column;
+		flex-shrink: 0;
+		flex-grow: 1;
+		&>*:first-child {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		th, td {
+			display: block;
+			padding: 7px 13px;
+		}
+	}
+}
