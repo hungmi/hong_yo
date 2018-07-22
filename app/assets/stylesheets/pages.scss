@@ -1,0 +1,59 @@
+body.pages {
+	.main_wrapper {
+		max-width: 1280px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	&.home {
+		background-image: url("/img/Hero 1_1280x800.png");
+		background-size: contain;
+		background-repeat: no-repeat;	
+	}
+}
+
+#see_more_btn {
+	width: 224px;
+	height: 40px;
+	background: #ef0105;
+	background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%);
+	background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%);
+	background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 );
+	.see_more_text {
+		color: white;
+		font-size: 18px;
+		margin-left: 20px;
+	}
+}
+
+#contact_btn {
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	right: 30px;
+	top: 666px;
+	z-index: $zindex-sticky;
+}
+
+.section_title_wrapper {
+	position: relative;
+	&:before {
+		content: ' ';
+    background: red;
+    width: 1px;
+    height: 163px;
+    position: absolute;
+    left: 50%;
+    top: calc((70px - 163px) / 2);
+    z-index: -1;	
+	}
+}
+
+@keyframes fade-out {
+	33%{
+		opacity: 1
+	}
+	66%{
+		opacity: 0
+	}
+}

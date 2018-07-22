@@ -1,0 +1,48 @@
+body.pages.home {
+	#wrapper1 {
+		height: calc(100vh - 113px);
+		width: 100%;
+		margin-left: 48px;
+		position: relative;
+		padding-bottom: 80px;
+		.number_title_wrapper {
+			height: 47px;
+		}
+		.section_number {
+			height: 100%;
+			line-height: 47px;
+			width: 103px;
+			margin-left: 22px;
+			h2 {
+				font-size: 77px;
+				color: $mainRed;
+			}				
+		}
+		.section_title {
+			height: 100%;
+			margin: 0px;
+  		border-left: 1px solid red;
+  		padding-left: 16px;
+			h2 {
+				margin-bottom: 0px;
+				font-size: 20px;
+				color: $mainRed;	
+			}
+		}
+		.paragraph_wrapper {
+			width: 460px;
+			padding: 30px 25px 40px 30px;
+			margin-top: 22px;
+			background: $mainRed;
+			color: white;
+			h3, p {
+				font-size: 14px;	
+			}
+		}
+		#see_more_btn {
+			position: absolute;
+	    bottom: 60px;
+	    left: 30px;
+		}
+	}
+}

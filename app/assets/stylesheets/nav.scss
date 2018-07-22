@@ -1,0 +1,30 @@
+body.front {
+	nav.navbar {
+		padding-top: 24px;
+		#logo {
+			width: 80px;
+			margin-left: 30px;
+		}
+		#menu-wrapper {
+			margin-right: 24px;
+			.toggler {
+				background: $mainRed;
+				width: 60px;
+				height: 60px;
+				hr {
+					width: 22px;
+	    		border-top: 1px solid white;
+	    		margin: 4px 0px;
+				}
+			}
+			.menu-title {
+				margin-top: 6px;
+				background: $mainRed;
+				width: 60px;
+				height: 23px;
+				color: white;
+				font-size: 16px;
+			}
+		}
+	}
+}
