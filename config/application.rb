@@ -30,6 +30,6 @@ module Hongyo
     config.i18n.available_locales = [:en, :"zh-TW"]
     
 		# Use Vips for processing variants.
-		config.active_storage.variant_processor = :vips
+		# config.active_storage.variant_processor = :vips
   end
 end
