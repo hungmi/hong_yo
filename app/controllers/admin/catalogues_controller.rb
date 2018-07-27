@@ -36,7 +36,8 @@ class Admin::CataloguesController < ApplicationController
 		end
 		if @catalogue.update(catalogue_params2)
       flash[:success] = "更新成功。"
-      redirect_to admin_catalogues_url
+      head :ok
+      # redirect_to admin_catalogues_url
     else
       render :edit
     end

@@ -6,11 +6,13 @@ class PagesController < ApplicationController
   end
 
   def products
+    @products = Product.all.order(id: :desc).limit(10)
   end
 
-  def contact
+  def contact_us
   end
 
   def download
+    @custom_footer = true
   end
 end

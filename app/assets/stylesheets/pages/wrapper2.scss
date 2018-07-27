@@ -55,3 +55,12 @@ body.pages.home {
 		}
 	}
 }
+
+@keyframes fade-out {
+	33%{
+		opacity: 1
+	}
+	66%{
+		opacity: 0
+	}
+}

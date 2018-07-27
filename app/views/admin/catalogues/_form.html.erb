@@ -1,5 +1,5 @@
 <div class="card-body ">
-	<%= form_for [:admin, catalogue] do |f| %>
+	<%= form_for [:admin, catalogue], remote: true do |f| %>
 		<% @form_id = f.options[:html][:id] %>
 		<div class="form-group bmd-form-group">
 	    <label>目錄檔案</label><br>

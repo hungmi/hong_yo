@@ -2,9 +2,16 @@
 @import "bootstrap";
 @import "bootstrap_overrides";
 @import "variables";
+@import "select2_overrides";
 @import "pages";
+@import "pages/home";
 @import "pages/wrapper1";
 @import "pages/wrapper2";
 @import "pages/wrapper3";
+@import "pages/download";
+@import "pages/about";
+@import "pages/contact_us";
+@import "pages/products";
+@import "products";
 @import "nav";
 @import "footer";

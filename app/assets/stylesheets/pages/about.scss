@@ -1,0 +1,266 @@
+body.pages.about {
+	#full_bg {
+		height: 625px;
+		// padding-top: 48.8%;
+		width: 100vw;
+		z-index: -1;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		background-size: contain;
+		background-repeat: no-repeat;	
+		background-position: center;
+		background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%);
+		background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%);
+		background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 );
+	}
+	#wrapper.latest_news {
+		margin-top: 160px;
+		margin-bottom: 40px;
+		#news_wrapper {
+			width: 940px;
+			margin-top: 40px;
+			margin-bottom: 35px; // 55 - 上方 news 多的 mb 20px
+			.news {
+				&:nth-child(odd) { margin-right: 10px; }
+				&:nth-child(even) { margin-left: 10px; }
+				margin-bottom: 20px;
+				flex: 1 1 calc(50% - 10px);
+				background: $mainRed;
+				transition: .5s;
+				opacity: 0;
+				display: none;
+				&.active {
+					transition: .5s;
+					display: flex;
+					opacity: 1;
+				}
+				.news_date_title {
+					padding-left: 23px;
+					padding-top: 26px;
+				}
+				.news_img img {
+					width: 160px;
+					height: auto;
+				}
+				.news_date {
+					font-size: 15px;
+					color: $mainOrange;
+				}
+				.news_title {
+					font-size: 24px;
+					color: white;
+					line-height: 22.5px;
+					height: 47px;
+					overflow: hidden;
+					width: 240px;
+				}
+			}
+		}
+	}
+	#wrapper.hong_u {
+		padding-top: 120px;
+		margin-bottom: 220px;
+		#about_hong_u1 {
+			padding-top: 210px;
+			position: relative;
+			.imgs_wrapper {
+				img {
+			    position: absolute;
+			    left: 50px;
+			    bottom: 85px;
+				}
+			}
+			.paragraph_wrapper {
+				padding-left: 175px;
+				p {
+					width: 365px;
+					text-align: justify;
+					letter-spacing: -.2px;
+					font-size: 14px;
+				}
+			}
+		}
+		#about_hong_u2 {
+			position: relative;
+			.imgs_wrapper {
+				img {
+			    position: absolute;
+			    right: 220px;
+			    top: 0px;
+				}
+			}
+			.paragraph_wrapper {
+				padding-left: 130px;
+				padding-top: 100px;
+				p {
+					width: 365px;
+					text-align: justify;
+					letter-spacing: -.2px;
+					font-size: 14px;
+				}
+			}
+		}
+		#about_hong_u3 {
+			position: relative;
+			.imgs_wrapper {
+				img {
+			    position: absolute;
+			    left: 215px;
+			    top: 50px;
+				}
+				.red_bg {
+					padding-top: 20px;
+				}
+			}
+			.paragraph_wrapper {
+				padding-left: 175px;
+				padding-top: 140px;
+				p {
+					width: 365px;
+					text-align: justify;
+					letter-spacing: -.2px;
+					font-size: 14px;
+				}
+			}
+		}
+		#about_hong_u4 {
+			margin-top: 265px;
+			position: relative;
+			img {
+				margin-right: 42.5px;
+				margin-left: 42.5px;
+				align-self: center;
+				&:last-child { margin-right: 0px; }
+			}
+			span {
+				margin-top: 22px;
+				font-size: 20px;
+				color: $mainRed;
+			}
+			div.bar {
+				&_white {
+					background: white;
+					position: absolute;
+					top: 0;
+					width: calc(145px * 4.3);
+					height: calc(145px / 2);
+					z-index: -1;
+				}
+				&_color {
+					background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%);
+					background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%);
+					background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%);
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 );
+					position: absolute;
+					top: 8px;
+					width: calc(145px * 4.2);
+					height: calc(145px / 2);
+					z-index: -2;
+				}
+			}
+		}
+		.red_bg {
+			width: 560px;
+			height: 325px;
+		}
+	}
+	#wrapper.history {
+		.history_wrapper {
+			position: relative;
+			margin-left: 320px;
+			margin-right: 214px;
+			margin-top: 150px;
+			margin-bottom: 160px;
+			min-height: 585px;
+			.paragraph_wrapper {
+				width: 392px;
+				p {
+					font-size: 14px;
+					text-align: justify;
+				}
+				.red_bg {
+					height: 233px;
+					margin-bottom: 46px;
+					position: relative;
+					.year_active {
+						position: absolute;
+						color: white;
+						font-size: 30px;
+						top: 15px;
+						left: 30px;
+					}
+				}
+			}
+			.years_wrapper {
+				.year_bar {
+					height: 559px;
+					width: 7px;
+					left: 7px;
+					background: $mainRed;
+					position: absolute;
+					cursor: pointer;
+				}
+				.year_anchor {
+					left: -40px;
+					border-left: 15px solid $mainRed;
+					border-top-width: 10px;
+					border-bottom-width: 10px;
+					position: absolute;
+				}
+				.red_rec {
+					position: absolute;
+					cursor: pointer;
+					transition: .3s;
+					&:hover {
+						box-shadow: 0px 0px 5px lighten($mainRed, 10%);
+					}
+				}
+				.year {
+					position: absolute;
+					left: 61px;
+					font-size: 30px;
+					color: $mainRed;
+					line-height: 19px;
+				}
+			}
+		}
+	}
+}
+
+.dots {
+	width: 100%;
+	.dot_wrapper {
+		cursor: pointer;
+		margin: 0 5px;
+		width: 23px;
+		height: 20px;
+		&:hover {
+			.dot {
+				box-shadow: 0px 0px 8px white;
+			}
+		}
+		&.active {
+			.dot { background: $mainOrange; }
+		}
+	}
+	.dot {
+		pointer-events: none;
+		width: 10px;
+		height: 10px;
+		border: 1px solid white;
+		border-radius: 100%;
+		background: white;
+	}
+}
+
+.red_bg {
+	background: $mainRed;
+}
+
+.red_rec {
+	background: $mainRed;
+	width: 21px;
+	height: 21px;	
+}

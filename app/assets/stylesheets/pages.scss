@@ -4,16 +4,13 @@ body.pages {
 		margin-right: auto;
 		margin-left: auto;
 	}
-	&.home {
-		background-image: url("/img/Hero 1_1280x800.png");
-		background-size: contain;
-		background-repeat: no-repeat;	
-	}
 }
 
 #see_more_btn {
 	width: 224px;
 	height: 40px;
+	cursor: pointer;
+	text-decoration: none;
 	background: #ef0105;
 	background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%);
 	background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%);
@@ -32,28 +29,19 @@ body.pages {
 	height: 100px;
 	right: 30px;
 	top: 666px;
-	z-index: $zindex-sticky;
+	z-index: $zindex-tooltip + 1; // 1071 配合 menu
 }
 
 .section_title_wrapper {
 	position: relative;
-	&:before {
+	&.middle_bar:before {
 		content: ' ';
     background: red;
     width: 1px;
     height: 163px;
     position: absolute;
     left: 50%;
-    top: calc((70px - 163px) / 2);
+    top: calc((60px - 163px) / 2);
     z-index: -1;	
-	}
-}
-
-@keyframes fade-out {
-	33%{
-		opacity: 1
-	}
-	66%{
-		opacity: 0
 	}
 }

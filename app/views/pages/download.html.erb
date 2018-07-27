@@ -1,2 +1,47 @@
-<h1>Pages#download</h1>
-<p>Find me in app/views/pages/download.html.erb</p>
+<a href="/contact" id="contact_btn" class="text-right">
+	<%= image_tag "/img/contact.svg", height: '100px'; %>
+</a>
+<div id="download_sections_wrapper" class="d-flex">
+	<section id="download_bg_section" class="d-flex align-content-end flex-column w-100">
+		<div id="download_bg_wrapper" class="d-flex align-items-end justify-content-center">
+			<div id="download_bg"></div>
+		</div>
+	</section>
+
+	<section id="download_items_section" class="d-flex align-content-end flex-column">
+		<div class="section_title_wrapper align-self-center">
+			<img src="/img/download.svg", height="60px">
+		</div>
+		<div id="right_half" class="align-self-end">
+			<div class="download-item d-flex">
+				<h2 class="v700 item-number">01</h2>
+				<p class="v400">Gene application with in usteo electroplation in mouse emb&#8208;ryonic.</p>
+				<a href="/download/1" id="see_more_btn" class="d-flex">
+					<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
+				</a>
+			</div>
+			<div class="download-item d-flex">
+				<h2 class="v700 item-number">01</h2>
+				<p class="v400">Gene application with in usteo electroplation in mouse emb&#8208;ryonic.</p>
+				<a href="/download/1" id="see_more_btn" class="d-flex">
+					<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
+				</a>
+			</div>
+			<div class="download-item d-flex">
+				<h2 class="v700 item-number">02</h2>
+				<p class="v400">Gene application with in usteo electroplation in mouse emb&#8208;ryonic.</p>
+				<a href="/download/2" id="see_more_btn" class="d-flex">
+					<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
+				</a>
+			</div>
+			<div class="download-item d-flex">
+				<h2 class="v700 item-number">04</h2>
+				<p class="v400">Gene application with in usteo electroplation in mouse emb&#8208;ryonic.</p>
+				<a href="/download/1" id="see_more_btn" class="d-flex">
+					<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
+				</a>
+			</div>
+		</div>
+		<%= render "common/footer" %>
+	</section>
+</div>
