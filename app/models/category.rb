@@ -13,6 +13,10 @@ class Category < ApplicationRecord
 		3
 	end
 
+	def ancestors_names
+		self_and_ancestors.pluck(:zh_name).join(" - ")
+	end
+
 	def name
 		if en_name.present? && zh_name.present?
 			I18n.locale == :en ? en_name : zh_name

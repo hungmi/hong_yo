@@ -1,10 +1,10 @@
-class Admin::CataloguesController < ApplicationController
+class Admin::CataloguesController < AdminController
 	layout 'admin'
 	before_action :set_catalogue, except: [:index, :create, :new]
 
 	def index
 		@nav_title = "產品目錄"
-		@catalogues = Catalogue.all.order(id: :desc)
+		@catalogues = Catalogue.all.order(updated_at: :desc, id: :desc)
 	end
 
 	def new
@@ -36,7 +36,7 @@ class Admin::CataloguesController < ApplicationController
 		end
 		if @catalogue.update(catalogue_params2)
       flash[:success] = "更新成功。"
-      redirect_to edit_admin_catalogue_url(@catalogue)
+      redirect_to admin_catalogues_url
     else
       render :edit
     end

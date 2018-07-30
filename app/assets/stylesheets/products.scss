@@ -115,54 +115,7 @@ body.products.show {
 			margin-right: auto;
 		}
 	}
-	.product_comparison {
-		margin-top: 60px;
-		position: relative;
-		.product_comparison_table_wrapper {
-			table.table {
-				tr {
-			    height: 50px;
-				}
-				tr:nth-child(even) {
-					background: #f2f2f2;
-				}
-				th, td {
-					border: 1px solid #ccc;
-			    border-top-color: transparent;
-			    border-bottom-color: transparent;
-			    padding: 1rem 2rem;
-			    font-size: 14px;
-			    color: #4d4d4d;
-			    &.chinese {
-			    	font-size: 15px;
-			    }
-				}
-				tr:not(:first-child) .chinese {
-					font-weight: 200;
-				}
-			}
-			tr.attribute_names {
-				th {
-					border-top-color: transparent;
-					&.chinese:not(:first-child) {
-						font-weight: 200;
-					}
-				}
-			}
-			.table.copied_header {
-				position: absolute;
-				left: -7px; // 為了蓋住左邊不知道為啥會透光
-				background: white;
-				box-shadow: 7px 2px 8px -4px #ddd;
-				tr th:first-child {
-					border-top-color: transparent;
-				}
-				tr th {
-					border-left-color: transparent;
-				}
-			}
-		}
-	}
+	
 	.product_related {
 		margin: 90px 0px;
 		.product_wrapper {

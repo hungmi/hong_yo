@@ -1,6 +1,6 @@
 <tr>
 	<td></td>
-	<td class="truncate"><%= product.category.name %></td>
+	<td class="truncate"><%= product.category.ancestors_names %></td>
 	<td class="truncate"><%= product.name %></td>
 	<td><%= simple_format product.description.to_s.truncate(120) %></td>
 	<td>

@@ -2,6 +2,7 @@ class Story < ApplicationRecord
 	validates :zh_title, presence: true, unless: Proc.new { |s| s.en_title.present? }
 	enum status: { draft: 0, published: 1 }
 	has_one_attached :cover
+	attr_accessor :remove_cover
 
 	def try_cover
 		cover.attached? ? cover : "/img/about/fake_news1.png"

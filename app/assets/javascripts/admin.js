@@ -27,3 +27,6 @@
 //= require admin/plugins/fullcalendar.min.js
 //= require admin/plugins/demo.js
 //= require admin/pages.js
+//= require copyTableHeader
+//= require admin/previewable
+//= require admin/products

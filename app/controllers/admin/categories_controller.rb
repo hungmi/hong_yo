@@ -1,4 +1,4 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < AdminController
 	layout 'admin'
 	before_action :set_category, except: [:index, :create, :new]
 

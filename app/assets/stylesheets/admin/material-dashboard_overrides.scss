@@ -29,3 +29,15 @@ $brand-rose: $color-brand;
 		background-color: $color-brand;
 	}
 }
+.sidebar-wrapper {
+	div.collapse, div.collapsing {
+		& > ul.nav > li.nav-item {
+			& > div.collapse, & > div.collapsing {
+				padding-left: 10px;
+			}
+		}
+	}
+}
+.sidebar .nav li.nav-item p {
+	white-space: pre-line;
+}

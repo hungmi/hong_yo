@@ -34,7 +34,6 @@ document.addEventListener("turbolinks:load", function() {
 		  getCategoryProducts(e.params.data.id)
 	 	}
 	});
-	copyTableHeader(document.querySelector(".product_comparison_table_wrapper table.table"));
 	if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 768 || document.querySelector("body").classList.contains("mobile")) {
 		moveImagesSectionToMobilePostion()
 	}
@@ -71,19 +70,6 @@ function getCategoryProducts(category_id) {
 	}).fail(function() {
 		console.log("failed")
 	})
-}
-
-function copyTableHeader(target_table) {
-	let first_tr = target_table.querySelector("tr.attribute_names th:first-child")
-	let header_width = first_tr.clientWidth
-	let copied_header_html = ""
-	if (header_width !== undefined && header_width > 0) {
-		for (tr of target_table.querySelectorAll("tr")) {
-			copied_header_html += `<tr style="height: ${tr.clientHeight}px;">${tr.querySelector("th").outerHTML}</tr>`
-		}
-		copied_header_html = `<table class="table copied_header text-center" style="max-width: ${header_width + 9}px;">${copied_header_html}</table>`
-	}
-	target_table.insertAdjacentHTML('beforebegin', copied_header_html)
 }
 
 function moveImagesSectionToMobilePostion() {

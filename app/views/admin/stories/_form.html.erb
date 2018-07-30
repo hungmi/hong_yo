@@ -4,30 +4,41 @@
 		<div class="form-group bmd-form-group">
 	    <label>消息封面</label><br>
 	    <div class="fileinput <%= story.cover.attached? ? 'fileinput-exists' : 'fileinput-new' %> text-center" data-provides="fileinput">
-      	<% if story.cover.attached? %>
-	        <div class="fileinput-preview fileinput-exists thumbnail" style="">
-		        <%= image_tag(story.cover.variant(resize: "600x600>")) %>
-		      </div>
-		    <% end %>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="">
+    			<% if story.cover.attached? %>
+	        	<%= image_tag(story.cover.variant(resize: "600x600>")) %>
+	        <% end %>
+	      </div>
 		    <br>
         <span class="btn btn-rose btn-round btn-file">
           <span class="fileinput-new">選擇圖片</span>
           <span class="fileinput-exists">更換</span>
           <input type="hidden">
           <%= f.file_field :cover, accept: ".png, .jpg, .jpeg" %>
+          <%#= image_tag story.try_cover, style: "max-width: 100%;", class: "previewer", data: { file: "input#tag_icon" } %>
         	<div class="ripple-container"></div>
       	</span>
         <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
 	    </div>
 	  </div>
-		<div class="form-group bmd-form-group">
-			<%= f.label :title, class: "bmd-label-floating" %>
-			<%= f.text_area :title, class: "form-control", rows: 2, required: true, aria: { required: true } %>
+	  <div class="form-group bmd-form-group">
+			<%= f.label :zh_title, class: "bmd-label-floating" %>
+			<%= f.text_area :zh_title, class: "form-control", rows: 2 %>
 		</div>
 		<div class="form-group bmd-form-group">
-			<%= f.label :content, class: "bmd-label-floating" %>
-			<%= f.text_area :content, class: "form-control", rows: 10 %>
+			<%= f.label :zh_content, class: "bmd-label-floating" %>
+			<%= f.text_area :zh_content, class: "form-control", rows: 8 %>
 		</div>
+		<div class="clearfix my-5"></div>
+		<div class="form-group bmd-form-group">
+			<%= f.label :en_title, class: "bmd-label-floating" %>
+			<%= f.text_area :en_title, class: "form-control", rows: 2 %>
+		</div>
+		<div class="form-group bmd-form-group">
+			<%= f.label :en_content, class: "bmd-label-floating" %>
+			<%= f.text_area :en_content, class: "form-control", rows: 8 %>
+		</div>
+		<div class="clearfix my-5"></div>
 		<div class="form-group bmd-form-group">
 			<div class="togglebutton">
 		  	<label>

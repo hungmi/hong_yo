@@ -1,4 +1,4 @@
-class Admin::StoriesController < AdminController
+class Admin::StoriesController < ApplicationController
 	layout 'admin'
 	before_action :set_story, except: [:index, :create, :new]
 
@@ -58,6 +58,6 @@ class Admin::StoriesController < AdminController
 	end
 
 	def story_params
-		params.require(:story).permit(:en_title, :zh_title, :en_content, :zh_content, :status, :cover)
+		params.require(:story).permit(:title, :content, :status, :cover)
 	end
 end

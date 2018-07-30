@@ -1,28 +1,55 @@
 <div class="card-body ">
 	<%= form_for [:admin, product] do |f| %>
 		<% @form_id = f.options[:html][:id] %>
-
 	  <div class="form-group bmd-form-group">
 	  	<% images_exist = f.object.images.attached? %>
-	    <label>產品圖片</label><br>
-	    <div class="fileinput <%= images_exist ? 'fileinput-exists' : 'fileinput-new' %> text-center" data-provides="fileinput">
-	    	<% if product.images.attached? %>
+	  	<label>產品圖片</label>
+	    <div class="d-flex flex-wrap fileinput <%= images_exist ? 'fileinput-exists' : 'fileinput-new' %> text-center">
+	    	<% if images_exist %>
         	<% product.images.each do |img| %>
-        		<div class="fileinput-preview fileinput-exists thumbnail" style="">
-			      	<%= image_tag(img.variant(resize: "600x600"), style: "max-width: 200px;") %>
-        		</div>
+        		<div class="uploaded_image_wrapper mb-5">
+	        		<div class="fileinput-preview fileinput-exists thumbnail" style="">
+				      	<% if img.previewable? %>
+					        <%= link_to(image_tag(img.preview(resize: "600x600>")),  rails_blob_path(img, disposition: "attachment")) %>
+				      	<% elsif img.variable? %>
+				        	<%= link_to(image_tag(img.variant(resize: "600x600")), rails_blob_path(img, disposition: "attachment")) %>
+				      	<% else %>
+					      	<div class="my-3">
+					        	<%= link_to "下載附件 #{img.filename.to_s}", rails_blob_path(img, disposition: "attachment") %>
+					        </div>
+				      	<% end %>
+				      </div>
+				      <!-- <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a> -->
+				      <div class="form-check mt-1">
+	              <label class="form-check-label">
+	                <!-- <input class="form-check-input" type="checkbox" value="" checked=""> Checked -->
+						      <%= check_box_tag "product[remove_images][#{img.id}]", "true", false, { class: "form-check-input" } %> 移除
+	                <span class="form-check-sign">
+	                  <span class="check"></span>
+	                </span>
+	              </label>
+	            </div>
+	          </div>
 		      <% end %>
 		    <% end %>
-		    <br>
-        <span class="btn btn-rose btn-round btn-file">
-          <span class="fileinput-new">選擇檔案</span>
-          <span class="fileinput-exists">更換</span>
-          <input type="hidden">
-          <%= f.file_field :images, multiple: true, accept: ".png, .jpg, .jpeg, .pdf" %>
-        	<div class="ripple-container"></div>
-      	</span>
-        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
-      </div>
+			  <div style="flex-basis: 100%;">
+	        <span class="btn btn-rose btn-round btn-file float-left">
+	          <span class="fileinput-new">選擇圖片</span>
+	          <span class="fileinput-exists">上傳更多</span>
+	          <input type="hidden">
+	          <%= f.file_field :images, multiple: true, accept: ".png, .jpg, .jpeg", class: "previewable" %>
+	        	<div class="ripple-container"></div>
+	      	</span>
+	        <!-- <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a> -->
+	      </div>
+      	<% if product.errors[:images].present? %>
+	        <div class="invalid-feedback">
+	          <%= product.errors[:images].join(", ") %>
+	        </div>
+	      <% end %>
+	  	</div>
+	  	<label id="newImagePreviewLabel" class="d-none">尚未上傳的圖片</label>
+	  	<div id="newImagePreview" class="d-flex flex-wrap mb-5"></div>
 	  </div>
 
 	  <div class="clearfix my-5"></div>
@@ -31,21 +58,19 @@
 			<% file_exist = f.object.file.attached? %>
 	    <label>目錄檔案</label><br>
 	    <div class="fileinput <%= file_exist ? 'fileinput-exists' : 'fileinput-new' %> text-center" data-provides="fileinput">
-      	<% if file_exist %>
-        	<% if product.file.previewable? %>
-		        <div class="fileinput-preview fileinput-exists thumbnail" style="">
+	    	<div class="fileinput-preview fileinput-exists thumbnail" style="">
+	      	<% if file_exist %>
+	        	<% if product.file.previewable? %>
 			        <%= link_to(image_tag(product.file.preview(resize: "600x600>")),  rails_blob_path(product.file, disposition: "attachment")) %>
-			      </div>
-		      <% elsif product.file.variable? %>
-      			<div class="fileinput-preview fileinput-exists thumbnail" style="">
+		      	<% elsif product.file.variable? %>
 		        	<%= link_to(image_tag(product.file.variant(resize: "600x600")), rails_blob_path(product.file, disposition: "attachment")) %>
-		        </div>
-		      <% else %>
-		      	<div class="my-3">
-		        	<%= link_to "下載附件 #{product.file.filename.to_s}", rails_blob_path(product.file, disposition: "attachment") %>
-		        </div>
-		      <% end %>
-		    <% end %>
+		      	<% else %>
+			      	<div class="my-3">
+			        	<%= link_to "下載附件 #{product.file.filename.to_s}", rails_blob_path(product.file, disposition: "attachment") %>
+			        </div>
+		      	<% end %>
+		    	<% end %>
+		    </div>
 		    <br>
         <span class="btn btn-rose btn-round btn-file">
           <span class="fileinput-new">選擇檔案</span>
@@ -82,6 +107,62 @@
 		
 		<div class="clearfix my-5"></div>
 
+		<div class="product_comparison">
+			<div class="product_block_title">型號規格</div>
+			<% if product.varieties.present? %>
+				<div class="product_comparison_table_wrapper table-responsive">
+					<table class="table text-center">
+						<tbody>
+							<tr class="attribute_names">
+								<th nowrap="true" class="<%= render_chinese_class('型號') %>">型號</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="chinese">操作</th>
+							</tr>
+							<% product.varieties.each do |va| %>
+								<tr>
+									<th nowrap="true" class="<%= render_chinese_class(va.name) %>"><%= va.name %></th>
+									<td class="<%= render_chinese_class('X') %>"><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O<br><br>aaa".html_safe : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td>
+										<%= link_to [:admin, product, va] do %>
+											<i class="material-icons">edit</i>
+										<% end %>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			<% else %>
+				尚無資料
+			<% end %>
+		</div>
+
+		<div class="clearfix my-5"></div>
+
 		<div class="form-group bmd-form-group">
 			<div class="togglebutton">
 		  	<label>
@@ -94,7 +175,7 @@
 	<% end %>
 </div>
 <div class="card-footer ">
-	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: dom_id(@product, action_name.to_sym) %>
+	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: dom_id(product, action_name.to_sym) %>
 </div>
 
 <script>

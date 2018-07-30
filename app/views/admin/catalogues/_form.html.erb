@@ -1,6 +1,7 @@
 <div class="card-body ">
 	<%= form_for [:admin, catalogue] do |f| %>
 		<% @form_id = f.options[:html][:id] %>
+
 		<div class="form-group bmd-form-group">
 	    <label>目錄檔案</label><br>
 	    <% file_exist = catalogue.file.attached? %>
@@ -17,7 +18,7 @@
 			        	<%= link_to "下載附件 #{catalogue.file.filename.to_s}", rails_blob_path(catalogue.file, disposition: "attachment") %>
 			        </div>
 			      <% end %>
-			     <% end %>
+			    <% end %>
         </div>
         <div>
           <span class="btn btn-rose btn-round btn-file">
@@ -31,6 +32,9 @@
         </div>
 	    </div>
 	  </div>
+
+	  <div class="clearfix my-5"></div>
+	  
 		<div class="form-group bmd-form-group">
 			<%= f.label :zh_name, class: "bmd-label-floating" %>
 			<%= f.text_field :zh_name, class: "form-control" %>

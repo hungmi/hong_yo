@@ -15,9 +15,10 @@
     <title><%= I18n.locale %><%= @page_title %></title>
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
-    <link rel="icon" href="../assets/img/favicon.png">
+    <!-- <link rel="icon" href="../assets/img/favicon.png"> -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= turbolinks_cache_control_meta_tag %>
     
     <!--     Fonts and icons     -->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->

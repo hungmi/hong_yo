@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < AdminController
 	layout 'admin'
 	before_action :set_product, except: [:index, :create, :new]
 
@@ -33,15 +33,14 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def update
-		# 因為當 front end js 移除檔案時
-		product_params2 = product_params
-		# if product_params.has_key?(:cover) && product_params[:cover].blank?
-		# 	product_params2 = product_params.except(:cover)
-		# 	@product.cover.purge_later if @product.cover.attached?
-		# end
-		if @product.update(product_params2)
+		if @product.update(product_params.except(:images, :file))
+			if product_params.has_key?(:file) && product_params[:file].blank?
+				@product.file.purge_later if @product.file.attached?
+			end
+      @product.images.where(id: params[:product][:remove_images].keys).map(&:purge_later) if params[:product][:remove_images].present?
+      @product.images.attach(params[:product][:images]) if params[:product][:images]
       flash[:success] = "更新成功。 "
-      redirect_to admin_products_url
+      redirect_to edit_admin_product_url(@product)
     else
       render :edit
     end
