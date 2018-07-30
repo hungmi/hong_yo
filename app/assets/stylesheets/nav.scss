@@ -13,6 +13,7 @@ body.front {
 		#menu-title-wrapper {
 			margin-right: 24px;
 			.toggler {
+				cursor: pointer;
 				background: $mainRed;
 				z-index: $zindex-tooltip + 1; // 1071
 				width: 60px;
@@ -88,6 +89,14 @@ body.front {
 			a {
 				color: white;
 			}
+		}
+		@media only screen and (max-width: 414px) {
+			li.menu-item-wrapper {
+				margin-bottom: 16px;
+				.en { font-size: 26px; }
+				small { font-size: 16px; }	
+			}
+			.i18n-link { font-size: 24px; }
 		}
 	} // #menu END
 }

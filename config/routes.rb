@@ -10,6 +10,14 @@ Rails.application.routes.draw do
 		  get 'download', to: "pages#download"
 		end
     resources :products
+    resources :stories
+    resources :catalogues
+  	resources :categories do
+      member do
+        get "children", to: "categories#children"
+        get "products", to: "categories#products"
+      end
+    end
     post 'contact_us', to: "contacts#create"
 	end
   namespace :admin do

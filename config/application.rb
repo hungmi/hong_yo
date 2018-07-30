@@ -17,6 +17,9 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require "browser/aliases"
+Browser::Base.include(Browser::Aliases)
+
 module Hongyo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

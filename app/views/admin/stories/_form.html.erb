@@ -4,28 +4,20 @@
 		<div class="form-group bmd-form-group">
 	    <label>消息封面</label><br>
 	    <div class="fileinput <%= story.cover.attached? ? 'fileinput-exists' : 'fileinput-new' %> text-center" data-provides="fileinput">
-        <div class="fileinput-preview fileinput-exists thumbnail" style="">
-        	<% if story.cover.attached? %>
-	        	<% if story.cover.previewable? %>
-			        <%= link_to(image_tag(story.cover.preview(resize: "600x600>")),  rails_blob_path(story.cover, disposition: "attachment"))
-			        %>
-			      <% elsif story.cover.variable? %>
-			        <%= link_to(image_tag(story.cover.variant(resize: "600x600")), rails_blob_path(story.cover, disposition: "attachment"))%>
-			      <% else %>
-			        <%= link_to "下載附件", rails_blob_path(story.cover, disposition: "attachment") %>
-			      <% end %>
-			     <% end %>
-        </div>
-        <div>
-          <span class="btn btn-rose btn-round btn-file">
-            <span class="fileinput-new">選擇圖片</span>
-            <span class="fileinput-exists">更換</span>
-            <input type="hidden">
-            <%= f.file_field :cover, accept: ".png, .jpg, .jpeg" %>
-          	<div class="ripple-container"></div>
-        	</span>
-          <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
-        </div>
+      	<% if story.cover.attached? %>
+	        <div class="fileinput-preview fileinput-exists thumbnail" style="">
+		        <%= image_tag(story.cover.variant(resize: "600x600>")) %>
+		      </div>
+		    <% end %>
+		    <br>
+        <span class="btn btn-rose btn-round btn-file">
+          <span class="fileinput-new">選擇圖片</span>
+          <span class="fileinput-exists">更換</span>
+          <input type="hidden">
+          <%= f.file_field :cover, accept: ".png, .jpg, .jpeg" %>
+        	<div class="ripple-container"></div>
+      	</span>
+        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
 	    </div>
 	  </div>
 		<div class="form-group bmd-form-group">

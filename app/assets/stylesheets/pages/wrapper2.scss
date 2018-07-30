@@ -24,12 +24,16 @@ body.pages.home {
 				border-bottom: 30px solid $mainRed;
 				background: $mainRed;
 				width: 280px;
+				text-decoration: none;
 				&:not(:last-child) {
 					margin-right: 12px;
 				}
 				.news_img {
-					width: 100%;
-					height: 210px;
+					img {
+						width: 100%;
+					}
+					// width: 100%;
+					// height: 210px;
 					background: #ffcccc;
 					background: -webkit-linear-gradient(left, #ffcccc 0%, #e5e5e5 100%);
 					background: -o-linear-gradient(left, #ffcccc 0%, #e5e5e5 100%);

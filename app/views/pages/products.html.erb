@@ -15,32 +15,30 @@
 				</div>
 			</div>
 			<div class="product_finder_form_wrapper">
-				<label for="product_category" class="v300">
-				  Product Classication
-				  <select name="product[category]" id="product_category" class="form-control v700">
-						<option value="1">01 Life Science Animal Science</option>
-						<option value="2">02 Life Science Animal Science</option>
-						<option value="3">03 Life Science Animal Science</option>
-					</select>
-				</label>
-				<div class="two_selects_wrapper d-flex">
-					<label for="product_brand" class="v300">
-					  Brand
-					  <select name="product[brand]" id="product_brand" class="form-control v700">
-							<option value="1">ASTEC1</option>
-							<option value="2">ASTEC2</option>
-							<option value="3">ASTEC3</option>
-						</select>
+				<%= form_for :product do |f| %>
+					<label for="product_category" class="v300">
+					  Product Classication
+					  <%= f.select :category, Category.roots.map { |c| [c.name, c.id] }, {}, class: "form-control v700" %>
+					  <!-- <select name="product[category]" id="product_category" class="form-control v700">
+							<option value="1">01 Life Science Animal Science</option>
+						</select> -->
 					</label>
-					<label for="product_series" class="v300">
-					  Series
-					  <select name="product[series]" id="product_series" class="form-control v700">
-							<option value="1">滅菌型培養箱1</option>
-							<option value="2">滅菌型培養箱2</option>
-							<option value="3">滅菌型培養箱3</option>
-						</select>
-					</label>
-				</div>
+					<div class="two_selects_wrapper d-flex">
+						<label for="product_brand" class="v300">
+						  Brand
+						  <%= select_tag :product_brand, options_from_collection_for_select(Category.roots.first.children, "id", "name"), class: 'form-control v700' %>
+						  <!-- <select name="product[brand]" id="product_brand" class="form-control v700">
+								<option value="1">-</option>
+							</select> -->
+						</label>
+						<label for="product_series" class="v300">
+						  Series
+						  <select name="product[series]" id="product_series" class="form-control v700">
+								<option value="1">-</option>
+							</select>
+						</label>
+					</div>
+				<% end %>
 			</div>
 		</div>
 		<div id="right_product_info_wrapper" class="d-flex align-content-end flex-column align-self-right">
@@ -64,22 +62,8 @@
 	</div>
 </section>
 <section id="products_section" class="d-flex align-content-end justify-content-between flex-wrap mx-auto">
-	<% @products.each do |product| %>
-		<%= link_to product_path(id: product), class: "product_wrapper" do %>
-			<div class="product_img">
-				<% if product.images.attached? %>
-					<% product.images.each do |img| %>
-						<%= image_tag img %>
-					<% end %>
-				<% end %>
-			</div>
-			<span class="product_brand_series">
-				<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
-			</span>
-			<h3 class="product_name"><%= product.name %></h3>
-		<% end %>
-	<% end %>
-	<a href="#" class="product_wrapper">
+	<%= render @products %>
+	<!-- <a href="#" class="product_wrapper">
 		<div class="product_img">
 			<img src="">
 		</div>
@@ -96,5 +80,5 @@
 			<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
 		</span>
 		<h3 class="product_name">滅菌型 / 直熱式二氧化碳培養箱22222</h3>
-	</a>
+	</a> -->
 </section>

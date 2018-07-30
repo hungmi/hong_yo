@@ -18,9 +18,9 @@
 
     <div class="sidebar-wrapper">
         <div class="user">
-            <div class="photo">
+            <!-- <div class="photo">
                 <img src="/img/avatar.jpg" alt="Admin"/>
-            </div>
+            </div> -->
             <div class="user-info">
                 <a data-toggle="collapse" href="#collapseExample" class="username">
                     <span>
@@ -61,6 +61,13 @@
                 </a>
             </li>
 
+            <li class="nav-item <%= 'active' if current_page?(admin_stories_path) %>">
+                <a class="nav-link" href="/admin/stories">
+                    <i class="material-icons">info_outline</i>
+                    <p> <%= Story.model_name.human %> </p>
+                </a>
+            </li>
+
             <li class="nav-item <%= 'active' if current_page?(admin_catalogues_path) %>">
                 <a class="nav-link" href="/admin/catalogues">
                     <i class="material-icons">library_books</i>
@@ -88,15 +95,8 @@
                     </ul>
                 </div>
             </li>
-
-            <li class="nav-item <%= 'active' if current_page?(admin_stories_path) %>">
-                <a class="nav-link" href="/admin/stories">
-                    <i class="material-icons">info_outline</i>
-                    <p> <%= Story.model_name.human %> </p>
-                </a>
-            </li>
             
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#languages">
                     <i class="material-icons">language</i>
                     <p> 語系
@@ -107,20 +107,20 @@
                 <div class="collapse" id="languages">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/stories">
+                            <a class="nav-link" href="<%#= url_for(locale: 'en') %>">
                                 <span class="sidebar-mini"> EN </span>
                                 <span class="sidebar-normal"> English </span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/stories">
+                            <a class="nav-link" href="<%#= url_for(locale: 'zh-TW') %>">
                                 <span class="sidebar-mini"> 繁 </span>
                                 <span class="sidebar-normal"> 繁體中文 </span>
                             </a>
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

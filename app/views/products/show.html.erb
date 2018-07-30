@@ -2,74 +2,87 @@
 	<%= image_tag "/img/contact.svg", height: '100px'; %>
 </a>
 <div id="product_sections_wrapper" class="d-flex">
-	<section id="product_images_section" class="d-flex align-content-end flex-column w-100">
-		<div id="product_images_wrapper" class="d-flex align-items-end justify-content-center">
-			<div id="product_active_image"></div>
-			<div id="product_image_thumbs_wrapper" class="d-flex justify-content-between">
-				<div class="product_image_thumb">
-					<img src="" alt="">
-				</div>
-				<div class="product_image_thumb">
-					<img src="" alt="">
-				</div>
-				<div class="product_image_thumb">
-					<img src="" alt="">
-				</div>
-			</div>
-		</div>
-	</section>
+
+	<%= render "images_section" %>
 
 	<section id="product_data_section" class="d-flex align-content-end flex-column">
 		<div id="product_data_wrapper" class="d-flex flex-column">
 			<span class="product_brand_series v700">
-				<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
+				<span class="product_brand"><%= @product.category.parent.name %></span> - <span class="product_series"><%= @product.category.name %></span>
 			</span>
-			<div class="product_model d-flex">
-				<label for="product_model" class="v700 mb-0 border-right-0">MDOEL</label>
-				<select name="product[model]" id="product_model" class="form-control v700">
+			<div class="product_variety_name d-flex">
+				<label for="product_variety_name" class="v700 mb-0 border-right-0">MDOEL</label>
+				<%= select_tag :product_variety_name, options_from_collection_for_select(@product.varieties, "id", "name"), class: 'form-control v700' %>
+				<!-- <select name="product[model]" id="product_model" class="form-control v700">
 					<option value="1">01 Life Science Animal Science</option>
 					<option value="2">01 Life Science Animal Science</option>
 					<option value="3">01 Life Science Animal Science</option>
-				</select>
+				</select> -->
 			</div>
 
-			<h2 class="product_name">滅菌型 / 直熱式二氧化碳培養箱</h2>
+			<h2 class="product_name"><%= @product.name %></h2>
 
 			<div class="product_detail">
 				<div class="product_block_title">DETAIL</div>
 				<div class="product_detail_content">
-					<p>
-						1、具有 CO2 自動及手動零點校正功能。<br>
-						2、內建式 CO2 Filter 可避免污染。<br>
-						3、打開外門時，CO2 停止供應，風扇停止轉動，可避免 CO2 浪費及防止外來空氣的污染。<br>
-						4、可加裝 HEPA Filte r及 CO2 tankswitch。<br>
-						5、CO2 輸入壓力只需 0.05MPa，CO2 消耗量非常低。<br>
-						6、具多種小內門(2、4門)可供選擇。<br>
-					</p>
+					<%= simple_format @product.description %>
 				</div>
-				<a href="/download/1" id="see_more_btn" class="d-flex">
-					<div class="mr-auto align-self-center see_more_text download_dm_text v700">廠商型錄下載</div>
-				</a>
+				<% if @product.file.attached? %>
+					<%= link_to rails_blob_path(@product.file, disposition: "attachment"), id: "see_more_btn", class: "d-flex" do %>
+						<div class="mr-auto align-self-center see_more_text download_dm_text v700">廠商型錄下載</div>
+					<% end %>
+				<% end %>
 			</div>
 
 			<div class="product_comparison">
 				<div class="product_block_title">MODEL COMPARISON</div>
-				<div class="product_comparison_table">
-					<p>
-						1、具有 CO2 自動及手動零點校正功能。<br>
-						2、內建式 CO2 Filter 可避免污染。<br>
-						3、打開外門時，CO2 停止供應，風扇停止轉動，可避免 CO2 浪費及防止外來空氣的污染。<br>
-						4、可加裝 HEPA Filte r及 CO2 tankswitch。<br>
-						5、CO2 輸入壓力只需 0.05MPa，CO2 消耗量非常低。<br>
-						6、具多種小內門(2、4門)可供選擇。<br>
-					</p>
+				<div class="product_comparison_table_wrapper table-responsive">
+					<table class="table text-center">
+						<tbody>
+							<tr class="attribute_names">
+								<th nowrap="true" class="<%= render_chinese_class('型號') %>">型號</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+							</tr>
+							<% @product.varieties.each do |va| %>
+								<tr>
+									<th nowrap="true" class="<%= render_chinese_class(va.name) %>"><%= va.name %></th>
+									<td class="<%= render_chinese_class('X') %>"><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O<br><br>aaa".html_safe : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+								</tr>
+							<% end %>
+							<% @product.varieties.each do |va| %>
+								<tr>
+									<th nowrap="true"><%= va.name %></th>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
 				</div>
 			</div>
 
 			<div class="product_related">
 				<div class="product_block_title">RELATED PRODUCTS</div>
 				<div class="related_products d-flex flex-wrap justify-content-between">
-					<a href="#" class="product_wrapper">
+					<%= render @product.category.products.limit(4) %>
+					<!-- <a href="#" class="product_wrapper">
 						<div class="product_img">
 							<img src="">
 						</div>
@@ -95,16 +108,7 @@
 							<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
 						</span>
 						<h3 class="product_name">滅菌型 / 直熱式二氧化碳培養箱</h3>
-					</a>
-					<a href="#" class="product_wrapper">
-						<div class="product_img">
-							<img src="">
-						</div>
-						<span class="product_brand_series">
-							<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
-						</span>
-						<h3 class="product_name">滅菌型 / 直熱式二氧化碳培養箱</h3>
-					</a>
+					</a> -->
 				</div>
 			</div>
 		</div>   <!-- #product_data_wrapper -->

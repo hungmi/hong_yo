@@ -22,11 +22,15 @@ body.pages.about {
 			width: 940px;
 			margin-top: 40px;
 			margin-bottom: 35px; // 55 - 上方 news 多的 mb 20px
+			a.news {
+				text-decoration: none;
+			}
 			.news {
 				&:nth-child(odd) { margin-right: 10px; }
 				&:nth-child(even) { margin-left: 10px; }
 				margin-bottom: 20px;
 				flex: 1 1 calc(50% - 10px);
+				max-width: calc(50% - 10px);
 				background: $mainRed;
 				transition: .5s;
 				opacity: 0;
@@ -50,8 +54,12 @@ body.pages.about {
 				}
 				.news_title {
 					font-size: 24px;
-					color: white;
 					line-height: 22.5px;
+					&.chinese {
+						font-size: 22px;
+						line-height: 24px;
+					}
+					color: white;
 					height: 47px;
 					overflow: hidden;
 					width: 240px;
@@ -169,10 +177,11 @@ body.pages.about {
 	#wrapper.history {
 		.history_wrapper {
 			position: relative;
-			margin-left: 320px;
-			margin-right: 214px;
-			margin-top: 150px;
-			margin-bottom: 160px;
+			margin: 150px 214px 160px 320px;
+			@media only screen and (max-width: 1279px) {
+				margin: 150px auto;
+				width: 800px;
+			}
 			min-height: 585px;
 			.paragraph_wrapper {
 				width: 392px;

@@ -31,7 +31,7 @@ zh-TW:
   activerecord:
     models:
       story:
-        one: 消息
+        one: 最新消息
         other: 消息列表
       product:
         one: 產品
@@ -40,7 +40,7 @@ zh-TW:
         one: 分類
         other: 分類總覽
       catalogue:
-        one: 目錄
+        one: 產品目錄
         other: 目錄集
       tag:
         one: 標籤
@@ -52,7 +52,12 @@ zh-TW:
       story:
         id: "#"
         title: 標題
-        content: 內文
+        content: 內容
+        zh_title: 中文標題
+        en_title: 英文標題
+        zh_content: 中文內容
+        en_content: 英文內容
+        cover: 封面
         status: 狀態
       tag:
         id: "#"
@@ -62,11 +67,19 @@ zh-TW:
         id: "#"
         name: 名稱
         description: 敘述
+        zh_name: 中文名稱
+        en_name: 英文名稱
+        zh_description: 中文敘述
+        en_description: 英文敘述
         status: 狀態
       product:
         id: "#"
-        name: 名稱
-        description: 敘述
+        zh_name: 中文名稱
+        en_name: 英文名稱
+        zh_description: 中文敘述
+        en_description: 英文敘述
+        images: 產品圖片
+        file: 廠商型錄
         status: 狀態
         category: 分類
       user:
@@ -86,9 +99,8 @@ zh-TW:
       published: 已公開
     category_level:
       level0: 大分類
-      level1: 標題
-      level2: 種類 
-      level3: 系列
+      level1: 品牌
+      level2: 系列
     errors:
       models:
         user:

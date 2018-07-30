@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_174802) do
+ActiveRecord::Schema.define(version: 2018_07_28_143814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,15 +37,18 @@ ActiveRecord::Schema.define(version: 2018_06_14_174802) do
   end
 
   create_table "catalogues", force: :cascade do |t|
-    t.text "name", null: false
-    t.text "description"
+    t.string "en_name"
+    t.string "zh_name"
+    t.text "en_description"
+    t.text "zh_description"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "en_name"
+    t.string "zh_name"
     t.integer "parent_id"
     t.integer "lft", null: false
     t.integer "rgt", null: false
@@ -59,21 +62,34 @@ ActiveRecord::Schema.define(version: 2018_06_14_174802) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
+    t.string "en_name"
+    t.string "zh_name"
+    t.text "en_description"
+    t.text "zh_description"
     t.integer "status", default: 0
-    t.integer "category_id"
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "stories", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "content"
+    t.string "en_title"
+    t.string "zh_title"
+    t.text "en_content"
+    t.text "zh_content"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "varieties", force: :cascade do |t|
+    t.string "zh_name"
+    t.string "en_name"
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_varieties_on_product_id"
   end
 
 end

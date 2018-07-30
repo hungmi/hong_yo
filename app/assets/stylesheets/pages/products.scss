@@ -104,6 +104,9 @@ body.pages.products {
 			margin-bottom: 90px;
 			.product_img {
 				height: 334px;
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
 				background: #ef0105;
 				background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%);
 				background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%);

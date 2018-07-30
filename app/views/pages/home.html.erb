@@ -45,25 +45,17 @@
 		<img src="/img/news_dynamic/9@2x.png" width="100%;" class="fading">
 	</div>
 	<div id="news_wrapper" class="d-flex justify-content-center">
-		<div class="news">
-			<div class="news_img"></div>
-			<p class="news_date v700 mb-0">2011.03.30</p>
-			<h5 class="news_title v700 mb-0">Exclusive Agent Sparmed Oosafe series products.</h5>
-		</div>
-		<div class="news">
-			<div class="news_img"></div>
-			<p class="news_date v700 mb-0">2011.03.30</p>
-			<h5 class="news_title v700 mb-0">Welcome to ASTEC factory to visit HONG U Scientific Corp.</h5>
-		</div>
-		<div class="news">
-			<div class="news_img"></div>
-			<p class="news_date v700 mb-0">2011.03.30</p>
-			<h5 class="news_title v700 mb-0">Exclusive Agent Sparmed Oosafe series products</h5>
-		</div>
+		<% @stories.each do |news| %>
+			<a href="<%= story_path(news) %>" class="news">
+				<div class="news_img"><%= image_tag news.try_cover, alt: news.title %></div>
+				<p class="news_date v700 mb-0"><%= news.updated_at.strftime("%Y.%m.%d") %></p>
+				<h5 class="news_title v700 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
+			</a>
+		<% end %>
 	</div>
-	<div id="see_more_btn" class="d-flex align-self-center">
+	<a href="<%= about_path %>" id="see_more_btn" class="d-flex align-self-center">
 		<div class="mr-auto align-self-center see_more_text v700">SEE MORE NEWS</div><div class="align-self-center" id="triangle-right"></div>
-	</div>
+	</a>
 </section>
 
 <section id="wrapper3" class="d-flex justify-content-center flex-column mx-auto">
@@ -90,9 +82,9 @@
 					</p>
 				</div>
 			</div>
-			<div id="see_more_btn" class="d-flex">
+			<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
 				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-			</div>
+			</a>
 		</div>
 	</div>
 	<div id="home_product2">
@@ -115,9 +107,9 @@
 					</p>
 				</div>
 			</div>
-			<div id="see_more_btn" class="d-flex">
+			<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
 				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-			</div>
+			</a>
 		</div>
 	</div>
 	<div id="home_product3">
@@ -140,9 +132,9 @@
 					</p>
 				</div>
 			</div>
-			<div id="see_more_btn" class="d-flex">
+			<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
 				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-			</div>
+			</a>
 		</div>
 	</div>
 	<div id="home_product4">
@@ -165,9 +157,9 @@
 					</p>
 				</div>
 			</div>
-			<div id="see_more_btn" class="d-flex">
+			<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
 				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-			</div>
+			</a>
 		</div>
 	</div>
 </section>

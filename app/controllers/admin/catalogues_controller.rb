@@ -36,8 +36,7 @@ class Admin::CataloguesController < ApplicationController
 		end
 		if @catalogue.update(catalogue_params2)
       flash[:success] = "更新成功。"
-      head :ok
-      # redirect_to admin_catalogues_url
+      redirect_to edit_admin_catalogue_url(@catalogue)
     else
       render :edit
     end
@@ -59,6 +58,6 @@ class Admin::CataloguesController < ApplicationController
 	end
 
 	def catalogue_params
-		params.require(:catalogue).permit(:name, :description, :status, :file, :remove_file)
+		params.require(:catalogue).permit(:en_name, :zh_name, :en_description, :zh_description, :status, :file, :remove_file)
 	end
 end

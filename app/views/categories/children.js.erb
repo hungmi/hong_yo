@@ -1,0 +1,1 @@
+document.querySelector(`#${"<%= params[:target] %>"}`).innerHTML = "<%= j select_tag(params[:target].to_sym, options_from_collection_for_select(@category.children, 'id', 'name'), class: 'form-control v700') %>"

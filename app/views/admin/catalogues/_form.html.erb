@@ -1,5 +1,5 @@
 <div class="card-body ">
-	<%= form_for [:admin, catalogue], remote: true do |f| %>
+	<%= form_for [:admin, catalogue] do |f| %>
 		<% @form_id = f.options[:html][:id] %>
 		<div class="form-group bmd-form-group">
 	    <label>目錄檔案</label><br>
@@ -24,7 +24,7 @@
             <span class="fileinput-new">選擇檔案</span>
             <span class="fileinput-exists">更換</span>
             <input type="hidden">
-            <%= f.file_field :file %>
+            <%= f.file_field :file, accept: ".png, .jpg, .jpeg, .pdf" %>
           	<div class="ripple-container"></div>
         	</span>
           <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
@@ -32,13 +32,23 @@
 	    </div>
 	  </div>
 		<div class="form-group bmd-form-group">
-			<%= f.label :name, class: "bmd-label-floating" %>
-			<%= f.text_field :name, class: "form-control", required: true, aria: { required: true } %>
+			<%= f.label :zh_name, class: "bmd-label-floating" %>
+			<%= f.text_field :zh_name, class: "form-control" %>
 		</div>
 		<div class="form-group bmd-form-group">
-			<%= f.label :description, class: "bmd-label-floating" %>
-			<%= f.text_area :description, class: "form-control", rows: 10 %>
+			<%= f.label :zh_description, class: "bmd-label-floating" %>
+			<%= f.text_area :zh_description, class: "form-control", rows: 5 %>
 		</div>
+		<div class="clearfix my-5"></div>
+		<div class="form-group bmd-form-group">
+			<%= f.label :en_name, class: "bmd-label-floating" %>
+			<%= f.text_field :en_name, class: "form-control" %>
+		</div>
+		<div class="form-group bmd-form-group">
+			<%= f.label :en_description, class: "bmd-label-floating" %>
+			<%= f.text_area :en_description, class: "form-control", rows: 5 %>
+		</div>
+		<div class="clearfix my-5"></div>
 		<div class="form-group bmd-form-group">
 			<div class="togglebutton">
 		  	<label>

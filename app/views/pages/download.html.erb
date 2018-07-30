@@ -13,34 +13,15 @@
 			<img src="/img/download.svg", height="60px">
 		</div>
 		<div id="right_half" class="align-self-end">
-			<div class="download-item d-flex">
-				<h2 class="v700 item-number">01</h2>
-				<p class="v400">Gene application with in usteo electroplation in mouse emb&#8208;ryonic.</p>
-				<a href="/download/1" id="see_more_btn" class="d-flex">
-					<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
-				</a>
-			</div>
-			<div class="download-item d-flex">
-				<h2 class="v700 item-number">01</h2>
-				<p class="v400">Gene application with in usteo electroplation in mouse emb&#8208;ryonic.</p>
-				<a href="/download/1" id="see_more_btn" class="d-flex">
-					<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
-				</a>
-			</div>
-			<div class="download-item d-flex">
-				<h2 class="v700 item-number">02</h2>
-				<p class="v400">Gene application with in usteo electroplation in mouse emb&#8208;ryonic.</p>
-				<a href="/download/2" id="see_more_btn" class="d-flex">
-					<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
-				</a>
-			</div>
-			<div class="download-item d-flex">
-				<h2 class="v700 item-number">04</h2>
-				<p class="v400">Gene application with in usteo electroplation in mouse emb&#8208;ryonic.</p>
-				<a href="/download/1" id="see_more_btn" class="d-flex">
-					<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
-				</a>
-			</div>
+			<% @catalogues.each_with_index do |catalogue, index| %>
+				<div class="download-item d-flex">
+					<h2 class="v700 item-number"><%= (index + 1).to_s.rjust(2, '0') %></h2>
+					<%= simple_format catalogue.description, class: "v400" %>
+					<%= link_to rails_blob_path(catalogue.file, disposition: "attachment"), id: "see_more_btn", class: "d-flex" do %>
+						<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 		<%= render "common/footer" %>
 	</section>
