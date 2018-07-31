@@ -1,21 +1,21 @@
-class Admin::StoriesController < ApplicationController
+class Admin::VarietiesController < ApplicationController
 	layout 'admin'
-	before_action :set_story, except: [:index, :create, :new]
+	before_action :set_variety, except: [:index, :create, :new]
 
 	def index
 		@nav_title = "最新消息"
-		@stories = Story.all.order(id: :desc)
+		@varieties = Variety.all.order(id: :desc)
 	end
 
 	def new
-		@story = Story.new
+		@variety = Variety.new
 	end
 
 	def create
-		@story = Story.new(story_params)
-		if @story.save
+		@variety = Variety.new(variety_params)
+		if @variety.save
       flash[:success] = "建立成功。 "
-      redirect_to admin_stories_url
+      redirect_to edit_admin_variety_url(@variety)
     else
       render :new
     end
@@ -28,36 +28,31 @@ class Admin::StoriesController < ApplicationController
 	end
 
 	def update
-		# 因為當 front end js 移除檔案時
-		story_params2 = story_params
-		if story_params.has_key?(:cover) && story_params[:cover].blank?
-			story_params2 = story_params.except(:cover)
-			@story.cover.purge_later if @story.cover.attached?
-		end
-		if @story.update(story_params2)
+		if @variety.update(variety_params)
       flash[:success] = "更新成功。 "
-      redirect_to admin_stories_url
+      redirect_to edit_admin_variety_url(@variety)
     else
       render :edit
     end
 	end
 
 	def destroy
-		if @story.destroy
+		if @variety.destroy
 			flash[:success] = "刪除成功。"
 		else
 			flash[:danger] = "刪除失敗。"
 		end
-		redirect_to admin_stories_url
+		redirect_to admin_varieties_url
 	end
 
 	private
 
-	def set_story
-		@story = Story.find(params[:id])
+	def set_variety
+		@variety = Variety.find(params[:id])
+		@product = Product.find_by_id(params[:product_id])
 	end
 
-	def story_params
-		params.require(:story).permit(:title, :content, :status, :cover)
+	def variety_params
+		params.require(:variety).permit(:en_name, :zh_name, features_attributes: [:id, :zh_name, :en_name, :zh_value, :en_value, :_destroy])
 	end
 end

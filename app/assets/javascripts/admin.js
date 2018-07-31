@@ -30,3 +30,5 @@
 //= require copyTableHeader
 //= require admin/previewable
 //= require admin/products
+//= require cocoon
+//= require admin/awesomplete.min

@@ -21,4 +21,14 @@ class Product < ApplicationRecord
 			en_description.present? ? en_description : zh_description
 		end
 	end
+
+	def all_variety_feature_names
+		if varieties.present?
+			varieties.map do |va|
+				va.all_feature_names
+			end
+		else
+			[]
+		end
+	end
 end

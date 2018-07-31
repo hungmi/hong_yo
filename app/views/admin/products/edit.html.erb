@@ -1,13 +1,9 @@
-<div class="content">
-	<div class="container-fluid">
-		<div class="card ">
-			<div class="card-header card-header-danger card-header-icon">
-				<div class="card-icon">
-					<i class="material-icons">store</i>
-				</div>
-				<h4 class="card-title"><%= I18n.t("text.#{action_name}") %><%= Product.model_name.human %></h4>
-			</div>
-			<%= render "form", product: @product %>
+<div class="card ">
+	<div class="card-header card-header-danger card-header-icon">
+		<div class="card-icon">
+			<i class="material-icons">store</i>
 		</div>
+		<h4 class="card-title"><%= I18n.t("text.#{action_name}") %><%= Product.model_name.human %></h4>
 	</div>
+	<%= render "form", product: @product %>
 </div>

@@ -3,8 +3,8 @@ class Admin::CategoriesController < AdminController
 	before_action :set_category, except: [:index, :create, :new]
 
 	def index
+		disable_turbolinks_cache
 		@nav_title = "產品分類"
-		Category.all
 	end
 
 	def new

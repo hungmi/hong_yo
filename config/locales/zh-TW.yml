@@ -30,6 +30,12 @@ zh-TW:
       update: 儲存
   activerecord:
     models:
+      feature:
+        one: 規格
+        other: 規格表
+      variety:
+        one: 型號
+        other: 型號表
       story:
         one: 最新消息
         other: 消息列表
@@ -49,6 +55,16 @@ zh-TW:
         one: 使用者
         other: 使用者
     attributes:
+      feature:
+        id: "#"
+        zh_name: 中文規格名稱
+        en_name: 英文規格名稱
+        zh_value: 中文規格內容
+        en_name: 英文規格內容
+      variety:
+        id: "#"
+        zh_name: 中文名稱
+        en_name: 英文名稱
       story:
         id: "#"
         title: 標題

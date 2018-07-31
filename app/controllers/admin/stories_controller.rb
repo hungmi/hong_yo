@@ -3,6 +3,7 @@ class Admin::StoriesController < AdminController
 	before_action :set_story, except: [:index, :create, :new]
 
 	def index
+		disable_turbolinks_cache
 		@nav_title = "最新消息"
 		@stories = Story.all.order(id: :desc)
 	end
@@ -17,6 +18,7 @@ class Admin::StoriesController < AdminController
       flash[:success] = "建立成功。 "
       redirect_to admin_stories_url
     else
+    	flash[:danger] = @story.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :new
     end
 	end

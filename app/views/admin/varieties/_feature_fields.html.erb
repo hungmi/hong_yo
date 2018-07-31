@@ -1,0 +1,31 @@
+<div class="row nested-fields">
+  <!-- <label class="col-sm-2 col-form-label">Column sizing</label> -->
+  <div class="col-md-2">
+    <div class="form-group bmd-form-group">
+			<%= f.label :zh_name, class: "bmd-label-floating" %>
+			<%= f.text_field :zh_name, class: "awesomplete form-control", list: "feature_zh_name_list" %>
+		</div>
+  </div>
+  <div class="col-md-3">
+  	<div class="form-group bmd-form-group">
+			<%= f.label :zh_value, class: "bmd-label-floating" %>
+			<%= f.text_field :zh_value, class: "form-control" %>
+		</div>
+  </div>
+  <div class="col-md-2">
+  	<div class="form-group bmd-form-group">
+			<%= f.label :en_name, class: "bmd-label-floating" %>
+			<%= f.text_field :en_name, class: "awesomplete form-control", list: "feature_en_name_list" %>
+		</div>
+  </div>
+  <div class="col-md-4">
+  	<div class="form-group bmd-form-group">
+			<%= f.label :en_value, class: "bmd-label-floating" %>
+			<%= f.text_field :en_value, class: "form-control" %>
+		</div>
+  </div>
+  <div class="col-md-1">
+    <%= link_to_remove_association "移除", f %>
+    
+  </div>
+</div>

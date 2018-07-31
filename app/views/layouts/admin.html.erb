@@ -27,7 +27,12 @@
         <%= render "admin/partials/sidebar" %>
         <div class="main-panel">
             <%= render "admin/partials/nav" %>
-            <%= yield %>
+            <div class="content">
+                <div class="container-fluid">
+                    <%= notice_message %>
+                    <%= yield %>
+                </div>
+            </div>
             <%= render "admin/partials/footer" %>
         </div>
     </div>

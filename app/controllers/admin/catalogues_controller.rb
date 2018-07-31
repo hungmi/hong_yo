@@ -3,6 +3,7 @@ class Admin::CataloguesController < AdminController
 	before_action :set_catalogue, except: [:index, :create, :new]
 
 	def index
+		disable_turbolinks_cache
 		@nav_title = "產品目錄"
 		@catalogues = Catalogue.all.order(updated_at: :desc, id: :desc)
 	end
@@ -17,6 +18,7 @@ class Admin::CataloguesController < AdminController
       flash[:success] = "建立成功。 "
       redirect_to admin_catalogues_url
     else
+    	flash[:danger] = @catalogue.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :new
     end
 	end
@@ -38,6 +40,7 @@ class Admin::CataloguesController < AdminController
       flash[:success] = "更新成功。"
       redirect_to admin_catalogues_url
     else
+    	flash[:danger] = @catalogue.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :edit
     end
 	end

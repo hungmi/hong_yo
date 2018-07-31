@@ -170,7 +170,7 @@
 										<tr>
 											<td><%= catalogue.name %></td>
 											<td class="td-actions text-right">
-												<%= link_to edit_admin_catalogue_path(catalogue), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
+												<%= link_to edit_admin_catalogue_path(catalogue, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
 													<i class="material-icons">edit</i>
 												<% end %>
 												<%= link_to admin_catalogue_path(catalogue), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
@@ -189,7 +189,7 @@
 										<tr>
 											<td><%= product.name %></td>
 											<td class="td-actions text-right">
-												<%= link_to edit_admin_product_path(product), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
+												<%= link_to edit_admin_product_path(product, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
 													<i class="material-icons">edit</i>
 												<% end %>
 												<%= link_to admin_product_path(product), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
@@ -208,7 +208,7 @@
 										<tr>
 											<td><%= story.title %></td>
 											<td class="td-actions text-right">
-												<%= link_to edit_admin_story_path(story), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
+												<%= link_to edit_admin_story_path(story, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
 													<i class="material-icons">edit</i>
 												<% end %>
 												<%= link_to admin_story_path(story), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>

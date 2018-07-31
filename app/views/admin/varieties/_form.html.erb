@@ -1,0 +1,45 @@
+<%= form_for [:admin, variety] do |f| %>
+	<% @form_id = f.options[:html][:id] %>
+	<div class="card-body">
+		<div class="form-group bmd-form-group mb-4">
+			<label>所屬產品：<%= link_to variety.product.name, edit_admin_product_path(variety.product) %></label>
+		</div>
+		<div class="row mb-4">
+      <div class="col-md-2">
+			  <div class="form-group bmd-form-group">
+					<%= f.label :zh_name, class: "bmd-label-floating" %>
+					<%= f.text_field :zh_name, class: "form-control" %>
+				</div>
+				<div class="form-group bmd-form-group">
+					<%= f.label :en_name, class: "bmd-label-floating" %>
+					<%= f.text_field :en_name, class: "form-control" %>
+				</div>
+			</div>
+		</div>
+		<%= f.fields_for :features do |feature_form| %>
+			<%= render "feature_fields", f: feature_form %>
+		<% end %>
+		<div class="links">
+	  	<%= link_to_add_association '增加規格', f, :features %>
+	  </div>
+	  <datalist id="feature_zh_name_list">
+	  	<% Feature.all.pluck(:zh_name).compact.uniq.each do |zh_name| %>
+	  		<option><%= zh_name %></option>
+	  	<% end %>
+	  </datalist>
+	  <datalist id="feature_en_name_list">
+	  	<% Feature.all.pluck(:en_name).compact.uniq.each do |zh_name| %>
+	  		<option><%= zh_name %></option>
+	  	<% end %>
+	  </datalist>
+	</div>
+<% end %>
+<div class="card-footer ">
+	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: dom_id(@variety, action_name.to_sym) %>
+</div>
+
+<script>
+	$(document).on('turbolinks:load', function() {
+		setFormValidation("<%= '#' + @form_id %>");
+	})
+</script>

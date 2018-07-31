@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_28_143814) do
+ActiveRecord::Schema.define(version: 2018_07_30_111852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 2018_07_28_143814) do
     t.index ["lft"], name: "index_categories_on_lft"
     t.index ["parent_id"], name: "index_categories_on_parent_id"
     t.index ["rgt"], name: "index_categories_on_rgt"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "zh_name"
+    t.string "en_name"
+    t.text "zh_value"
+    t.text "en_value"
+    t.integer "variety_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["variety_id"], name: "index_features_on_variety_id"
   end
 
   create_table "products", force: :cascade do |t|

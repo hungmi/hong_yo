@@ -55,6 +55,14 @@ end
 						en_name: "#{h} - #{n} SCA-165DS #{n}",
 						zh_name: "#{h} - #{n} SCA-165DS #{n}",
 					})
+					8.times do |m|
+						variety.features.create({
+							en_name: "#{n} - #{m} Spec",
+							zh_name: "#{n} - #{m} 某屬性",
+							en_value: "#{n} - #{m} Value",
+							zh_value: "#{n} - #{m} 屬性規格值",
+						})
+					end
 				end
 			end
 		end

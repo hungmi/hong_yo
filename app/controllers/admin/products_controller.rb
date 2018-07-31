@@ -3,6 +3,7 @@ class Admin::ProductsController < AdminController
 	before_action :set_product, except: [:index, :create, :new]
 
 	def index
+		disable_turbolinks_cache
 		@nav_title = "產品資訊"
 		@category = Category.find_by_id(params[:category_id])
 		@products = if @category.present?

@@ -1,5 +1,5 @@
 class Catalogue < ApplicationRecord
-	validates :zh_name, presence: true, unless: Proc.new { |c| c.en_name.present? }
+	validates :zh_name, presence: { message: "中文、英文標題至少需填寫一個。" }, unless: Proc.new { |s| s.en_name.present? }
 	enum status: { draft: 0, published: 1 }
 	has_one_attached :file
 	attr_accessor :remove_file

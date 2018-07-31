@@ -111,43 +111,33 @@
 			<div class="product_block_title">型號規格</div>
 			<% if product.varieties.present? %>
 				<div class="product_comparison_table_wrapper table-responsive">
+					<% names_array = product.all_variety_feature_names.flatten.uniq %>
 					<table class="table text-center">
 						<tbody>
 							<tr class="attribute_names">
-								<th nowrap="true" class="<%= render_chinese_class('型號') %>">型號</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
+								<th nowrap="true">型號</th>
+								<% names_array.each do |feature_name| %>
+									<th nowrap="true"><%= feature_name %></th>
+								<% end %>
 								<th nowrap="true" class="chinese">操作</th>
 							</tr>
 							<% product.varieties.each do |va| %>
 								<tr>
-									<th nowrap="true" class="<%= render_chinese_class(va.name) %>"><%= va.name %></th>
-									<td class="<%= render_chinese_class('X') %>"><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O<br><br>aaa".html_safe : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
+									<th nowrap="true">
+										<%= va.name %><br>
+										<%= link_to edit_admin_variety_path(va) do %>
+											<i class="material-icons">edit</i>
+										<% end %>
+									</th>
+									<% names_array.each do |feature_name| %>
+										<% if va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).present? %>
+											<td><%= va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).first.value %></td>
+										<% else %>
+											<td>X</td>
+										<% end %>
+									<% end %>
 									<td>
-										<%= link_to [:admin, product, va] do %>
+										<%= link_to edit_admin_variety_path(va) do %>
 											<i class="material-icons">edit</i>
 										<% end %>
 									</td>
@@ -166,9 +156,9 @@
 		<div class="form-group bmd-form-group">
 			<div class="togglebutton">
 		  	<label>
-		  			<%= f.check_box :status, {}, "published", "draft" %>
-	          <span class="toggle bg-brand"></span>
-	            上架至前台
+	  			<%= f.check_box :status, {}, "published", "draft" %>
+          <span class="toggle bg-brand"></span>
+            上架至前台
 		  	</label>
 		  </div>
 		</div>

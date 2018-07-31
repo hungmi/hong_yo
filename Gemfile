@@ -66,3 +66,4 @@ gem 'sidekiq'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'awesome_nested_set'
 gem 'browser'
+gem "cocoon"
