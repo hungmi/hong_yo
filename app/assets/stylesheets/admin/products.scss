@@ -1,0 +1,7 @@
+input.awesomplete::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+table.table:not(.copied_header) {
+	th > a { visibility: hidden; opacity: 0; }
+}

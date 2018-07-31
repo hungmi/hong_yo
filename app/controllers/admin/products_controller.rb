@@ -34,10 +34,12 @@ class Admin::ProductsController < AdminController
 	end
 
 	def update
-		if @product.update(product_params.except(:images, :file))
-			if product_params.has_key?(:file) && product_params[:file].blank?
-				@product.file.purge_later if @product.file.attached?
-			end
+		product_params2 = product_params
+		if product_params.has_key?(:file) && product_params[:file].blank?
+			product_params2 = product_params.except(:file)
+			@product.file.purge_later if @product.file.attached?
+		end
+		if @product.update(product_params2.except(:images))
       @product.images.where(id: params[:product][:remove_images].keys).map(&:purge_later) if params[:product][:remove_images].present?
       @product.images.attach(params[:product][:images]) if params[:product][:images]
       flash[:success] = "更新成功。 "

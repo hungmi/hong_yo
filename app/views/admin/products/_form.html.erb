@@ -1,7 +1,85 @@
 <div class="card-body ">
 	<%= form_for [:admin, product] do |f| %>
 		<% @form_id = f.options[:html][:id] %>
-	  <div class="form-group bmd-form-group">
+
+		<div class="form-group bmd-form-group">
+			<%= f.label :zh_name, class: "bmd-label-floating" %>
+			<%= f.text_field :zh_name, class: "form-control", disabled: true %>
+		</div>
+		<div class="form-group bmd-form-group">
+			<%= f.label :zh_description, class: "bmd-label-floating" %>
+			<%= f.text_area :zh_description, class: "form-control", disabled: true, rows: 7 %>
+		</div>
+		
+		<div class="clearfix my-5"></div>
+
+		<div class="form-group bmd-form-group">
+			<%= f.label :en_name, class: "bmd-label-floating" %>
+			<%= f.text_field :en_name, class: "form-control", disabled: true %>
+		</div>
+		<div class="form-group bmd-form-group">
+			<%= f.label :en_description, class: "bmd-label-floating" %>
+			<%= f.text_area :en_description, class: "form-control", disabled: true, rows: 7 %>
+		</div>
+		
+		<div class="clearfix my-5"></div>
+
+		<div class="product_comparison">
+			<div class="product_block_title">型號規格</div>
+			<% if product.varieties.present? %>
+				<div class="product_comparison_table_wrapper table-responsive">
+					<% names_array = product.all_variety_feature_names.flatten.uniq %>
+					<table class="table text-center">
+						<tbody>
+							<tr class="attribute_names">
+								<th nowrap="true">型號</th>
+								<% names_array.each do |feature_name| %>
+									<th nowrap="true"><%= feature_name %></th>
+								<% end %>
+							</tr>
+							<% product.varieties.each do |va| %>
+								<tr>
+									<th nowrap="true">
+										<%= va.name %><br>
+										<%= link_to edit_admin_variety_path(va) do %>
+											<i class="material-icons">edit</i>
+										<% end %>
+										<%= link_to admin_variety_path(va), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
+											<i class="material-icons">delete_forever</i>
+										<% end %>
+									</th>
+									<% names_array.each do |feature_name| %>
+										<% if va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).present? %>
+											<td><%= va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).first.value %></td>
+										<% else %>
+											<td>X</td>
+										<% end %>
+									<% end %>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			<% else %>
+				尚無資料
+			<% end %>
+		</div>
+
+		<div class="clearfix my-5"></div>
+
+		<div class="form-group bmd-form-group">
+			<div class="togglebutton">
+		  	<label>
+	  			<%= f.check_box :status, { disabled: true }, "published", "draft" %>
+          <span class="toggle bg-brand"></span>
+            上架至前台
+		  	</label>
+		  </div>
+		</div>
+
+		<div class="clearfix my-5"></div>
+
+		<div class="form-group bmd-form-group">
 	  	<% images_exist = f.object.images.attached? %>
 	  	<label>產品圖片</label>
 	    <div class="d-flex flex-wrap fileinput <%= images_exist ? 'fileinput-exists' : 'fileinput-new' %> text-center">
@@ -20,33 +98,37 @@
 				      	<% end %>
 				      </div>
 				      <!-- <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a> -->
-				      <div class="form-check mt-1">
-	              <label class="form-check-label">
-	                <!-- <input class="form-check-input" type="checkbox" value="" checked=""> Checked -->
-						      <%= check_box_tag "product[remove_images][#{img.id}]", "true", false, { class: "form-check-input" } %> 移除
-	                <span class="form-check-sign">
-	                  <span class="check"></span>
-	                </span>
-	              </label>
-	            </div>
+				      <% if action_name != "show" %>
+					      <div class="form-check mt-1">
+		              <label class="form-check-label">
+		                <!-- <input class="form-check-input" type="checkbox" value="" checked=""> Checked -->
+							      <%= check_box_tag "product[remove_images][#{img.id}]", "true", false, { class: "form-check-input" } %> 移除
+		                <span class="form-check-sign">
+		                  <span class="check"></span>
+		                </span>
+		              </label>
+		            </div>
+		          <% end %>
 	          </div>
 		      <% end %>
 		    <% end %>
-			  <div style="flex-basis: 100%;">
-	        <span class="btn btn-rose btn-round btn-file float-left">
-	          <span class="fileinput-new">選擇圖片</span>
-	          <span class="fileinput-exists">上傳更多</span>
-	          <input type="hidden">
-	          <%= f.file_field :images, multiple: true, accept: ".png, .jpg, .jpeg", class: "previewable" %>
-	        	<div class="ripple-container"></div>
-	      	</span>
-	        <!-- <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a> -->
-	      </div>
-      	<% if product.errors[:images].present? %>
-	        <div class="invalid-feedback">
-	          <%= product.errors[:images].join(", ") %>
-	        </div>
-	      <% end %>
+		    <% if action_name != "show" %>
+				  <div style="flex-basis: 100%;">
+		        <span class="btn btn-rose btn-round btn-file float-left">
+		          <span class="fileinput-new">選擇圖片</span>
+		          <span class="fileinput-exists">上傳更多</span>
+		          <input type="hidden">
+		          <%= f.file_field :images, multiple: true, accept: ".png, .jpg, .jpeg", class: "previewable" %>
+		        	<div class="ripple-container"></div>
+		      	</span>
+		        <!-- <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a> -->
+		      </div>
+		      <% if product.errors[:images].present? %>
+		        <div class="invalid-feedback">
+		          <%= product.errors[:images].join(", ") %>
+		        </div>
+		      <% end %>
+		    <% end %>
 	  	</div>
 	  	<label id="newImagePreviewLabel" class="d-none">尚未上傳的圖片</label>
 	  	<div id="newImagePreview" class="d-flex flex-wrap mb-5"></div>
@@ -54,7 +136,7 @@
 
 	  <div class="clearfix my-5"></div>
 
-		<div class="form-group bmd-form-group">
+	  <div class="form-group bmd-form-group">
 			<% file_exist = f.object.file.attached? %>
 	    <label>目錄檔案</label><br>
 	    <div class="fileinput <%= file_exist ? 'fileinput-exists' : 'fileinput-new' %> text-center" data-provides="fileinput">
@@ -72,100 +154,26 @@
 		    	<% end %>
 		    </div>
 		    <br>
-        <span class="btn btn-rose btn-round btn-file">
-          <span class="fileinput-new">選擇檔案</span>
-          <span class="fileinput-exists">更換</span>
-          <input type="hidden">
-          <%= f.file_field :file, accept: ".png, .jpg, .jpeg, .pdf" %>
-        	<div class="ripple-container"></div>
-      	</span>
-        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
+		    <% if action_name != "show" %>
+	        <span class="btn btn-rose btn-round btn-file">
+	          <span class="fileinput-new">選擇檔案</span>
+	          <span class="fileinput-exists">更換</span>
+	          <input type="hidden">
+	          <%= f.file_field :file, accept: ".png, .jpg, .jpeg, .pdf" %>
+	        	<div class="ripple-container"></div>
+	      	</span>
+	        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
+	      <% end %>
       </div>
 	  </div>
-	  
-	  <div class="clearfix my-5"></div>
-
-		<div class="form-group bmd-form-group">
-			<%= f.label :zh_name, class: "bmd-label-floating" %>
-			<%= f.text_field :zh_name, class: "form-control" %>
-		</div>
-		<div class="form-group bmd-form-group">
-			<%= f.label :zh_description, class: "bmd-label-floating" %>
-			<%= f.text_area :zh_description, class: "form-control", rows: 7 %>
-		</div>
-		
-		<div class="clearfix my-5"></div>
-
-		<div class="form-group bmd-form-group">
-			<%= f.label :en_name, class: "bmd-label-floating" %>
-			<%= f.text_field :en_name, class: "form-control" %>
-		</div>
-		<div class="form-group bmd-form-group">
-			<%= f.label :en_description, class: "bmd-label-floating" %>
-			<%= f.text_area :en_description, class: "form-control", rows: 7 %>
-		</div>
-		
-		<div class="clearfix my-5"></div>
-
-		<div class="product_comparison">
-			<div class="product_block_title">型號規格</div>
-			<% if product.varieties.present? %>
-				<div class="product_comparison_table_wrapper table-responsive">
-					<% names_array = product.all_variety_feature_names.flatten.uniq %>
-					<table class="table text-center">
-						<tbody>
-							<tr class="attribute_names">
-								<th nowrap="true">型號</th>
-								<% names_array.each do |feature_name| %>
-									<th nowrap="true"><%= feature_name %></th>
-								<% end %>
-								<th nowrap="true" class="chinese">操作</th>
-							</tr>
-							<% product.varieties.each do |va| %>
-								<tr>
-									<th nowrap="true">
-										<%= va.name %><br>
-										<%= link_to edit_admin_variety_path(va) do %>
-											<i class="material-icons">edit</i>
-										<% end %>
-									</th>
-									<% names_array.each do |feature_name| %>
-										<% if va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).present? %>
-											<td><%= va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).first.value %></td>
-										<% else %>
-											<td>X</td>
-										<% end %>
-									<% end %>
-									<td>
-										<%= link_to edit_admin_variety_path(va) do %>
-											<i class="material-icons">edit</i>
-										<% end %>
-									</td>
-								</tr>
-							<% end %>
-						</tbody>
-					</table>
-				</div>
-			<% else %>
-				尚無資料
-			<% end %>
-		</div>
-
-		<div class="clearfix my-5"></div>
-
-		<div class="form-group bmd-form-group">
-			<div class="togglebutton">
-		  	<label>
-	  			<%= f.check_box :status, {}, "published", "draft" %>
-          <span class="toggle bg-brand"></span>
-            上架至前台
-		  	</label>
-		  </div>
-		</div>
 	<% end %>
 </div>
 <div class="card-footer ">
-	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: dom_id(product, action_name.to_sym) %>
+	<% if action_name == "edit" || action_name == "update" %>
+		<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: dom_id(product, action_name.to_sym) %>
+	<% else %>
+		<%= link_to "編輯產品", edit_admin_product_path(product), class: "btn btn-fill btn-primary" %>
+	<% end %>
 </div>
 
 <script>

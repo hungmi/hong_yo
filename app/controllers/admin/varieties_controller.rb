@@ -42,7 +42,7 @@ class Admin::VarietiesController < ApplicationController
 		else
 			flash[:danger] = "刪除失敗。"
 		end
-		redirect_to admin_varieties_url
+		redirect_to admin_product_url(@variety.product)
 	end
 
 	private
