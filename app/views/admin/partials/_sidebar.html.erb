@@ -83,7 +83,7 @@
 
           <div class="collapse <%= 'show' if current_page?(admin_products_path) || current_page?(admin_categories_path) %>" id="productCatagories">
             <ul class="nav">
-              <% Category.roots.each do |root| %>
+              <% Category.includes(:children).roots.each do |root| %>
               <li class="nav-item <%= 'active' if params[:category_id].to_i == root.id %>">
                 <a class="nav-link" data-toggle="collapse" href="#productCatagories<%= root.id %>">
                   <p><%= root.name %><b class="caret"></b></p>

@@ -6,3 +6,8 @@ $(document).on('cocoon:after-insert', function(e, insertedItem) {
 		new Awesomplete(en_name_input, { list: "feature_en_name_list" });
 	}
 });
+$(document).on("change keydown", ".admin.products.edit input, .admin.products.edit textarea, .admin.products.new input, .admin.products.new textarea", function(input) {
+	window.onbeforeunload = function() {
+	  return true;
+	};
+})

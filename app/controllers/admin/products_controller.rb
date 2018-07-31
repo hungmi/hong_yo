@@ -61,7 +61,7 @@ class Admin::ProductsController < AdminController
 	private
 
 	def set_product
-		@product = Product.find(params[:id])
+		@product = Product.includes(:varieties, varieties: :features).with_attached_images.find(params[:id])
 	end
 
 	def product_params
