@@ -5,7 +5,11 @@
 	<img src="/img/products/products_bg.png" alt="" height="100%" width="auto">
 </div>
 <section id="products_finder_section" class="d-flex align-content-end flex-column">
-	<div id="products_finder_wrapper" class="d-flex">
+	<% if @root.finder_bg.attached? %>
+		<div id="products_finder_wrapper" class="d-flex" style="background: url('<%= rails_blob_path(@root.finder_bg) %>'), #ef0105;">
+	<% else %>
+		<div id="products_finder_wrapper" class="d-flex">
+	<% end %>
 		<div id="left_product_finder_wrapper">
 			<div class="product_finder_title d-flex">
 				<img src="/img/products/search.svg" alt="search" width="33px" height="33px" id="search_product_icon">

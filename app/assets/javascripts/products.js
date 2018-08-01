@@ -15,14 +15,14 @@ document.addEventListener("turbolinks:load", function() {
 	$product_series.select2({ minimumResultsForSearch: Infinity })
 	$product_model.select2({ minimumResultsForSearch: Infinity })
 	$(document).on('select2:select', $product_category, function (e) {
-	  // console.log(e.params.data)
-	  if (e.target.id == "product_category") {
+	  // console.log(e.params.data.id.length)
+	  if (e.target.id == "product_category" && e.params.data.id.length !== 0) {
 	  	updateRelatedOptions('product_brand', e.params.data.id)
 	  	getCategoryProducts(e.params.data.id)
 	  }
 	});
 	$(document).on('select2:select', $product_brand, function (e) {
-	 	if (e.target.id == "product_brand") {
+	 	if (e.target.id == "product_brand" && e.params.data.id.length !== 0) {
 		  updateRelatedOptions('product_series', e.params.data.id)
 		  getCategoryProducts(e.params.data.id)
 	 	} else if (e.target.id !== "product_series") {
@@ -30,7 +30,7 @@ document.addEventListener("turbolinks:load", function() {
 	 	}
 	});
 	$(document).on('select2:select', $product_series, function (e) {
-	 	if (e.target.id == "product_series") {
+	 	if (e.target.id == "product_series" && e.params.data.id.length !== 0) {
 		  getCategoryProducts(e.params.data.id)
 	 	}
 	});

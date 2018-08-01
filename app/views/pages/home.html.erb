@@ -2,22 +2,36 @@
 	<%= image_tag "/img/contact.svg", height: '100px'; %>
 </a>
 
-<% the_very_root = Category.roots.first %>
-<section id="wrapper1" class="d-flex align-content-end flex-column">
-	<div class="d-flex number_title_wrapper mt-auto">
-		<div class="section_number d-flex">
-			<h2 class="v700 align-self-center">01</h2>
+<ul class="slider mb-0">
+	<% Category.roots.with_attached_hero_cover.each_with_index do |root, index| %>
+		<% if root.hero_cover.attached? %>
+  		<li class="index-bg<%= index + 1 %>" style="background-image: url('<%= rails_blob_path(root.hero_cover) %>');"></li>
+  	<% end %>
+  <% end %>
+</ul>
+
+<section id="wrapper_home_top">
+	<% Category.roots.with_attached_hero_cover.each_with_index do |root, index| %>
+		<div class="align-content-end flex-column root <%= index == 0 ? 'd-flex' : 'd-none' %> <%= 'root' + (index + 1).to_s %>">
+			<div class="d-flex number_title_wrapper mt-auto">
+				<div class="section_number d-flex">
+					<h2 class="v700 align-self-center"><%= (index + 1).to_s.rjust(2, '0') %></h2>
+				</div>
+				<div class="section_title">
+					<h2 class="v700"><%#= root.name %></h2>
+				</div>
+			</div>
+			<div class="paragraph_wrapper">
+				<!-- <p class="v300">
+					Such as DNA nucleic acid amplification (PCR), carbon dioxide / three‐gas incubator, centrifuges, dry bath, biosafety opera‐tion cabinets, ultra‐low temperature refrigerators, acid and alkali analyzers, electrophoresis equipment, autoclaves, pure water manufacturing machines, Multifunctional liquid separa‐tor, digital type refractive index meter, ABBE folding device, polarimeter, ultrasonic cleaner, agitator, balance, various types of analyzers and measuring devices, PVC gloves, glass 
+				</p> -->
+				<%= simple_format root.try(:description), class: "v300" %>
+			</div>
+			<a href="<%= products_path(root_id: root.try(:id)) %>" id="see_more_btn" class="d-flex">
+				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
+			</a>
 		</div>
-		<div class="section_title">
-			<h2 class="v700"><%= the_very_root.name %></h2>
-		</div>
-	</div>
-	<div class="paragraph_wrapper">
-		<%= simple_format the_very_root.description, class: "v300" %>
-	</div>
-	<a href="<%= products_path(root_id: the_very_root.id) %>" id="see_more_btn" class="d-flex">
-		<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-	</a>
+	<% end %>
 </section>
 
 <section id="wrapper2" class="d-flex justify-content-center flex-column">
@@ -91,56 +105,6 @@
 			</div>
 		</div>
 	<% end %>
-	<!-- <div id="home_product2">
-		<div class="d-flex home_product_wrapper">
-			<div class="d-flex home_product_text flex-wrap">
-				<div class="d-flex number_title_wrapper">
-					<div class="section_number d-flex">
-						<h2 class="v700 align-self-center">02</h2>
-					</div>
-					<div class="section_title">
-						<h2 class="v700">REPRODUCTIVE<br>MEDICINE</h2>
-					</div>
-				</div>
-				<div class="paragraph_wrapper">
-					<p class="v300 mb-0">
-						The Division is responsible for the sale and sale of advanced instruments and reagent consumables related to infertility and reproductive technology.
-						Equipment covers: incubators, thermostats, micromanipula- tors, and embryonic incubation laser assist systems, etc.
-						Consumables cover: quality certified vitrified frozen/thawed reagents, embryonic culture fluids, specialized petri dishes and reproductive surgery-related OPU, IUI, ET tubes and other products.
-						Laboratory environmental quality control products: VOC filtered air purifier, VOC online filter and non-toxic detergent.
-					</p>
-				</div>
-			</div>
-			<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
-				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-			</a>
-		</div>
-	</div> -->
-	<div id="home_product3">
-		<div class="d-flex home_product_wrapper">
-			<div class="d-flex home_product_text flex-wrap">
-				<div class="d-flex number_title_wrapper">
-					<div class="section_number d-flex">
-						<h2 class="v700 align-self-center">03</h2>
-					</div>
-					<div class="section_title">
-						<h2 class="v700">LIFE SCIENCE</h2>
-						<h2 class="v700">ANIMAL SCIENCE</h2>
-					</div>
-				</div>
-				<div class="paragraph_wrapper">
-					<p class="v300 mb-0">
-						Sales of various laboratory equipment and supplies
-						<br><br>
-						Such as DNA nucleic acid amplification (PCR), carbon dioxide / three&#8208;gas incubator, centrifuges, dry bath, biosafety opera&#8208;tion cabinets, ultra&#8208;low temperature refrigerators, acid and alkali analyzers, electrophoresis equipment, autoclaves, pure water manufacturing machines, Multifunctional liquid separa&#8208;tor, digital type refractive index meter, ABBE folding device, polarimeter, ultrasonic cleaner, agitator, balance, various types of analyzers and measuring devices, PVC gloves, glass products, filter membrane, PH test paper, Needle filters, as well as a variety of plastic products and many other products
-					</p>
-				</div>
-			</div>
-			<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
-				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-			</a>
-		</div>
-	</div>
 	<div id="home_product4">
 		<div class="d-flex home_product_wrapper">
 			<div class="d-flex home_product_text flex-wrap">

@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   def products
     @products = if (@root = Category.find_by_id(params[:root_id])).present?
-      Product.where(category_id: @root.id)
+      Product.where(category_id: @root.leaves.pluck(:id))
     else
       Product
     end.includes(:category, category: :parent).with_attached_images.all.order(id: :desc).limit(36)

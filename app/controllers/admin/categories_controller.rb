@@ -35,16 +35,18 @@ class Admin::CategoriesController < AdminController
 	def update
 		# 因為當 front end js 移除檔案時
 		category_params2 = category_params
-		if category_params.has_key?(:cover) && category_params[:cover].blank?
-			category_params2 = category_params.except(:cover)
-			@category.cover.purge_later if @category.cover.attached?
+		["cover", "product_cover", "hero_cover", "finder_bg"].each do |attachment_name|
+			if category_params.has_key?(attachment_name.to_sym) && category_params[attachment_name.to_sym].blank?
+				category_params2 = category_params.except(attachment_name.to_sym)
+				@category.send(attachment_name.to_sym).purge_later if @category.send(attachment_name.to_sym).attached?
+			end
 		end
 		if @category.update(category_params2)
 			if (@parent = Category.find_by_id(category_params[:parent_id])).present?
 				@category.move_to_child_of(@parent)
 			end
       flash[:success] = "更新成功。 "
-      redirect_to admin_categories_url(edited_category_id: @category.id)
+      redirect_to admin_categories_url
     else
     	flash.now[:danger] = @category.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :edit
@@ -67,6 +69,6 @@ class Admin::CategoriesController < AdminController
 	end
 
 	def category_params
-		params.require(:category).permit(:en_name, :zh_name, :en_description, :zh_description, :cover, :product_cover, :parent_id)
+		params.require(:category).permit(:en_name, :zh_name, :en_description, :zh_description, :cover, :product_cover, :hero_cover, :finder_bg, :parent_id)
 	end
 end

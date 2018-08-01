@@ -7,6 +7,8 @@ class Category < ApplicationRecord
 	has_many :products
 	has_one_attached :cover
 	has_one_attached :product_cover
+	has_one_attached :hero_cover
+	has_one_attached :finder_bg
 
 	def self.available_levels
 		[["總類", self.roots.pluck(:zh_name, :id)], ["品牌", self.brand.pluck(:zh_name, :id)], ["系列", self.series.pluck(:zh_name, :id)]]

@@ -1,5 +1,5 @@
 body.pages.home {
-	#wrapper1 {
+	#wrapper_home_top {
 		height: 100vh;
 		width: 100%;
 		margin-left: 48px;
@@ -39,10 +39,61 @@ body.pages.home {
 				font-size: 14px;	
 			}
 		}
-		#see_more_btn {
+		.root1, .root2, .root3, .root4 {
 			position: absolute;
-	    bottom: 60px;
-	    left: 30px;
+			bottom: 80px;
+			#see_more_btn {
+				position: absolute;
+		    bottom: -20px;
+		    left: 30px;
+			}
+			//
+			// animation: fade-out 24s infinite both;
 		}
+		.root2 {
+			animation-delay: 6s;
+		}
+		.root3 {
+			animation-delay: 12s;
+		}
+		.root4 {
+			animation-delay: 18s;
+		}
+	} // wrapper1 END
+	
+	ul {
+		li {
+			height: calc(100%);
+			width: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: top;
+			z-index: -1;
+			opacity: 0;
+			list-style: none;
+			/*-- Add animation --*/ 
+			animation: fade-out 24s infinite both;
+		}
+		li.index-bg2 {
+			animation-delay: 6s;
+		}
+		li.index-bg3 {
+			animation-delay: 12s;
+		}
+		li.index-bg4 {
+			animation-delay: 18s;
+		}
+	}
+}
+
+@keyframes fade-out {
+	25%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 0;
 	}
 }
