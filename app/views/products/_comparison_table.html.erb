@@ -1,0 +1,49 @@
+<div class="product_comparison">
+	<div class="product_block_title">型號規格</div>
+	<% if product.persisted? && in_admin? %>
+		<%= link_to new_admin_variety_path(product_id: product.id), class: "btn btn-brand" do %>
+      <i class="material-icons">add</i> 建立型號
+		<% end %>
+	<% end %>
+	<% if product.varieties.present? %>
+		<div class="product_comparison_table_wrapper table-responsive">
+			<% names_array = product.all_variety_feature_names.flatten.uniq %>
+			<table class="table text-center">
+				<tbody>
+					<tr class="attribute_names">
+						<th nowrap="true">型號</th>
+						<% names_array.each do |feature_name| %>
+							<th nowrap="true"><%= feature_name %></th>
+						<% end %>
+					</tr>
+					<% product.varieties.each do |va| %>
+						<tr>
+							<th nowrap="true">
+								<%= va.name %><br>
+								<% if in_admin? %>
+									<%= link_to edit_admin_variety_path(va), data: { turbolinks: false } do %>
+										<i class="material-icons">edit</i>
+									<% end %>
+									<%= link_to admin_variety_path(va), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
+										<i class="material-icons">delete_forever</i>
+									<% end %>
+								<% end %>
+							</th>
+							<% names_array.each do |feature_name| %>
+								<% if va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).present? %>
+									<td><%= va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).first.value %></td>
+								<% else %>
+									<td>X</td>
+								<% end %>
+							<% end %>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	<% else %>
+		<% if product.new_record? %>
+			<small>請先建立產品本身資料，才能建立型號。</small>
+		<% end %>
+	<% end %>
+</div>

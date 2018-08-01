@@ -2,7 +2,12 @@
 	<% @form_id = f.options[:html][:id] %>
 	<div class="card-body">
 		<div class="form-group bmd-form-group mb-4">
-			<label>所屬產品：<%= link_to variety.product.name, edit_admin_product_path(variety.product) %></label>
+			<% if variety.new_record? %>
+				<%= f.label :product_id %>
+				<%= f.select :product_id, Product.all.pluck(:zh_name, :id), { selected: variety.product_id || params[:product_id] }, class: "form-control" %>
+			<% else %>
+				<label>所屬產品：<%= link_to variety.product.name, edit_admin_product_path(variety.product) %></label>
+			<% end %>
 		</div>
 		<div class="row mb-4">
       <div class="col-md-2">

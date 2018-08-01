@@ -12,7 +12,7 @@
 			</span>
 			<div class="product_variety_name d-flex">
 				<label for="product_variety_name" class="v700 mb-0 border-right-0">MDOEL</label>
-				<%= select_tag :product_variety_name, options_from_collection_for_select(@product.varieties, "id", "name"), class: 'form-control v700' %>
+				<%= select_tag :product_variety_name, options_from_collection_for_select(@product.varieties, "id", "zh_name"), prompt: "Choose one to highlight", class: 'form-control v700' %>
 				<!-- <select name="product[model]" id="product_model" class="form-control v700">
 					<option value="1">01 Life Science Animal Science</option>
 					<option value="2">01 Life Science Animal Science</option>
@@ -34,49 +34,7 @@
 				<% end %>
 			</div>
 
-			<div class="product_comparison">
-				<div class="product_block_title">MODEL COMPARISON</div>
-				<div class="product_comparison_table_wrapper table-responsive">
-					<table class="table text-center">
-						<tbody>
-							<tr class="attribute_names">
-								<th nowrap="true" class="<%= render_chinese_class('型號') %>">型號</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-								<th nowrap="true" class="<%= render_chinese_class('某某規格') %>">某某規格</th>
-							</tr>
-							<% @product.varieties.each do |va| %>
-								<tr>
-									<th nowrap="true" class="<%= render_chinese_class(va.name) %>"><%= va.name %></th>
-									<td class="<%= render_chinese_class('X') %>"><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O<br><br>aaa".html_safe : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-								</tr>
-							<% end %>
-							<% @product.varieties.each do |va| %>
-								<tr>
-									<th nowrap="true"><%= va.name %></th>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-									<td><%= rand(2) >= 1 ? "O" : "X" %></td>
-								</tr>
-							<% end %>
-						</tbody>
-					</table>
-				</div>
-			</div>
+			<%= render "comparison_table", product: @product %>
 
 			<div class="product_related">
 				<div class="product_block_title">RELATED PRODUCTS</div>

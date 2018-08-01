@@ -2,26 +2,22 @@
 	<%= image_tag "/img/contact.svg", height: '100px'; %>
 </a>
 
+<% the_very_root = Category.roots.first %>
 <section id="wrapper1" class="d-flex align-content-end flex-column">
 	<div class="d-flex number_title_wrapper mt-auto">
 		<div class="section_number d-flex">
 			<h2 class="v700 align-self-center">01</h2>
 		</div>
 		<div class="section_title">
-			<h2 class="v700">LIFE SCIENCE</h2>
-			<h2 class="v700">ANIMAL SCIENCE</h2>
+			<h2 class="v700"><%= the_very_root.name %></h2>
 		</div>
 	</div>
 	<div class="paragraph_wrapper">
-		<h3 class="v300">Sales of various laboratory equipment and supplies</h3>
-		<br>
-		<p class="v300 mb-0">
-			Such as DNA nucleic acid amplification (PCR), carbon dioxide / three-gas incuba- tor, centrifuges, dry bath, biosafety operation cabinets, ultra-low temperature refrigerators, acid and alkali analyzers, electrophoresis equipment, autoclaves, pure water manufacturing machines, Multifunctional liquid separator, digital type refractive index meter, ABBE folding device, polarimeter, ultrasonic cleaner, agitator, balance, various types of analyzers and measuring devices, PVC gloves, glass products, filter membrane, PH test paper, Needle filters, as well as a variety of plastic products and many other products.
-		</p>
+		<%= simple_format the_very_root.description, class: "v300" %>
 	</div>
-	<div id="see_more_btn" class="d-flex">
+	<a href="<%= products_path(root_id: the_very_root.id) %>" id="see_more_btn" class="d-flex">
 		<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-	</div>
+	</a>
 </section>
 
 <section id="wrapper2" class="d-flex justify-content-center flex-column">
@@ -45,12 +41,22 @@
 		<img src="/img/news_dynamic/9@2x.png" width="100%;" class="fading">
 	</div>
 	<div id="news_wrapper" class="d-flex justify-content-center">
-		<% @stories.each do |news| %>
-			<a href="<%= story_path(news) %>" class="news">
-				<div class="news_img"><%= image_tag news.try_cover, alt: news.title %></div>
-				<p class="news_date v700 mb-0"><%= news.updated_at.strftime("%Y.%m.%d") %></p>
-				<h5 class="news_title v700 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
-			</a>
+		<% if @stories.present? %>
+			<% @stories.each do |news| %>
+				<a href="<%= story_path(news) %>" class="news">
+					<div class="news_img"><%= image_tag news.try_cover, alt: news.title %></div>
+					<p class="news_date v700 mb-0"><%= news.updated_at.strftime("%Y.%m.%d") %></p>
+					<h5 class="news_title v700 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
+				</a>
+			<% end %>
+		<% else %>
+			<% 3.times do |i| %>
+				<a href="#" class="news">
+					<div class="news_img"><%= image_tag "/img/about/fake_news1.png", alt: "fake news" %></div>
+					<p class="news_date v700 mb-0"><%= Time.zone.today %></p>
+					<h5 class="news_title v700 mb-0 <%= render_chinese_class('範例消息') %>">範例消息</h5>
+				</a>
+			<% end %>
 		<% end %>
 	</div>
 	<a href="<%= about_path %>" id="see_more_btn" class="d-flex align-self-center">
@@ -63,9 +69,9 @@
 		<img src="/img/products.svg", height="60px">
 	</div>
 
-	<% Category.roots.each_with_index do |root, index| %>
-		<div class="home_product <%= index.even? ? 'even' : 'odd' %>" style="background-image: url('<%= root.product_cover.attached? ? rails_blob_path(root.product_cover) : "/img/products/product1_p_471x450.png" %>');">
-			<div class="d-flex home_product_wrapper" style="background-image: url('<%= root.cover.attached? ? rails_blob_path(root.cover) : "/img/products/product1_360x450.png" %>');">
+	<% Category.roots.with_attached_cover.with_attached_product_cover.each_with_index do |root, index| %>
+		<div class="home_product <%= index.even? ? 'even' : 'odd' %>" style="background-image: url('<%= rails_blob_path(root.product_cover) if root.product_cover.attached? %>">
+			<div class="d-flex home_product_wrapper" style="background-image: url('<%= rails_blob_path(root.cover) if root.cover.attached? %>');">
 				<div class="d-flex home_product_text flex-wrap">
 					<div class="d-flex number_title_wrapper">
 						<div class="section_number d-flex">
@@ -79,7 +85,7 @@
 						<%= simple_format root.description, class: "v300 mb-3" %>
 					</div>
 				</div>
-				<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
+				<a href="<%= products_path(root_id: root.id) %>" id="see_more_btn" class="d-flex">
 					<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
 				</a>
 			</div>

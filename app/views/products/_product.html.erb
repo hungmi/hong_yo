@@ -5,7 +5,7 @@
 		<div class="product_img"></div>
 	<% end %>
 	<span class="product_brand_series">
-		<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
+		<span class="product_brand"><%= product.category.parent.name %></span> - <span class="product_series"><%= product.category.name %></span>
 	</span>
 	<h3 class="product_name"><%= product.name %></h3>
 <% end %>

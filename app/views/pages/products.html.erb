@@ -18,7 +18,7 @@
 				<%= form_for :product do |f| %>
 					<label for="product_category" class="v300">
 					  Product Classication
-					  <%= f.select :category, Category.roots.map { |c| [c.name, c.id] }, {}, class: "form-control v700" %>
+					  <%= f.select :category, Category.roots.map { |c| [c.name, c.id] }, { selected: params[:root_id] }, class: "form-control v700" %>
 					  <!-- <select name="product[category]" id="product_category" class="form-control v700">
 							<option value="1">01 Life Science Animal Science</option>
 						</select> -->
@@ -26,9 +26,9 @@
 					<div class="two_selects_wrapper d-flex">
 						<label for="product_brand" class="v300">
 						  Brand
-						  <%= select_tag :product_brand, options_from_collection_for_select(Category.roots.first.children, "id", "name"), class: 'form-control v700' %>
+						  <%= select_tag :product_brand, options_from_collection_for_select(Category.roots.first.children, "id", "name", nil), prompt: "-", class: 'form-control v700' %>
 						  <!-- <select name="product[brand]" id="product_brand" class="form-control v700">
-								<option value="1">-</option>
+								<option value="">-</option>
 							</select> -->
 						</label>
 						<label for="product_series" class="v300">
@@ -44,19 +44,14 @@
 		<div id="right_product_info_wrapper" class="d-flex align-content-end flex-column align-self-right">
 			<div class="d-flex number_title_wrapper mt-auto">
 				<div class="section_number d-flex">
-					<h2 class="v700 align-self-center">01</h2>
+					<h2 class="v700 align-self-center"><%= @root.present? ? @root.id.to_s.rjust(2, '0') : "01" %></h2>
 				</div>
 				<div class="section_title">
-					<h2 class="v700">LIFE SCIENCE</h2>
-					<h2 class="v700">ANIMAL SCIENCE</h2>
+					<h2 class="v700"><%= @root.try(:name) %></h2>
 				</div>
 			</div>
 			<div class="paragraph_wrapper">
-				<p class="v300">
-					Sales of various laboratory equipment and supplies
-					<br><br>
-					Such as DNA nucleic acid amplification (PCR), carbon dioxide / three-gas incuba- tor, centrifuges, dry bath, biosafety operation cabinets, ultra-low temperature refrigerators, acid and alkali analyzers, electrophoresis equipment, autoclaves, pure water manufacturing machines, Multifunctional liquid separator, digital type refractive index meter, ABBE folding device, polarimeter, ultrasonic cleaner, agitator, balance, various types of analyzers and measuring devices, PVC gloves, glass products, filter membrane, PH test paper, Needle filters, as well as a variety of plastic products and many other products.
-				</p>
+				<%= simple_format @root.try(:description), class: "v300" %>
 			</div>
 		</div>
 	</div>

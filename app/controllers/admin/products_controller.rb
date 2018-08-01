@@ -23,6 +23,7 @@ class Admin::ProductsController < AdminController
       flash[:success] = "建立成功。 "
       redirect_to admin_products_url
     else
+    	flash.now[:danger] = @product.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :new
     end
 	end
@@ -45,6 +46,7 @@ class Admin::ProductsController < AdminController
       flash[:success] = "更新成功。 "
       redirect_to edit_admin_product_url(@product)
     else
+    	flash.now[:danger] = @product.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :edit
     end
 	end
@@ -65,6 +67,6 @@ class Admin::ProductsController < AdminController
 	end
 
 	def product_params
-		params.require(:product).permit(:en_name, :zh_name, :en_description, :zh_description, :status, :file, images: [])
+		params.require(:product).permit(:category_id, :en_name, :zh_name, :en_description, :zh_description, :status, :file, images: [])
 	end
 end

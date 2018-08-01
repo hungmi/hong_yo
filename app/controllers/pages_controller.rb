@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @stories = Story.order(updated_at: :desc).published.limit(3)
+    @stories = Story.order(updated_at: :desc).with_attached_cover.published.limit(3)
   end
 
   def about
@@ -8,7 +8,11 @@ class PagesController < ApplicationController
   end
 
   def products
-    @products = Product.all.order(id: :desc).limit(36)
+    @products = if (@root = Category.find_by_id(params[:root_id])).present?
+      Product.where(category_id: @root.id)
+    else
+      Product
+    end.includes(:category, category: :parent).with_attached_images.all.order(id: :desc).limit(36)
   end
 
   def contact_us

@@ -19,4 +19,8 @@ module ApplicationHelper
 	    end[0]
 	  end
 	end
+
+	def in_admin?
+		controller.class.parent.to_s.downcase == "admin"
+	end
 end

@@ -3,7 +3,7 @@
 		<div class="card-icon">
 			<i class="material-icons">store</i>
 		</div>
-		<% if @category.level == Category.total_level %>
+		<% if @category.present? && @category.level == Category.total_level %>
 			<%= link_to new_admin_product_path(category_id: params[:category_id]) do %>
 				<div class="card-icon rounded-circle float-right newBtn">
 					<i class="material-icons">add</i>

@@ -5,7 +5,7 @@
 				<i class="material-icons">add</i>
 			</div>
 		<% end %>
-		<h4 class="card-title">產品分類 - <small class="description">由左往右為總類 - 品牌 - 系列 - 型號</small></h4>
+		<h4 class="card-title">產品分類 - <small class="description">由左往右為「總類」 - 「品牌」 - 「系列」 - 「產品」</small></h4>
 	</div>
 	<div class="card-body">
 		<div class="row">
@@ -14,19 +14,25 @@
 					<li class="nav-item text-center">
 						<h5><%= I18n.t("activerecord.category_level.level0") %></h5>
 					</li>
-					<% @category_roots.order(id: :asc).each do |root| %>
+					<% if @category_roots.present? %>
+						<% @category_roots.order(id: :asc).each do |root| %>
+							<li class="nav-item text-center">
+								<a class="nav-link" data-toggle="tab" href="#link<%= root.id %>" role="tablist">
+									<%= root.name %>
+								</a>
+								<span class="nav-sm-links">
+			            <%= link_to new_admin_category_path(parent_id: root.id), class: "btn btn-warning btn-sm nav-sm-link" do %>
+			              新增下級
+			            <% end %>
+									<%= link_to edit_admin_category_path(root), class: "btn btn-primary btn-sm nav-sm-link" do %>
+			              編輯名稱及圖示
+			            <% end %>
+			          </span>
+							</li>
+						<% end %>
+					<% else %>
 						<li class="nav-item text-center">
-							<a class="nav-link" data-toggle="tab" href="#link<%= root.id %>" role="tablist">
-								<%= root.name %>
-							</a>
-							<span class="nav-sm-links">
-		            <%= link_to new_admin_category_path(parent_id: root.id), class: "btn btn-warning btn-sm nav-sm-link" do %>
-		              新增下級
-		            <% end %>
-								<%= link_to edit_admin_category_path(root), class: "btn btn-primary btn-sm nav-sm-link" do %>
-		              編輯名稱及圖示
-		            <% end %>
-		          </span>
+							尚未建立
 						</li>
 					<% end %>
 				</ul>

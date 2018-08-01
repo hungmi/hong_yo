@@ -2,10 +2,12 @@
 	<%= form_for [:admin, category] do |f| %>
 		<% @form_id = f.options[:html][:id] %>
 
-		<div class="form-group bmd-form-group">
-			<%= f.label :parent_id %>
-			<%= f.select :parent_id, grouped_options_for_select(Category.available_levels, selected: category.parent_id || params[:parent_id]), {}, class: "form-control" %>
-		</div>
+		<% if Category.roots.size > 0 && params[:parent_id].present? %>
+			<div class="form-group bmd-form-group">
+				<%= f.label :parent_id %>
+				<%= f.select :parent_id, grouped_options_for_select(Category.available_levels, selected: category.parent_id || params[:parent_id]), {}, class: "form-control" %>
+			</div>
+		<% end %>
 
 		<div class="clearfix my-5"></div>
 

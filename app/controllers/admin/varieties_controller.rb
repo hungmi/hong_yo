@@ -55,6 +55,6 @@ class Admin::VarietiesController < ApplicationController
 	end
 
 	def variety_params
-		params.require(:variety).permit(:en_name, :zh_name, features_attributes: [:id, :zh_name, :en_name, :zh_value, :en_value, :_destroy])
+		params.require(:variety).permit(:product_id, :en_name, :zh_name, features_attributes: [:id, :zh_name, :en_name, :zh_value, :en_value, :_destroy])
 	end
 end

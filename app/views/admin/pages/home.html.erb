@@ -15,7 +15,12 @@
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons">update</i> <%= Catalogue.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+								<i class="material-icons">update</i>
+								<% if Catalogue.all.size > 0 %>
+									<%= Catalogue.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+								<% else %>
+									<%= Time.zone.today %>
+								<% end %>
 							</div>
 						</div>
 					</div>
@@ -35,7 +40,12 @@
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons">update</i> <%= Product.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+								<i class="material-icons">update</i>
+								<% if Product.all.size > 0 %>
+									<%= Product.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+								<% else %>
+									<%= Time.zone.today %>
+								<% end %>
 							</div>
 						</div>
 					</div>
@@ -55,7 +65,12 @@
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons">update</i> <%= Story.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+								<i class="material-icons">update</i>
+								<% if Story.all.size > 0 %>
+									<%= Story.order(updated_at: :desc).first.updated_at.strftime("%F") %>
+								<% else %>
+									<%= Time.zone.today %>
+								<% end %>
 							</div>
 						</div>
 					</div>
@@ -163,63 +178,69 @@
 					</div>
 					<div class="card-body">
 						<div class="tab-content">
-							<div class="tab-pane active" id="catalogues">
-								<table class="table">
-									<tbody>
-										<% Catalogue.order(updated_at: :desc).limit(5).each do |catalogue| %>
-										<tr>
-											<td><%= catalogue.name %></td>
-											<td class="td-actions text-right">
-												<%= link_to edit_admin_catalogue_path(catalogue, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
-													<i class="material-icons">edit</i>
-												<% end %>
-												<%= link_to admin_catalogue_path(catalogue), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
-													<i class="material-icons">delete_forever</i>
-												<% end %>
-											</td>
-										</tr>
-										<% end %>
-									</tbody>
-								</table>
-							</div>
-							<div class="tab-pane" id="products">
-								<table class="table">
-									<tbody>
-										<% Product.order(updated_at: :desc).limit(5).each do |product| %>
-										<tr>
-											<td><%= product.name %></td>
-											<td class="td-actions text-right">
-												<%= link_to edit_admin_product_path(product, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
-													<i class="material-icons">edit</i>
-												<% end %>
-												<%= link_to admin_product_path(product), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
-													<i class="material-icons">delete_forever</i>
-												<% end %>
-											</td>
-										</tr>
-										<% end %>
-									</tbody>
-								</table>
-							</div>
-							<div class="tab-pane" id="stories">
-								<table class="table">
-									<tbody>
-										<% Story.order(updated_at: :desc).limit(5).each do |story| %>
-										<tr>
-											<td><%= story.title %></td>
-											<td class="td-actions text-right">
-												<%= link_to edit_admin_story_path(story, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
-													<i class="material-icons">edit</i>
-												<% end %>
-												<%= link_to admin_story_path(story), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
-													<i class="material-icons">delete_forever</i>
-												<% end %>
-											</td>
-										</tr>
-										<% end %>
-									</tbody>
-								</table>
-							</div>
+							<% if Catalogue.all.size > 0 %>
+								<div class="tab-pane active" id="catalogues">
+									<table class="table">
+										<tbody>
+											<% Catalogue.order(updated_at: :desc).limit(5).each do |catalogue| %>
+											<tr>
+												<td><%= catalogue.name %></td>
+												<td class="td-actions text-right">
+													<%= link_to edit_admin_catalogue_path(catalogue, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
+														<i class="material-icons">edit</i>
+													<% end %>
+													<%= link_to admin_catalogue_path(catalogue), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
+														<i class="material-icons">delete_forever</i>
+													<% end %>
+												</td>
+											</tr>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
+							<% end %>
+							<% if Product.all.size > 0 %>
+								<div class="tab-pane" id="products">
+									<table class="table">
+										<tbody>
+											<% Product.order(updated_at: :desc).limit(5).each do |product| %>
+											<tr>
+												<td><%= product.name %></td>
+												<td class="td-actions text-right">
+													<%= link_to edit_admin_product_path(product, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
+														<i class="material-icons">edit</i>
+													<% end %>
+													<%= link_to admin_product_path(product), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
+														<i class="material-icons">delete_forever</i>
+													<% end %>
+												</td>
+											</tr>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
+							<% end %>
+							<% if Story.all.size > 0 %>
+								<div class="tab-pane" id="stories">
+									<table class="table">
+										<tbody>
+											<% Story.order(updated_at: :desc).limit(5).each do |story| %>
+											<tr>
+												<td><%= story.title %></td>
+												<td class="td-actions text-right">
+													<%= link_to edit_admin_story_path(story, dashboard: true), title: "編輯", class: "btn btn-link btn-primary btn-just-icon" do %>
+														<i class="material-icons">edit</i>
+													<% end %>
+													<%= link_to admin_story_path(story), method: :delete, data: { confirm: I18n.t("text.confirm_destroy") }, title: "永久刪除" ,class: "btn btn-link btn-danger btn-just-icon" do %>
+														<i class="material-icons">delete_forever</i>
+													<% end %>
+												</td>
+											</tr>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
+							<% end %>
 						</div>
 					</div>
 				</div>
