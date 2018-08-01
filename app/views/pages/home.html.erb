@@ -62,32 +62,30 @@
 	<div class="section_title_wrapper middle_bar align-self-center">
 		<img src="/img/products.svg", height="60px">
 	</div>
-	<div id="home_product1">
-		<div class="d-flex home_product_wrapper">
-			<div class="d-flex home_product_text flex-wrap">
-				<div class="d-flex number_title_wrapper">
-					<div class="section_number d-flex">
-						<h2 class="v700 align-self-center">01</h2>
+
+	<% Category.roots.each_with_index do |root, index| %>
+		<div class="home_product <%= index.even? ? 'even' : 'odd' %>" style="background-image: url('<%= root.product_cover.attached? ? rails_blob_path(root.product_cover) : "/img/products/product1_p_471x450.png" %>');">
+			<div class="d-flex home_product_wrapper" style="background-image: url('<%= root.cover.attached? ? rails_blob_path(root.cover) : "/img/products/product1_360x450.png" %>');">
+				<div class="d-flex home_product_text flex-wrap">
+					<div class="d-flex number_title_wrapper">
+						<div class="section_number d-flex">
+							<h2 class="v700 align-self-center"><%= (index + 1).to_s.rjust(2, '0') %></h2>
+						</div>
+						<div class="section_title">
+							<h2 class="v700"><%= root.name %></h2>
+						</div>
 					</div>
-					<div class="section_title">
-						<h2 class="v700">LIFE SCIENCE</h2>
-						<h2 class="v700">ANIMAL SCIENCE</h2>
+					<div class="paragraph_wrapper">
+						<%= simple_format root.description, class: "v300 mb-3" %>
 					</div>
 				</div>
-				<div class="paragraph_wrapper">
-					<p class="v300 mb-0">
-						Sales of various laboratory equipment and supplies
-						<br><br>
-						Such as DNA nucleic acid amplification (PCR), carbon dioxide / three&#8208;gas incubator, centrifuges, dry bath, biosafety opera&#8208;tion cabinets, ultra&#8208;low temperature refrigerators, acid and alkali analyzers, electrophoresis equipment, autoclaves, pure water manufacturing machines, Multifunctional liquid separa&#8208;tor, digital type refractive index meter, ABBE folding device, polarimeter, ultrasonic cleaner, agitator, balance, various types of analyzers and measuring devices, PVC gloves, glass products, filter membrane, PH test paper, Needle filters, as well as a variety of plastic products and many other products
-					</p>
-				</div>
+				<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
+					<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
+				</a>
 			</div>
-			<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
-				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-			</a>
 		</div>
-	</div>
-	<div id="home_product2">
+	<% end %>
+	<!-- <div id="home_product2">
 		<div class="d-flex home_product_wrapper">
 			<div class="d-flex home_product_text flex-wrap">
 				<div class="d-flex number_title_wrapper">
@@ -111,7 +109,7 @@
 				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
 			</a>
 		</div>
-	</div>
+	</div> -->
 	<div id="home_product3">
 		<div class="d-flex home_product_wrapper">
 			<div class="d-flex home_product_text flex-wrap">

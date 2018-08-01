@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(version: 2018_07_30_111852) do
   create_table "categories", force: :cascade do |t|
     t.string "en_name"
     t.string "zh_name"
+    t.text "en_description"
+    t.text "zh_description"
+    t.integer "products_count", default: 0
     t.integer "parent_id"
     t.integer "lft", null: false
     t.integer "rgt", null: false

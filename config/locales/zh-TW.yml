@@ -43,7 +43,7 @@ zh-TW:
         one: 產品
         other: 產品列表
       category:
-        one: 分類
+        one: 產品分類
         other: 分類總覽
       catalogue:
         one: 產品目錄
@@ -65,6 +65,13 @@ zh-TW:
         id: "#"
         zh_name: 中文名稱
         en_name: 英文名稱
+      category:
+        id: "#"
+        parent_id: 上級
+        zh_name: 中文名稱
+        zh_description: 中文敘述
+        en_name: 英文名稱
+        en_description: 英文敘述
       story:
         id: "#"
         title: 標題
@@ -114,7 +121,7 @@ zh-TW:
       draft: 未上架
       published: 已公開
     category_level:
-      level0: 大分類
+      level0: 總類
       level1: 品牌
       level2: 系列
     errors:

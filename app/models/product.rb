@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 	validates :zh_name, presence: true, unless: Proc.new { |p| p.en_name.present? }
-	belongs_to :category
+	belongs_to :category, counter_cache: true
 	has_many :varieties
 	has_many_attached :images
 	has_one_attached :file

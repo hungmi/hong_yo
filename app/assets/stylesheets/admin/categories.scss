@@ -1,0 +1,14 @@
+.nav-item {
+	.btn.btn-link {
+		color: #555;
+	}
+	.nav-sm-links {
+		display: none;
+		.btn-sm {
+			padding: 0.4rem 0.7rem;
+		}
+	}
+	.nav-link.active+.nav-sm-links {
+		display: initial;
+	}
+}

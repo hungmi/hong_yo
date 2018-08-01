@@ -17,6 +17,7 @@ class Admin::VarietiesController < ApplicationController
       flash[:success] = "建立成功。 "
       redirect_to edit_admin_variety_url(@variety)
     else
+    	flash.now[:danger] = @variety.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :new
     end
 	end
@@ -32,6 +33,7 @@ class Admin::VarietiesController < ApplicationController
       flash[:success] = "更新成功。 "
       redirect_to edit_admin_variety_url(@variety)
     else
+    	flash.now[:danger] = @variety.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :edit
     end
 	end

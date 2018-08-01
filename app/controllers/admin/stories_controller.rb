@@ -18,7 +18,7 @@ class Admin::StoriesController < AdminController
       flash[:success] = "建立成功。 "
       redirect_to admin_stories_url
     else
-    	flash[:danger] = @story.errors.messages.values.reject { |v| v.empty? }.join("<br>")
+    	flash.now[:danger] = @story.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :new
     end
 	end
@@ -40,6 +40,7 @@ class Admin::StoriesController < AdminController
       flash[:success] = "更新成功。 "
       redirect_to admin_stories_url
     else
+    	flash.now[:danger] = @story.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :edit
     end
 	end

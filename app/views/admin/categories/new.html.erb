@@ -1,0 +1,13 @@
+<div class="content">
+	<div class="container-fluid">
+		<div class="card ">
+			<div class="card-header card-header-info card-header-icon">
+				<div class="card-icon">
+					<i class="material-icons">info_outline</i>
+				</div>
+				<h4 class="card-title"><%= I18n.t("text.#{action_name}") %><%= Category.model_name.human %></h4>
+			</div>
+			<%= render "form", category: @category %>
+		</div>
+	</div>
+</div>

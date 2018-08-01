@@ -18,7 +18,7 @@ class Admin::CataloguesController < AdminController
       flash[:success] = "建立成功。 "
       redirect_to admin_catalogues_url
     else
-    	flash[:danger] = @catalogue.errors.messages.values.reject { |v| v.empty? }.join("<br>")
+    	flash.now[:danger] = @catalogue.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :new
     end
 	end
@@ -40,7 +40,7 @@ class Admin::CataloguesController < AdminController
       flash[:success] = "更新成功。"
       redirect_to admin_catalogues_url
     else
-    	flash[:danger] = @catalogue.errors.messages.values.reject { |v| v.empty? }.join("<br>")
+    	flash.now[:danger] = @catalogue.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :edit
     end
 	end

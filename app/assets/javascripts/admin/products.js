@@ -11,3 +11,12 @@ $(document).on("change keydown", ".admin.products.edit input, .admin.products.ed
 	  return true;
 	};
 })
+
+document.addEventListener("turbolinks:before-cache", function() {
+  $("select#product_category_id").select2('destroy')
+});
+
+document.addEventListener("turbolinks:load", function() {
+	var $product_category_id = $("select#product_category_id")
+	$product_category_id.select2({})
+})

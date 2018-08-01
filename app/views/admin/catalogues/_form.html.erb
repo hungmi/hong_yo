@@ -65,7 +65,7 @@
 	<% end %>
 </div>
 <div class="card-footer ">
-	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: dom_id(@catalogue, action_name.to_sym) %>
+	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: @form_id %>
 </div>
 
 <script>

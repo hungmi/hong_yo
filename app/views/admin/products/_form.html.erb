@@ -3,6 +3,11 @@
 		<% @form_id = f.options[:html][:id] %>
 
 		<div class="form-group bmd-form-group">
+			<%= f.label :category_id %>
+			<%= f.select :category_id, grouped_options_for_select(Category.available_levels, selected: product.category_id || params[:category_id]), {}, class: "form-control" %>
+		</div>
+
+		<div class="form-group bmd-form-group">
 			<%= f.label :zh_name, class: "bmd-label-floating" %>
 			<%= f.text_field :zh_name, class: "form-control" %>
 		</div>
@@ -61,7 +66,11 @@
 					</table>
 				</div>
 			<% else %>
-				尚無資料
+				<% if @product.new_record? %>
+					<small>請先建立產品本身資料，才能建立型號。</small>
+				<% else %>
+					<small>尚無資料</small>
+				<% end %>
 			<% end %>
 		</div>
 
@@ -163,11 +172,7 @@
 	<% end %>
 </div>
 <div class="card-footer ">
-	<% if action_name == "edit" || action_name == "update" %>
-		<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: dom_id(product, action_name.to_sym) %>
-	<% else %>
-		<%= link_to "編輯產品", edit_admin_product_path(product), class: "btn btn-fill btn-primary" %>
-	<% end %>
+	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: @form_id %>
 </div>
 
 <script>

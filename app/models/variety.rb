@@ -1,5 +1,5 @@
 class Variety < ApplicationRecord
-	validates :zh_name, presence: true, unless: Proc.new { |p| p.en_name.present? }
+	validates :zh_name, presence: { message: "中文、英文名稱至少需填寫一個。" }, unless: Proc.new { |s| s.en_name.present? }
 	belongs_to :product
 	has_many :features, dependent: :destroy
 	accepts_nested_attributes_for :features, reject_if: :all_blank, allow_destroy: true

@@ -20,6 +20,7 @@ body.pages.home {
 						line-height: 47px;
 						width: 103px;
 						h2 {
+							margin-right: 24px;
 							font-size: 77px;
 							color: white;
 						}				
@@ -30,6 +31,7 @@ body.pages.home {
 			  		border-left: 1px solid white;
 			  		padding-left: 16px;
 						h2 {
+							word-break: break-all;
 							margin-bottom: 0px;
 							font-size: 20px;
 							color: white;	
@@ -52,8 +54,8 @@ body.pages.home {
 			position: absolute;
 	    bottom: -20px;
 		}
-		#home_product1 {
-			margin-top: 200px;
+		.home_product.even {
+			margin-top: 230px;
 			background-image: url('/img/products/product1_p_471x450.png');
 	    background-position: left;
 	    background-size: contain;
@@ -69,7 +71,7 @@ body.pages.home {
 		    left: 77px;
 		  }
 		}
-		#home_product2 {
+		.home_product.odd {
 			margin-top: 230px;
 			background-image: url('/img/products/product2_p_471x450.png');
 	    background-position: right;
