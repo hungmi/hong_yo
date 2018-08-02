@@ -11,7 +11,7 @@ class Category < ApplicationRecord
 	has_one_attached :finder_bg
 
 	def self.available_levels
-		[["總類", self.roots.pluck(:zh_name, :id)], ["品牌", self.brand.pluck(:zh_name, :id)], ["系列", self.series.pluck(:zh_name, :id)]]
+		[["總類", self.roots.pluck(:zh_name, :id)], ["品牌", self.brand.pluck(:zh_name, :id)]]
 	end
 
 	def self.total_level
