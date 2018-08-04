@@ -7,5 +7,5 @@
 //= require pages
 //= require nav
 //= require products
-//= require copyTableHeader
 //= require combineProductTable
+//= require copyTableHeader
