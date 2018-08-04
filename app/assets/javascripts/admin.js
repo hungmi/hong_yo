@@ -28,6 +28,7 @@
 //= require admin/plugins/demo.js
 //= require admin/pages.js
 //= require copyTableHeader
+//= require combineProductTable
 //= require admin/previewable
 //= require admin/products
 //= require cocoon

@@ -8,3 +8,4 @@
 //= require nav
 //= require products
 //= require copyTableHeader
+//= require combineProductTable

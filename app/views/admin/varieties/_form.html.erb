@@ -21,22 +21,19 @@
 				</div>
 			</div>
 		</div>
-		<%= f.fields_for :features, @variety.features.order(id: :asc) do |feature_form| %>
+		<%= f.fields_for :features, @variety.features.order(zh_name: :asc, en_name: :asc) do |feature_form| %>
 			<%= render "feature_fields", f: feature_form %>
 		<% end %>
 		<div class="links">
 	  	<%= link_to_add_association '增加規格', f, :features %>
 	  </div>
-	  <datalist id="feature_zh_name_list">
-	  	<% Feature.all.pluck(:zh_name).compact.uniq.each do |zh_name| %>
-	  		<option><%= zh_name %></option>
-	  	<% end %>
-	  </datalist>
-	  <datalist id="feature_en_name_list">
-	  	<% Feature.all.pluck(:en_name).compact.uniq.each do |zh_name| %>
-	  		<option><%= zh_name %></option>
-	  	<% end %>
-	  </datalist>
+	  <% ["zh_name", "en_name", "zh_value", "en_value"].each do |datalist_attr| %>
+	  	<datalist id="feature_<%= datalist_attr %>_list">
+		  	<% Feature.all.pluck(datalist_attr.to_sym).compact.uniq.each do |attr_name| %>
+		  		<option><%= attr_name %></option>
+		  	<% end %>
+		  </datalist>
+	  <% end %>
 	</div>
 <% end %>
 <div class="card-footer ">

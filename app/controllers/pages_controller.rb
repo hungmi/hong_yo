@@ -8,7 +8,8 @@ class PagesController < ApplicationController
   end
 
   def products
-    @products = if (@root = Category.find_by_id(params[:root_id])).present?
+    @root = Category.find_by_id(params[:root_id]) || Category.root
+    @products = if @root.present?
       Product.where(category_id: @root.leaves.pluck(:id))
     else
       Product

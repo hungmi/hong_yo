@@ -9,7 +9,7 @@
   <div class="col-md-3">
   	<div class="form-group bmd-form-group">
 			<%= f.label :zh_value, class: "bmd-label-floating" %>
-			<%= f.text_field :zh_value, class: "form-control" %>
+			<%= f.text_field :zh_value, class: "zh_value form-control awesomplete", list: "feature_zh_value_list" %>
 		</div>
   </div>
   <div class="col-md-2">
@@ -21,7 +21,7 @@
   <div class="col-md-4">
   	<div class="form-group bmd-form-group">
 			<%= f.label :en_value, class: "bmd-label-floating" %>
-			<%= f.text_field :en_value, class: "form-control" %>
+			<%= f.text_field :en_value, class: "en_value form-control awesomplete", list: "feature_en_value_list" %>
 		</div>
   </div>
   <div class="col-md-1">

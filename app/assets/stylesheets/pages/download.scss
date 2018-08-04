@@ -42,7 +42,7 @@ body.pages.download {
 				height: 110px;
 				position: relative;
 				.item-number {
-					width: 108px;
+					min-width: 108px;
 					font-size: 54px;
 					padding-right: 40px;
 					border-right: 1px solid $mainRed;

@@ -16,7 +16,7 @@
 			<% @catalogues.each_with_index do |catalogue, index| %>
 				<div class="download-item d-flex">
 					<h2 class="v700 item-number"><%= (index + 1).to_s.rjust(2, '0') %></h2>
-					<%= simple_format catalogue.description, class: "v400" %>
+					<p class="v400"><%= catalogue.name %></p>
 					<%= link_to rails_blob_path(catalogue.file, disposition: "attachment"), id: "see_more_btn", class: "d-flex" do %>
 						<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
 					<% end %>

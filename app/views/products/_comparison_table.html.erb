@@ -7,7 +7,7 @@
 	<% end %>
 	<% if product.varieties.present? %>
 		<div class="product_comparison_table_wrapper table-responsive">
-			<% names_array = product.all_variety_feature_names.flatten.uniq %>
+			<% names_array = product.all_variety_feature_names.flatten.uniq.sort_by!{ |m| m.downcase } %>
 			<table class="table text-center">
 				<tbody>
 					<tr class="attribute_names">
@@ -29,11 +29,12 @@
 									<% end %>
 								<% end %>
 							</th>
-							<% names_array.each do |feature_name| %>
+							<% names_array.each_with_index do |feature_name, index| %>
 								<% if va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).present? %>
-									<td><%= va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).first.value %></td>
+									<% value = va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).first.value %>
+									<td data-name="<%= feature_name %>" rowspan=""><%= value %></td>
 								<% else %>
-									<td>X</td>
+									<td data-name="<%= feature_name %>" rowspan="">X</td>
 								<% end %>
 							<% end %>
 						</tr>
