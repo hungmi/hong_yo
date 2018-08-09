@@ -13,8 +13,15 @@ class Admin::CataloguesController < AdminController
 	end
 
 	def create
-		@catalogue = Catalogue.new(catalogue_params)
+		@catalogue = Catalogue.new(catalogue_params.except(:file))
 		if @catalogue.save
+			if catalogue_params.has_key?(:file)
+				if catalogue_params[:file].blank? && @catalogue.file.attached?
+					@catalogue.file.purge_later
+				else
+					@catalogue.file.attach(catalogue_params[:file])
+				end
+			end
       flash[:success] = "建立成功。 "
       redirect_to admin_catalogues_url
     else
@@ -30,13 +37,14 @@ class Admin::CataloguesController < AdminController
 	end
 
 	def update
-		# 因為當 front end js 移除檔案時
-		catalogue_params2 = catalogue_params
-		if catalogue_params.has_key?(:file) && catalogue_params[:file].blank?
-			catalogue_params2 = catalogue_params.except(:file)
-			@catalogue.file.purge_later if @catalogue.file.attached?
-		end
-		if @catalogue.update(catalogue_params2)
+		if @catalogue.update(catalogue_params.except(:file))
+			if catalogue_params.has_key?(:file)
+				if catalogue_params[:file].blank? && @catalogue.file.attached?
+					@catalogue.file.purge_later
+				else
+					@catalogue.file.attach(catalogue_params[:file])
+				end
+			end
       flash[:success] = "更新成功。"
       redirect_to admin_catalogues_url
     else

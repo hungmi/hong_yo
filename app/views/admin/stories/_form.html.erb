@@ -6,7 +6,7 @@
 	    <div class="fileinput <%= story.cover.attached? ? 'fileinput-exists' : 'fileinput-new' %> text-center" data-provides="fileinput">
         <div class="fileinput-preview fileinput-exists thumbnail" style="">
     			<% if story.cover.attached? %>
-	        	<%= image_tag(story.cover.variant(resize: "600x600>")) %>
+	        	<%= image_tag(story.cover.variant(resize: "600x600")) %>
 	        <% end %>
 	      </div>
 		    <br>

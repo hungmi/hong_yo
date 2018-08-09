@@ -13,8 +13,15 @@ class Admin::StoriesController < AdminController
 	end
 
 	def create
-		@story = Story.new(story_params)
+		@story = Story.new(story_params.except(:cover))
 		if @story.save
+			if story_params.has_key?(:cover)
+				if story_params[:cover].blank? && @story.cover.attached?
+					@story.cover.purge_later
+				else
+					@story.cover.attach(story_params[:cover])
+				end
+			end
       flash[:success] = "建立成功。 "
       redirect_to admin_stories_url
     else
@@ -30,13 +37,14 @@ class Admin::StoriesController < AdminController
 	end
 
 	def update
-		# 因為當 front end js 移除檔案時
-		story_params2 = story_params
-		if story_params.has_key?(:cover) && story_params[:cover].blank?
-			story_params2 = story_params.except(:cover)
-			@story.cover.purge_later if @story.cover.attached?
-		end
-		if @story.update(story_params2)
+		if @story.update(story_params.except(:cover))
+			if story_params.has_key?(:cover)
+				if story_params[:cover].blank? && @story.cover.attached?
+					@story.cover.purge_later
+				else
+					@story.cover.attach(story_params[:cover])
+				end
+			end
       flash[:success] = "更新成功。 "
       redirect_to admin_stories_url
     else
