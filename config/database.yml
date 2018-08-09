@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: hongyo_production
-  username: hongyo
-  password: <%= ENV['HONGYO_DATABASE_PASSWORD'] %>
+  # username: hongyo
+  # password: <%= ENV['HONGYO_DATABASE_PASSWORD'] %>

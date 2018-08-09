@@ -11,7 +11,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 # require "action_cable/engine"
 require "sprockets/railtie"
-require "rails/test_unit/railtie"
+# require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -30,7 +30,9 @@ module Hongyo
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = "zh-TW"
+    config.time_zone = 'Taipei'
     config.i18n.available_locales = [:en, :"zh-TW"]
+    config.active_job.queue_adapter = :sidekiq
     
 		# Use Vips for processing variants.
 		# config.active_storage.variant_processor = :vips
