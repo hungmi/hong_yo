@@ -21,6 +21,6 @@ class PagesController < ApplicationController
 
   def download
     @custom_footer = true
-    @catalogues = Catalogue.order(id: :desc).published.select { |c| c.file.attached? }
+    @catalogues = Catalogue.with_attached_file.order(id: :desc).published.select { |c| c.file.attached? }
   end
 end

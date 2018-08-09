@@ -69,6 +69,6 @@ class Admin::StoriesController < AdminController
 	end
 
 	def story_params
-		params.require(:story).permit(:en_title, :zh_title, :en_content, :zh_content, :status, :cover)
+		params.require(:story).permit(:en_title, :zh_title, :en_content, :zh_content, :status, :cover, :publish_date)
 	end
 end

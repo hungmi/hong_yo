@@ -7,6 +7,10 @@ class Story < ApplicationRecord
 		cover.attached? ? cover : "/img/about/fake_news1.png"
 	end
 
+	def date
+		self.publish_date.present? ? publish_date : updated_at
+	end
+
 	def title
 		if en_title.present? && zh_title.present?
 			I18n.locale == :en ? en_title : zh_title

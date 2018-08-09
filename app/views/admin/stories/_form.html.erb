@@ -38,6 +38,10 @@
 			<%= f.label :en_content, class: "bmd-label-floating" %>
 			<%= f.text_area :en_content, class: "form-control", rows: 8 %>
 		</div>
+		<div class="form-group bmd-form-group" style="max-width: 200px;">
+			<%= f.label :publish_date, class: "bmd-label-floating" %>
+			<%= f.date_field :publish_date, value: f.object.publish_date || Time.zone.today, class: "form-control" %>
+		</div>
 		<div class="clearfix my-5"></div>
 		<div class="form-group bmd-form-group">
 			<div class="togglebutton">

@@ -82,6 +82,7 @@ zh-TW:
         en_content: 英文內容
         cover: 封面
         status: 狀態
+        publish_date: 發佈日期
       tag:
         id: "#"
         name: 名稱
