@@ -1,6 +1,6 @@
 <tr>
 	<td></td>
-	<td><%= story.publish_date.strftime("%Y.%m.%d") %></td>
+	<td><%= story.date.strftime("%Y.%m.%d") %></td>
 	<td class="truncate"><%= story.title %></td>
 	<td><%= simple_format story.content.truncate(120) %></td>
 	<td>
