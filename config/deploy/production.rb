@@ -43,7 +43,7 @@ server "13.124.177.203", user: "deploy", roles: %w{app db web}
 # Global options
 # --------------
 set :ssh_options, {
-	keys: %w(/home/hungmi/.ssh/hongyou.pem),
+	keys: %w(/Users/hungmi/.ssh/hongyou.pem),
 	forward_agent: false,
 	auth_methods: %w(publickey)
 }
