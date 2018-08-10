@@ -19,10 +19,6 @@ body.stories.show {
 			height: 100vh;
 			max-height: 800px;
 			width: 100%;
-			background: url("/img/about/news_show_bg.png"), #ef0105;
-			background: url("/img/about/news_show_bg.png"), -moz-linear-gradient(right, #ef0105 0%, #ffd2ad 100%);
-			background: url("/img/about/news_show_bg.png"), -webkit-linear-gradient(right, #ef0105 0%,#ffd2ad 100%);
-			background: url("/img/about/news_show_bg.png"), linear-gradient(-45deg, #ef0105 0%,#ffd2ad 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 );
 			background-size: contain;
 			background-repeat: no-repeat;	
