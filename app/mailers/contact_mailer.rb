@@ -3,7 +3,7 @@ class ContactMailer < ApplicationMailer
 		@info = info
     # @user = params[:user]
     # @url  = 'http://example.com/login'
-    receiver = if Rails.env.production?
+    receiver = if false#Rails.env.production?
     	"richard@advantec.com.tw"
     else
     	"test@advantec.com.tw"

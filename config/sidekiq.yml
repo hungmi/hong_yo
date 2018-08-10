@@ -3,3 +3,8 @@
   - default
   - mailers
   - urgent
+production:
+  queues:
+    - hongyo_production_mailers
+    - hongyo_production_default
+    - hongyo_production_urgent
