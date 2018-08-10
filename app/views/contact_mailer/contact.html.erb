@@ -1,0 +1,13 @@
+<div style="text-align: center;">
+	<h1 style="font-size: 24px; font-weight: bold;">您好，有訪客透過網站填寫了以下的聯繫資訊</h1>
+	<table style="width: 50%; margin: auto; background-color: #222; color: white; font-size: 18px;">
+		<tbody style="padding-top: 30px; padding-bottom: 30px;">
+			<% @info.each do |k,v| %>
+				<tr>
+					<th style="min-width: 100px; width: 30%; text-align: right; padding: 20px 50px 20px 0px; margin-left: 50px; border-bottom: 1px solid #555; font-size: 14px;"><%= k %></th>
+					<td style="width: 70%; text-align: left; border-bottom: 1px solid #555;"><%= v %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

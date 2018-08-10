@@ -12,7 +12,7 @@
 			<!-- <form action="/contact" method="post" data-remote="true" id="contact_form" class="d-flex flex-column"> -->
 				<div class="input_wrapper">
 					<label for="name">Name</label>
-					<input type="text" name="contact[name]">
+					<input type="text" name="contact[name]" required="true">
 				</div>
 				<div class="input_wrapper">
 					<label for="title">Title</label>
@@ -20,7 +20,7 @@
 				</div>
 				<div class="input_wrapper">
 					<label for="organization">Organization</label>
-					<input type="text" name="contact[organization]">
+					<input type="text" name="contact[organization]" required="true">
 				</div>
 				<div class="input_wrapper">
 					<label for="country">Country</label>
@@ -32,7 +32,7 @@
 				</div>
 				<div class="input_wrapper">
 					<label for="phone">Phone</label>
-					<input type="text" name="contact[phone]">
+					<input type="text" name="contact[phone]" required="true">
 				</div>
 				<div class="input_wrapper">
 					<label for="fax">Fax</label>
@@ -40,11 +40,11 @@
 				</div>
 				<div class="input_wrapper">
 					<label for="email">Email</label>
-					<input type="email" name="contact[email]">
+					<input type="email" name="contact[email]" required="true">
 				</div>
 				<div class="input_wrapper">
 					<label for="content">Content</label>
-					<textarea name="contact[content]" rows="10"></textarea>
+					<textarea name="contact[content]" rows="10" required="true"></textarea>
 				</div>
 				<%= f.submit "SEND", data: { disable_with: "Sending..." }, id: "see_more_btn", class: "submit align-self-end" %>
 			<% end %>

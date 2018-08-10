@@ -72,3 +72,4 @@ gem "cocoon"
 gem 'bullet', group: 'development'
 gem "aws-sdk-s3", require: false
 gem 'redis', '~> 4.0'
+gem 'sendgrid-ruby'
