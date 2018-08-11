@@ -1,4 +1,7 @@
 document.querySelector("#contact_success_svg").classList.add("success")
+for (input of document.querySelector("#contact_form_wrapper").querySelectorAll("form .input_wrapper input, form .input_wrapper textarea")) {
+	input.value = ''
+}
 setTimeout(function() {
 	document.querySelector("#contact_success_svg").classList.remove("success")
 }, 2000)
