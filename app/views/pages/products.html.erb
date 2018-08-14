@@ -22,7 +22,7 @@
 				<%= form_for :product do |f| %>
 					<label for="product_category" class="v300">
 					  Product Classication
-					  <%= f.select :category, Category.roots.map { |c| [c.name, c.id] }, { selected: params[:root_id] }, class: "form-control v700" %>
+					  <%= f.select :category, Category.roots.map { |c| [c.name, c.id, { data: { id: c.id.to_s.rjust(2, '0'), name: c.name, description: c.description } }] }, { selected: params[:root_id] }, class: "form-control v700" %>
 					  <!-- <select name="product[category]" id="product_category" class="form-control v700">
 							<option value="1">01 Life Science Animal Science</option>
 						</select> -->
@@ -48,14 +48,14 @@
 		<div id="right_product_info_wrapper" class="d-flex align-content-end flex-column align-self-right">
 			<div class="d-flex number_title_wrapper mt-auto">
 				<div class="section_number d-flex">
-					<h2 class="v700 align-self-center"><%= @root.present? ? @root.id.to_s.rjust(2, '0') : "01" %></h2>
+					<h2 class="v700 align-self-center" data-target="root_id"><%= @root.present? ? @root.id.to_s.rjust(2, '0') : "01" %></h2>
 				</div>
 				<div class="section_title">
-					<h2 class="v700"><%= @root.try(:name) %></h2>
+					<h2 class="v700" data-target="root_name"><%= @root.try(:name) %></h2>
 				</div>
 			</div>
 			<div class="paragraph_wrapper">
-				<%= simple_format @root.try(:description), class: "v300" %>
+				<%= simple_format @root.try(:description), class: "v300", data: { target: "root_description" } %>
 			</div>
 		</div>
 	</div>

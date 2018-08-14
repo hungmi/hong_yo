@@ -15,8 +15,12 @@ document.addEventListener("turbolinks:load", function() {
 	$product_series.select2({ minimumResultsForSearch: Infinity })
 	$product_model.select2({ minimumResultsForSearch: Infinity })
 	$(document).on('select2:select', $product_category, function (e) {
-	  // console.log(e.params.data.id.length)
 	  if (e.target.id == "product_category" && e.params.data.id.length !== 0) {
+		  let selected_option_original_element = e.target.querySelector(`option[value='${e.params.data.id}']`)
+		  document.getElementById("right_product_info_wrapper").querySelector("[data-target='root_id']").innerHTML = selected_option_original_element.getAttribute("data-id")
+		  document.getElementById("right_product_info_wrapper").querySelector("[data-target='root_name']").innerHTML = selected_option_original_element.getAttribute("data-name")
+		  document.getElementById("right_product_info_wrapper").querySelector("[data-target='root_description']").innerHTML = selected_option_original_element.getAttribute("data-description")
+		  // selected_option_original_element.getAttribute("data-id")
 	  	updateRelatedOptions('product_brand', e.params.data.id)
 	  	getCategoryProducts(e.params.data.id)
 	  }
