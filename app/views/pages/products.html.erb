@@ -45,7 +45,7 @@
 				<% end %>
 			</div>
 		</div>
-		<div id="right_product_info_wrapper" class="d-flex align-content-end flex-column align-self-right">
+		<div id="right_product_info_wrapper" class="d-none d-lg-flex align-content-end flex-column align-self-right">
 			<div class="d-flex number_title_wrapper mt-auto">
 				<div class="section_number d-flex">
 					<h2 class="v700 align-self-center" data-target="root_id"><%= @root.present? ? @root.id.to_s.rjust(2, '0') : "01" %></h2>
@@ -60,7 +60,7 @@
 		</div>
 	</div>
 </section>
-<section id="products_section" class="d-flex align-content-end justify-content-between flex-wrap mx-auto">
+<section id="products_section" class="d-flex align-content-end justify-content-between flex-wrap mx-lg-auto">
 	<%= render @products %>
 	<!-- <a href="#" class="product_wrapper">
 		<div class="product_img">

@@ -61,5 +61,12 @@ body.pages.download {
 			}
 		}
 	}
-
+	@media only screen and (max-width: 767px) { // 不含 ipad !!!
+		#download_items_section {
+			width: 100%;
+			.section_title_wrapper {
+				left: 50%;
+			}
+		}
+	}
 }
