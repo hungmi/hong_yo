@@ -4,7 +4,6 @@
 //= require admin/core/jquery.min.js
 //= require admin/core/popper.min.js
 //= require admin/bootstrap-material-design.min.js
-//= require admin/plugins/perfect-scrollbar.jquery.min.js
 //= require admin/plugins/moment.min.js
 //= require admin/plugins/bootstrap-datetimepicker.min.js
 //= require admin/plugins/nouislider.min.js
