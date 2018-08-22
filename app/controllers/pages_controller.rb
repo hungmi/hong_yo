@@ -13,7 +13,7 @@ class PagesController < ApplicationController
       Product.where(category_id: @root.leaves.pluck(:id))
     else
       Product
-    end.includes(:category, category: :parent).with_attached_images.all.order(id: :desc).limit(36)
+    end.includes(:category, category: :parent).with_attached_images.published.order(id: :desc).limit(36)
   end
 
   def contact_us
