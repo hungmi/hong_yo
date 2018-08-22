@@ -8,20 +8,20 @@ class Product < ApplicationRecord
 
 	belongs_to :twin, class_name: "Product", foreign_key: "twin_id", optional: true
 	scope :alone, -> { where(twin_id: nil) }
-	before_save :clean_twin_data
+	# before_save :clean_twin_data
 
 	def twins?
 		twin_id.present?
 	end
 
-	def clean_twin_data
-		if twins?
-			self.zh_name = nil
-			self.en_name = nil
-			self.zh_description = nil
-			self.en_description = nil
-		end
-	end
+	# def clean_twin_data
+	# 	if twins?
+	# 		self.zh_name = nil
+	# 		self.en_name = nil
+	# 		self.zh_description = nil
+	# 		self.en_description = nil
+	# 	end
+	# end
 
 	def name
 		p = twins? ? self.twin : self
