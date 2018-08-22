@@ -103,14 +103,18 @@ zh-TW:
         status: 狀態
       product:
         id: "#"
+        name: 名稱
         zh_name: 中文名稱
         en_name: 英文名稱
+        description: 敘述
         zh_description: 中文敘述
         en_description: 英文敘述
         images: 產品圖片
         file: 廠商型錄
         status: 狀態
         category: 分類
+        category_id: 系列
+        twin_id: 複製產品
       user:
         name: 使用者名稱
         password: 密碼

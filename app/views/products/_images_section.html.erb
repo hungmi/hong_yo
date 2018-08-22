@@ -1,9 +1,9 @@
 <section id="product_images_section" class="d-flex align-content-end flex-column w-100">
 	<div id="product_images_wrapper" class="d-flex align-items-end justify-content-center">
-		<% if @product.images.attached? %>
-			<div id="product_active_image" style='background-image: url("<%= rails_blob_path(@product.images.first) %>")'></div>
+		<% if product.images.attached? %>
+			<div id="product_active_image" style='background-image: url("<%= rails_blob_path(product.images.first) %>")'></div>
 			<div id="product_image_thumbs_wrapper" class="d-flex justify-content-between">
-				<% @product.images.each do |img| %>
+				<% product.images.each do |img| %>
 					<div class="product_image_thumb">
 						<%= image_tag img %>
 					</div>

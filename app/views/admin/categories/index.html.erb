@@ -75,7 +75,7 @@
 			<% end %>
 			<div class="col-md-3">
 				<div class="tab-content">
-					<% Product.includes(:category, category: :products).all.each do |product| %>
+					<% Product.includes(:twin, :category, category: :products).all.each do |product| %>
 						<div class="tab-pane" id="link<%= product.category_id %>">
 							<ul class="nav nav-pills nav-pills-rose flex-column" role="tablist">
 								<li class="nav-item text-center">
@@ -84,7 +84,7 @@
 								<% product.category.products.each do |product| %>
 									<li class="nav-item text-center">
 										<a class="nav-link" data-toggle="tab" href="#link" role="tablist">
-											<%= product.name %>
+											<%= product.admin_name %>
 										</a>
 										<span class="nav-sm-links">
 					            <a href="<%= edit_admin_product_path(product) %>" class="btn btn-primary btn-sm nav-sm-link">

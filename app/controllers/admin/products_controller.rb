@@ -7,9 +7,9 @@ class Admin::ProductsController < AdminController
 		@nav_title = "產品資訊"
 		@category = Category.find_by_id(params[:category_id])
 		@products = if @category.present?
-			Product.includes(:category).where(category_id: @category.self_and_descendants.pluck(:id))
+			Product.includes(:category, :twin).where(category_id: @category.self_and_descendants.pluck(:id))
 		else
-			Product.includes(:category).all
+			Product.includes(:category, :twin).all
 		end.order(updated_at: :desc)
 	end
 
@@ -18,7 +18,12 @@ class Admin::ProductsController < AdminController
 	end
 
 	def create
-		@product = Product.new(product_params)
+		if product_params.has_key?(:twin_id) && product_params[:twin_id].present?
+			@product = Product.new(twin_product_params)
+		else
+			@product = Product.new(product_params)
+		end
+
 		if @product.save
       flash[:success] = "建立成功。 "
       redirect_to admin_products_url
@@ -35,20 +40,30 @@ class Admin::ProductsController < AdminController
 	end
 
 	def update
-		product_params2 = product_params
-		if product_params.has_key?(:file) && product_params[:file].blank?
-			product_params2 = product_params.except(:file)
-			@product.file.purge_later if @product.file.attached?
-		end
-		if @product.update(product_params2.except(:images))
-      @product.images.where(id: params[:product][:remove_images].keys).map(&:purge_later) if params[:product][:remove_images].present?
-      @product.images.attach(params[:product][:images]) if params[:product][:images]
-      flash[:success] = "更新成功。 "
-      redirect_to edit_admin_product_url(@product)
-    else
-    	flash.now[:danger] = @product.errors.messages.values.reject { |v| v.empty? }.join("<br>")
-      render :edit
-    end
+		if product_params.has_key?(:twin_id) && product_params[:twin_id].present?
+			if @product.update(twin_product_params)
+				flash[:success] = "更新成功。 "
+	      redirect_to edit_admin_product_url(@product)
+	    else
+	    	flash.now[:danger] = @product.errors.messages.values.reject { |v| v.empty? }.join("<br>")
+	      render :edit
+	    end
+		else
+			product_params2 = product_params
+			if product_params.has_key?(:file) && product_params[:file].blank?
+				product_params2 = product_params2.except(:file)
+				@product.file.purge_later if @product.file.attached?
+			end
+			if @product.update(product_params2.except(:images))
+	      @product.images.where(id: params[:product][:remove_images].keys).map(&:purge_later) if params[:product][:remove_images].present?
+	      @product.images.attach(params[:product][:images]) if params[:product][:images]
+	      flash[:success] = "更新成功。 "
+	      redirect_to edit_admin_product_url(@product)
+	    else
+	    	flash.now[:danger] = @product.errors.messages.values.reject { |v| v.empty? }.join("<br>")
+	      render :edit
+	    end
+	  end
 	end
 
 	def destroy
@@ -66,7 +81,11 @@ class Admin::ProductsController < AdminController
 		@product = Product.includes(:varieties, varieties: :features).with_attached_images.find(params[:id])
 	end
 
+	def twin_product_params
+		params.require(:product).permit(:twin_id, :category_id, :status)
+	end
+
 	def product_params
-		params.require(:product).permit(:category_id, :en_name, :zh_name, :en_description, :zh_description, :status, :file, images: [])
+		params.require(:product).permit(:twin_id, :category_id, :en_name, :zh_name, :en_description, :zh_description, :status, :file, images: [])
 	end
 end

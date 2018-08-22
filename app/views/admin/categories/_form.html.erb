@@ -5,7 +5,7 @@
 		<% if Category.roots.size > 0 && params[:parent_id].present? %>
 			<div class="form-group bmd-form-group">
 				<%= f.label :parent_id %>
-				<%= f.select :parent_id, grouped_options_for_select(Category.available_levels, selected: category.parent_id || params[:parent_id]), {}, class: "form-control" %>
+				<%= f.select :parent_id, grouped_options_for_select(Category.available_levels, selected: category.parent_id || params[:parent_id]), {}, class: "form-control select2" %>
 			</div>
 		<% end %>
 

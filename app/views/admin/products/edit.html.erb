@@ -3,7 +3,7 @@
 		<div class="card-icon">
 			<i class="material-icons">store</i>
 		</div>
-		<h4 class="card-title"><%= I18n.t("text.#{action_name}") %><%= Product.model_name.human %></h4>
+		<h4 class="card-title"><%= I18n.t("text.#{action_name}") %><%= Product.model_name.human %> <small><%= link_to "返回 #{@product.category.name}", admin_products_path(category_id: @product.category_id), class: "text-info" %></small></h4>
 	</div>
 	<%= render "form", product: @product %>
 </div>

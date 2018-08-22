@@ -22,7 +22,7 @@
 				<%= form_for :product do |f| %>
 					<label for="product_category" class="v300">
 					  Product Classication
-					  <%= f.select :category, Category.roots.map { |c| [c.name, c.id, { data: { id: c.id.to_s.rjust(2, '0'), name: c.name, description: c.description } }] }, { selected: params[:root_id] }, class: "form-control v700" %>
+					  <%= f.select :category, Category.roots.map { |c| [c.name, c.id, { data: { id: c.id.to_s.rjust(2, '0'), name: c.name, description: c.description } }] }, { selected: params[:root_id] }, class: "form-control v700 select2" %>
 					  <!-- <select name="product[category]" id="product_category" class="form-control v700">
 							<option value="1">01 Life Science Animal Science</option>
 						</select> -->
@@ -30,14 +30,14 @@
 					<div class="two_selects_wrapper d-flex">
 						<label for="product_brand" class="v300">
 						  Brand
-						  <%= select_tag :product_brand, options_from_collection_for_select(Category.roots.first.children, "id", "name", nil), prompt: "-", class: 'form-control v700' %>
+						  <%= select_tag :product_brand, options_from_collection_for_select(Category.roots.first.children, "id", "name", nil), prompt: "-", class: 'form-control v700 select2' %>
 						  <!-- <select name="product[brand]" id="product_brand" class="form-control v700">
 								<option value="">-</option>
 							</select> -->
 						</label>
 						<label for="product_series" class="v300">
 						  Series
-						  <select name="product[series]" id="product_series" class="form-control v700">
+						  <select name="product[series]" id="product_series" class="form-control v700 select2">
 								<option value="1">-</option>
 							</select>
 						</label>

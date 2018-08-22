@@ -3,7 +3,7 @@
 </a>
 <div id="product_sections_wrapper" class="d-flex">
 
-	<%= render "images_section" %>
+	<%= render "images_section", product: @product.twin || @product %>
 
 	<section id="product_data_section" class="d-flex align-content-end flex-column">
 		<div id="product_data_wrapper" class="d-flex flex-column">
@@ -12,7 +12,7 @@
 			</span>
 			<div class="product_variety_name d-flex">
 				<label for="product_variety_name" class="v700 mb-0 border-right-0">MDOEL</label>
-				<%= select_tag :product_variety_name, options_from_collection_for_select(@product.varieties, "id", "zh_name"), prompt: "Choose one to highlight", class: 'form-control v700' %>
+				<%= select_tag :product_variety_name, options_from_collection_for_select(@product.varieties, "id", "zh_name"), prompt: "Choose one to highlight", class: 'form-control v700 select2' %>
 				<!-- <select name="product[model]" id="product_model" class="form-control v700">
 					<option value="1">01 Life Science Animal Science</option>
 					<option value="2">01 Life Science Animal Science</option>
@@ -27,14 +27,14 @@
 				<div class="product_detail_content">
 					<%= simple_format @product.description %>
 				</div>
-				<% if @product.file.attached? %>
-					<%= link_to rails_blob_path(@product.file, disposition: "attachment"), id: "see_more_btn", class: "d-flex" do %>
+				<% if @product.t_file.attached? %>
+					<%= link_to rails_blob_path(@product.t_file, disposition: "attachment"), id: "see_more_btn", class: "d-flex" do %>
 						<div class="mr-auto align-self-center see_more_text download_dm_text v700">廠商型錄下載</div>
 					<% end %>
 				<% end %>
 			</div>
 
-			<%= render "comparison_table", product: @product %>
+			<%= render "comparison_table", product: @product.twin || @product %>
 
 			<div class="product_related">
 				<div class="product_block_title">RELATED PRODUCTS</div>

@@ -17,10 +17,20 @@ $(document).on("change keydown", ".admin.products.edit input, .admin.products.ed
 })
 
 document.addEventListener("turbolinks:before-cache", function() {
-  $("select#product_category_id").select2('destroy')
+  $("select.select2").select2('destroy')
 });
 
 document.addEventListener("turbolinks:load", function() {
-	var $product_category_id = $("select#product_category_id")
-	$product_category_id.select2({})
+	$("select.select2:not('.searchable')").select2({ minimumResultsForSearch: Infinity })
+	$("select.select2.searchable").select2()
+	var $product_twin = $("select#product_twin_id")
+	$(document).on('select2:select', $product_twin, function (e) {
+	  if (e.target.id == "product_twin_id") {
+	  	if (e.params.data.id.length !== 0) {
+			  $("form .twins_disable").addClass("d-none")
+		  } else {
+		  	$("form .twins_disable").removeClass("d-none")
+		  }
+	  }
+	});
 })

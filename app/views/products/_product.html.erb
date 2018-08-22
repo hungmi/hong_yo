@@ -1,6 +1,6 @@
 <%= link_to product_path(id: product), class: "product_wrapper" do %>
-	<% if product.images.attached? %>
-		<div class="product_img" style='background: url("<%= rails_blob_path(product.images.first) %>") no-repeat center; background-size: contain;'></div>
+	<% if product.t_images.attached? %>
+		<div class="product_img" style='background: url("<%= rails_blob_path(product.t_images.first) %>") no-repeat center; background-size: contain;'></div>
 	<% else %>
 		<div class="product_img"></div>
 	<% end %>

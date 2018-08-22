@@ -1,7 +1,7 @@
 <tr>
 	<td></td>
 	<td class="truncate"><%= product.category.ancestors_names %></td>
-	<td class="truncate"><%= product.name %></td>
+	<td class="truncate"><%= product.admin_name %></td>
 	<td><%= simple_format product.description.to_s.truncate(120) %></td>
 	<td>
 		<span class="badge<%= product.published? ? ' btn-brand' : ' btn-secondary' %>"><%= I18n.t("activerecord.product_status.#{product.status}") %></span>

@@ -1,19 +1,13 @@
 document.addEventListener("turbolinks:before-cache", function() {
-  $("select#product_category").select2('destroy')
-	$("select#product_brand").select2('destroy')
-	$("select#product_series").select2('destroy')
-	$("select#product_variety_name").select2('destroy')
+  $("select.select2").select2('destroy')
 });
 
 document.addEventListener("turbolinks:load", function() {
+	$("select.select2").select2({ minimumResultsForSearch: Infinity })
 	var $product_category = $("select#product_category")
 	var $product_brand = $("select#product_brand")
 	var $product_series = $("select#product_series")
 	var $product_model = $("select#product_variety_name")
-	$product_category.select2({ minimumResultsForSearch: Infinity })
-	$product_brand.select2({ minimumResultsForSearch: Infinity })
-	$product_series.select2({ minimumResultsForSearch: Infinity })
-	$product_model.select2({ minimumResultsForSearch: Infinity })
 	$(document).on('select2:select', $product_category, function (e) {
 	  if (e.target.id == "product_category" && e.params.data.id.length !== 0) {
 		  let selected_option_original_element = e.target.querySelector(`option[value='${e.params.data.id}']`)
