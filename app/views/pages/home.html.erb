@@ -5,14 +5,14 @@
 <ul class="slider mb-0">
 	<% Category.roots.with_attached_hero_cover.each_with_index do |root, index| %>
 		<% if root.hero_cover.attached? %>
-  		<li class="index-bg<%= index + 1 %>" style="background-image: url('<%= rails_blob_path(root.hero_cover) %>');"></li>
+  		<li class="index-bg<%= index + 1 %> animated <%= index == 0 ? 'fadeIn' : 'd-none' %>" style="background-image: url('<%= rails_blob_path(root.hero_cover) %>');"></li>
   	<% end %>
   <% end %>
 </ul>
 
 <section id="wrapper_home_top">
 	<% Category.roots.with_attached_hero_cover.each_with_index do |root, index| %>
-		<div class="align-content-end flex-column fadeInLeft root <%= index == 0 ? 'd-flex' : 'd-none' %> <%= 'root' + (index + 1).to_s %>">
+		<div class="align-content-end flex-column animated root <%= index == 0 ? 'd-flex fadeInLeft' : 'd-none' %> <%= 'root' + (index + 1).to_s %>">
 			<div class="d-flex number_title_wrapper">
 				<div class="section_number d-flex">
 					<h2 class="v700 align-self-center"><%= (index + 1).to_s.rjust(2, '0') %></h2>
@@ -27,8 +27,9 @@
 				</p> -->
 				<%= simple_format root.try(:description), class: "v300" %>
 			</div>
-			<a href="<%= products_path(root_id: root.try(:id)) %>" id="see_more_btn" class="d-flex">
+			<a href="<%= products_path(root_id: root.try(:id)) %>" id="see_more_btn" class="animated <%= index == 0 ? 'd-flex fadeInLeft delay-1s faster' : 'd-none' %>">
 				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
+				<div class="hover-bg"></div>
 			</a>
 		</div>
 	<% end %>

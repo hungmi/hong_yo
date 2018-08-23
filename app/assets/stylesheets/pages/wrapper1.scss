@@ -67,19 +67,19 @@ body.pages.home {
 			background-repeat: no-repeat;
 			background-position: top;
 			z-index: -1;
-			opacity: 0;
+			// opacity: 0;
 			list-style: none;
 			/*-- Add animation --*/ 
-			animation: fade-out 24s infinite both;
+			// animation: fade-out 24s infinite both;
 		}
 		li.index-bg2 {
-			animation-delay: 6s;
+			// animation-delay: 6s;
 		}
 		li.index-bg3 {
-			animation-delay: 12s;
+			// animation-delay: 12s;
 		}
 		li.index-bg4 {
-			animation-delay: 18s;
+			// animation-delay: 18s;
 		}
 	}
 }

@@ -73,3 +73,5 @@ gem 'bullet', group: 'development'
 gem "aws-sdk-s3", require: false
 gem 'redis', '~> 4.0'
 gem 'sendgrid-ruby'
+gem 'webpacker', '~> 3.5'
+gem 'foreman'
