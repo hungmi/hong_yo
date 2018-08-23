@@ -1,4 +1,6 @@
 footer {
+	z-index: $zindex-tooltip + 2; // 1072 配合 #contact_btn
+	position: relative;
 	#footer_top {
 		height: 10px;
 		background: #ef0105;

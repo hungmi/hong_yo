@@ -7,6 +7,7 @@ body.pages.home {
 		padding-bottom: 80px;
 		.number_title_wrapper {
 			height: 47px;
+			margin-top: 22px;
 		}
 		.section_number {
 			height: 100%;
@@ -39,25 +40,19 @@ body.pages.home {
 				font-size: 14px;	
 			}
 		}
-		.root1, .root2, .root3, .root4 {
+		.root {
+			background: white;
 			position: absolute;
-			bottom: 80px;
+			top: 372px;
+			@media only screen and (min-width: 1600px) {
+				top: 418px;
+			}
+			// bottom: 80px;
 			#see_more_btn {
 				position: absolute;
 		    bottom: -20px;
 		    left: 30px;
 			}
-			//
-			// animation: fade-out 24s infinite both;
-		}
-		.root2 {
-			animation-delay: 6s;
-		}
-		.root3 {
-			animation-delay: 12s;
-		}
-		.root4 {
-			animation-delay: 18s;
 		}
 	} // wrapper1 END
 	
@@ -68,7 +63,7 @@ body.pages.home {
 			position: absolute;
 			top: 0px;
 			left: 0px;
-			background-size: contain;
+			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: top;
 			z-index: -1;

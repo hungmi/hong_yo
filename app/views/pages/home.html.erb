@@ -12,8 +12,8 @@
 
 <section id="wrapper_home_top">
 	<% Category.roots.with_attached_hero_cover.each_with_index do |root, index| %>
-		<div class="align-content-end flex-column root <%= index == 0 ? 'd-flex' : 'd-none' %> <%= 'root' + (index + 1).to_s %>">
-			<div class="d-flex number_title_wrapper mt-auto">
+		<div class="align-content-end flex-column fadeInLeft root <%= index == 0 ? 'd-flex' : 'd-none' %> <%= 'root' + (index + 1).to_s %>">
+			<div class="d-flex number_title_wrapper">
 				<div class="section_number d-flex">
 					<h2 class="v700 align-self-center"><%= (index + 1).to_s.rjust(2, '0') %></h2>
 				</div>

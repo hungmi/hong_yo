@@ -13,8 +13,9 @@ body.pages {
 	text-decoration: none;
 	background: #ef0105;
 	background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%);
-	background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%);
-	background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%);
+	background: -webkit-linear-gradient(left, #ffd2ad 0%,#ffd2ad 100%);
+	background: linear-gradient(to right, #ffd2ad 0%,#ffd2ad 100%);
+	// background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 );
 	.see_more_text {
 		color: white;

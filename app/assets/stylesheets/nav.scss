@@ -2,7 +2,7 @@ body.front {
 	overflow-x: hidden;
 	nav.navbar {
 		width: 100vw;
-		position: absolute;
+		position: fixed;
 		top: 0px;
 		padding-top: 24px;
 		z-index: $zindex-tooltip + 1; // 1071
