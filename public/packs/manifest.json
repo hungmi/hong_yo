@@ -1,6 +1,22 @@
 {
-  "application.css": "/packs/application-d7316e2efabf3b2b97e45c09eca7c205.css",
-  "application.css.map": "/packs/application-d7316e2efabf3b2b97e45c09eca7c205.css.map",
-  "application.js": "/packs/application-fcbca864f79f0b221cd3.js",
-  "application.js.map": "/packs/application-fcbca864f79f0b221cd3.js.map"
+  "admin.css": "/packs/admin-7ec7a78447c174cf6039bb9f7ccfe4e2.css",
+  "admin.css.map": "/packs/admin-7ec7a78447c174cf6039bb9f7ccfe4e2.css.map",
+  "admin.js": "/packs/admin-ae4aecd4c72eda093308.js",
+  "admin.js.map": "/packs/admin-ae4aecd4c72eda093308.js.map",
+  "application.css": "/packs/application-7ec7a78447c174cf6039bb9f7ccfe4e2.css",
+  "application.css.map": "/packs/application-7ec7a78447c174cf6039bb9f7ccfe4e2.css.map",
+  "application.js": "/packs/application-eed56e5f14bbab0f2dee.js",
+  "application.js.map": "/packs/application-eed56e5f14bbab0f2dee.js.map",
+  "combineProductTable.js": "/packs/combineProductTable-f6d55336cd6afa9bb861.js",
+  "combineProductTable.js.map": "/packs/combineProductTable-f6d55336cd6afa9bb861.js.map",
+  "copyTableHeader.js": "/packs/copyTableHeader-abdb8897f6fa4fc76484.js",
+  "copyTableHeader.js.map": "/packs/copyTableHeader-abdb8897f6fa4fc76484.js.map",
+  "nav.js": "/packs/nav-115c8f76bb0036f02149.js",
+  "nav.js.map": "/packs/nav-115c8f76bb0036f02149.js.map",
+  "pages.js": "/packs/pages-85a75e26ad05f716a958.js",
+  "pages.js.map": "/packs/pages-85a75e26ad05f716a958.js.map",
+  "products.js": "/packs/products-fb737f96e5bad7a75ca6.js",
+  "products.js.map": "/packs/products-fb737f96e5bad7a75ca6.js.map",
+  "view_helper.js": "/packs/view_helper-2b61e0fca58823bc03c4.js",
+  "view_helper.js.map": "/packs/view_helper-2b61e0fca58823bc03c4.js.map"
 }

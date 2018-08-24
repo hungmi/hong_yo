@@ -60,6 +60,8 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, true
 
+before "deploy:assets:precompile", "deploy:yarn_install"
+
 namespace :deploy do
   desc 'Create Directories for Puma Pids and Socket'
     task :make_dirs do
@@ -82,6 +84,15 @@ namespace :deploy do
     task :restart_sidekiq do
       on roles(:app) do
        execute :sudo, :systemctl, :restart, :sidekiq
+      end
+    end
+
+  desc 'Run rake yarn:install'
+    task :yarn_install do
+      on roles(:web) do
+        within release_path do
+          execute("cd #{release_path} && yarn install")
+        end
       end
     end
 

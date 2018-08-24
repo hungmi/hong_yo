@@ -46,7 +46,10 @@ body.pages {
 	right: 30px;
 	bottom: 34px;
 	// top: 666px;
-	z-index: $zindex-tooltip + 1; // 1071 配合 menu
+	// z-index: $zindex-tooltip + 1; // 1071 配合 menu
+	.menu_active {
+		// z-index: $zindex-tooltip + 3; // 1073 配合 footer (which is menu + 1)
+	}
 }
 
 .section_title_wrapper {

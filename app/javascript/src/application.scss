@@ -1,1 +1,23 @@
-@import "~animate.css/animate.min"
+@import "~animate.css/animate.min";
+@import "~bootstrap/scss/bootstrap";
+@import "./bootstrap_overrides";
+@import "./fonts";
+@import "./variables";
+@import "./pages";
+@import "./pages/products";
+@import "./select2_overrides";
+@import "./pages/wrapper1";
+@import "./pages/wrapper2";
+@import "./pages/wrapper3";
+@import "./pages/download";
+@import "./pages/about";
+@import "./pages/contact_us";
+@import "./pages/stories";
+@import "./products";
+@import "./product_comparison";
+@import "./nav";
+@import "./footer";
+
+.turbolinks-progress-bar {
+  visibility: hidden;
+}

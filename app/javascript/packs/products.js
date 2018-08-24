@@ -11,9 +11,12 @@ document.addEventListener("turbolinks:load", function() {
 	$(document).on('select2:select', $product_category, function (e) {
 	  if (e.target.id == "product_category" && e.params.data.id.length !== 0) {
 		  let selected_option_original_element = e.target.querySelector(`option[value='${e.params.data.id}']`)
-		  document.getElementById("right_product_info_wrapper").querySelector("[data-target='root_id']").innerHTML = selected_option_original_element.getAttribute("data-id")
-		  document.getElementById("right_product_info_wrapper").querySelector("[data-target='root_name']").innerHTML = selected_option_original_element.getAttribute("data-name")
-		  document.getElementById("right_product_info_wrapper").querySelector("[data-target='root_description']").innerHTML = selected_option_original_element.getAttribute("data-description")
+		  document.querySelector("[data-target='root_id']").innerHTML = selected_option_original_element.getAttribute("data-id")
+		  document.querySelector("[data-target='root_name']").innerHTML = simpleFormat(selected_option_original_element.getAttribute("data-name"))
+		  document.querySelector("[data-target='root_description']").innerHTML = selected_option_original_element.getAttribute("data-description")
+		  selected_option_original_element.getAttribute("data-bg") !== null ?
+		  	document.querySelector("[data-target='root_bg']").style.background = "url('" + selected_option_original_element.getAttribute("data-bg") + "') #ef0105" :
+		  	document.querySelector("[data-target='root_bg']").style.background = "#ef0105"
 		  // selected_option_original_element.getAttribute("data-id")
 	  	updateRelatedOptions('product_brand', e.params.data.id)
 	  	getCategoryProducts(e.params.data.id)

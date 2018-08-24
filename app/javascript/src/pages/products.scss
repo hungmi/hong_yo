@@ -16,7 +16,7 @@ body.pages.products {
 	}
 	#products_finder_wrapper {
 		height: 320px;
-		background: url("/img/product_finder_bg1.png"), $mainRed;
+		// background: url("/img/product_finder_bg1.png"), $mainRed;
 		background-position: top;
 	  background-size: contain;
 	  background-repeat: no-repeat;
@@ -54,15 +54,16 @@ body.pages.products {
 	#right_product_info_wrapper {
 		position: relative;
 		.number_title_wrapper {
-			height: 47px;
+			margin-top: 35px;
+			margin-bottom: 23px;
+			min-height: 47px;
 		}
 		.section_number {
-			height: 100%;
-			line-height: 47px;
 			width: 103px;
 			margin-left: 22px;
 			h2 {
 				font-size: 78px;
+				line-height: 47px;
 				color: white;
 			}				
 		}
@@ -79,12 +80,14 @@ body.pages.products {
 		}
 		.paragraph_wrapper {
 			width: 540px;
+			height: 100%;
+			overflow-y: scroll;
 			padding: 30px 25px 0px 30px;
-			margin-top: 22px;
 			background: white;
 			color: $mainRed;
 			p {
-				font-size: 14px;	
+				font-size: 14px;
+				margin-bottom: 30px;
 			}
 		}
 	}

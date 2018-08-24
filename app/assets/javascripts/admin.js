@@ -1,6 +1,3 @@
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
 //= require admin/core/jquery.min.js
 //= require admin/core/popper.min.js
 //= require admin/bootstrap-material-design.min.js
@@ -26,8 +23,6 @@
 //= require admin/plugins/fullcalendar.min.js
 //= require admin/plugins/demo.js
 //= require admin/pages.js
-//= require combineProductTable
-//= require copyTableHeader
 //= require admin/previewable
 //= require admin/products
 //= require cocoon

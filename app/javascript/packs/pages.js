@@ -37,10 +37,12 @@ document.addEventListener("turbolinks:load", function() {
 	let loopTime = 6000
 
 	setTimeout(function(){
-		document.querySelector(`ul.slider > li.index-bg1`).classList.remove("fadeIn")
-		document.querySelector(`#wrapper_home_top > .root1`).classList.remove("fadeInLeft")
-		document.querySelector(`ul.slider > li.index-bg1`).className += ' fadeOut delay-3s'
-		document.querySelector(`#wrapper_home_top > .root1`).className += ' fadeOutLeft delay-3s'
+		if (document.querySelectorAll(`ul.slider`).length > 0 && document.querySelectorAll(`#wrapper_home_top > .root`).length > 0) {
+			document.querySelector(`ul.slider > li.index-bg1`).classList.remove("fadeIn")
+			document.querySelector(`#wrapper_home_top > .root1`).classList.remove("fadeInLeft")
+			document.querySelector(`ul.slider > li.index-bg1`).className += ' fadeOut delay-3s'
+			document.querySelector(`#wrapper_home_top > .root1`).className += ' fadeOutLeft delay-3s'
+		}
 	}, waitfadeIn)
 
 	let start = 1
