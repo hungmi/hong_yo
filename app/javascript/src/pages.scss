@@ -9,6 +9,8 @@ body.pages {
 #see_more_btn {
 	width: 224px;
 	height: 40px;
+	position: relative;
+	z-index: $zindex-dropdown; // 1000
 	cursor: pointer;
 	text-decoration: none;
 	background: #ef0105;
@@ -21,20 +23,21 @@ body.pages {
 		font-size: 18px;
 		margin-left: 20px;
 	}
-	.hover-bg {
+	&:after {
+		content: '';
 		width: 0px;
 		position: absolute;
     z-index: -1;
     right: 0px;
-    height: 100%;
+    height: 40px;
     background: -moz-linear-gradient(left, #ffd2ad 0%, #ef0105 100%);
 		background: -webkit-linear-gradient(left, #ffd2ad 0%,#ef0105 100%);
 		background: linear-gradient(to right, #ffd2ad 0%,#ef0105 100%);
 	  transition: all 0.2s;
 	}
 	&:hover {
-		.hover-bg {
-			width: 100%;   
+		&:after {
+			width: 224px;
 		}	
 	}
 }
@@ -46,15 +49,13 @@ body.pages {
 	right: 30px;
 	bottom: 34px;
 	// top: 666px;
-	// z-index: $zindex-tooltip + 1; // 1071 配合 menu
-	.menu_active {
-		// z-index: $zindex-tooltip + 3; // 1073 配合 footer (which is menu + 1)
-	}
+	z-index: $zindex-tooltip + 1; // 1071 配合 menu
 }
 
 .section_title_wrapper {
 	position: relative;
-	&.middle_bar:before {
+	div.middle_bar {
+		animation: middleBarIn 2.5s infinite;
 		content: ' ';
     background: red;
     width: 1px;
@@ -62,6 +63,38 @@ body.pages {
     position: absolute;
     left: 50%;
     top: calc((60px - 163px) / 2);
+    z-index: -2;	
+	}
+	div.middle_bar_overlay {
+		animation: middleBarOut 2.5s infinite;
+		content: ' ';
+    background: white;
+    width: 2px;
+    height: 0px;
+    position: absolute;
+    left: 50%;
+    top: calc((60px - 163px) / 2);
     z-index: -1;	
+	}
+}
+
+@keyframes middleBarIn {
+  0%   { height: 0px }
+  20%  { height: 163px }
+  100% { height: 163px }
+}
+
+@keyframes middleBarOut {
+  0%   { height: 0px }
+  80%  { height: 0px }
+  100% { height: 163px }
+}
+
+body.front.active {
+	#menu {
+		z-index: $zindex-tooltip + 3;
+	}
+	nav.navbar, #contact_btn {
+		z-index: $zindex-tooltip + 4;	
 	}
 }

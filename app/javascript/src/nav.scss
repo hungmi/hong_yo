@@ -15,7 +15,6 @@ body.front {
 			.toggler {
 				cursor: pointer;
 				background: $mainRed;
-				z-index: $zindex-tooltip + 1; // 1071
 				width: 60px;
 				height: 60px;
 				transition: .2s linear;
@@ -51,6 +50,21 @@ body.front {
 		opacity: 0;
 		ul.menu-items {
 			display: none;
+			& > li:first-child {
+				animation-delay: 0.2s;
+			}
+			& > li:nth-child(2) {
+				animation-delay: 0.3s;
+			}
+			& > li:nth-child(3) {
+				animation-delay: 0.4s;
+			}
+			& > li:nth-child(4) {
+				animation-delay: 0.5s;
+			}
+			& > li:nth-child(5) {
+				animation-delay: 0.8s;
+			}
 		}
 		li.menu-item-wrapper {
 			list-style: none;

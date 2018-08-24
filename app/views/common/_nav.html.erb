@@ -15,7 +15,7 @@
 </nav>
 <div id="menu" class="d-flex justify-content-center">
 	<ul class="menu-items align-self-center flex-column">
-		<li class="menu-item-wrapper d-flex">
+		<li class="menu-item-wrapper d-flex animated fadeInLeft">
 			<a href="<%= about_path %>" class="text-white">
 				<div class="menu-item d-flex">
 					<div class="menu-item-text">
@@ -26,7 +26,7 @@
 				</div>
 			</a>
 		</li>
-		<li class="menu-item-wrapper d-flex">
+		<li class="menu-item-wrapper d-flex animated fadeInLeft">
 			<a href="<%= products_path %>" class="text-white">
 				<div class="menu-item d-flex">
 					<div class="menu-item-text">
@@ -37,7 +37,7 @@
 				</div>
 			</a>
 		</li>
-		<li class="menu-item-wrapper d-flex">
+		<li class="menu-item-wrapper d-flex animated fadeInLeft">
 			<a href="<%= download_path %>" class="text-white">
 				<div class="menu-item d-flex">
 					<div class="menu-item-text">
@@ -48,7 +48,7 @@
 				</div>
 			</a>
 		</li>
-		<li class="menu-item-wrapper d-flex">
+		<li class="menu-item-wrapper d-flex animated fadeInLeft fast">
 			<a href="<%= contact_path %>" class="text-white">
 				<div class="menu-item d-flex">
 					<div class="menu-item-text">
@@ -59,7 +59,7 @@
 				</div>
 			</a>
 		</li>
-		<li class="i18n-link v400">
+		<li class="i18n-link v400 animated fadeInLeft faster">
 			<span class="mr-4">Language</span> <a href="<%= url_for(locale: 'zh-TW') %>">CN</a> / <a href="<%= url_for(locale: 'en') %>">EN</a>
 		</li>
 	</ul>

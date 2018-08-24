@@ -29,14 +29,15 @@
 			</div>
 			<a href="<%= products_path(root_id: root.try(:id)) %>" id="see_more_btn" class="animated <%= index == 0 ? 'd-flex fadeInLeft delay-1s faster' : 'd-none' %>">
 				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
-				<div class="hover-bg"></div>
 			</a>
 		</div>
 	<% end %>
 </section>
 
 <section id="wrapper2" class="d-flex justify-content-center flex-column">
-	<div class="section_title_wrapper middle_bar align-self-center">
+	<div class="section_title_wrapper align-self-center">
+		<div class="middle_bar"></div>
+		<div class="middle_bar_overlay"></div>
 		<img src="/img/news.svg", height="60px">
 	</div>
 	<div id="news_bg_wrapper" class="w-100">
@@ -60,16 +61,16 @@
 			<% @stories.each do |news| %>
 				<a href="<%= story_path(news) %>" class="news">
 					<div class="news_img"><%= image_tag news.try_cover, alt: news.title %></div>
-					<p class="news_date v700 mb-0"><%= news.updated_at.strftime("%Y.%m.%d") %></p>
-					<h5 class="news_title v700 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
+					<p class="news_date v400 mb-0"><%= news.updated_at.strftime("%Y. %m. %d") %></p>
+					<h5 class="news_title v400 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
 				</a>
 			<% end %>
 		<% else %>
 			<% 3.times do |i| %>
 				<a href="#" class="news">
 					<div class="news_img"><%= image_tag "/img/about/fake_news1.png", alt: "fake news" %></div>
-					<p class="news_date v700 mb-0"><%= Time.zone.today %></p>
-					<h5 class="news_title v700 mb-0 <%= render_chinese_class('範例消息') %>">範例消息</h5>
+					<p class="news_date v400 mb-0"><%= Time.zone.today.strftime("%Y. %m. %d") %></p>
+					<h5 class="news_title v400 mb-0 <%= render_chinese_class('範例消息') %>">範例消息</h5>
 				</a>
 			<% end %>
 		<% end %>
@@ -80,20 +81,22 @@
 </section>
 
 <section id="wrapper3" class="d-flex justify-content-center flex-column mx-auto">
-	<div class="section_title_wrapper middle_bar align-self-center">
+	<div class="section_title_wrapper align-self-center">
+		<div class="middle_bar"></div>
+		<div class="middle_bar_overlay"></div>
 		<img src="/img/products.svg", height="60px">
 	</div>
 
 	<% Category.roots.with_attached_cover.with_attached_product_cover.each_with_index do |root, index| %>
-		<div class="home_product <%= index.even? ? 'even' : 'odd' %>" style="background-image: url('<%= rails_blob_path(root.product_cover) if root.product_cover.attached? %>">
-			<div class="d-flex home_product_wrapper" style="background-image: url('<%= rails_blob_path(root.cover) if root.cover.attached? %>');">
+		<div class="home_product invisible animated <%= index.even? ? 'even' : 'odd' %>" style="background-image: url('<%= rails_blob_path(root.product_cover) if root.product_cover.attached? %>">
+			<div class="d-flex home_product_wrapper animated delay-1s <%= index.even? ? 'even' : 'odd' %>" style="background-image: url('<%= rails_blob_path(root.cover) if root.cover.attached? %>');">
 				<div class="d-flex home_product_text flex-wrap">
 					<div class="d-flex number_title_wrapper">
 						<div class="section_number d-flex">
 							<h2 class="v700 align-self-center"><%= (index + 1).to_s.rjust(2, '0') %></h2>
 						</div>
 						<div class="section_title">
-							<h2 class="v700"><%= root.name %></h2>
+							<h2 class="v700"><%= simple_format root.name %></h2>
 						</div>
 					</div>
 					<div class="paragraph_wrapper">

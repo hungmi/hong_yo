@@ -16,7 +16,6 @@ var Turbolinks = require("turbolinks")
 Turbolinks.start()
 import "jquery";
 import "bootstrap";
-import '../src/application.scss';
 import './view_helper';
 import './pages';
 import './nav'

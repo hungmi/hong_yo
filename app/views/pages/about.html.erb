@@ -14,8 +14,8 @@
 				<a href="<%= story_path(news) %>" class="news <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
 					<div class="news_img"><%= image_tag news.try_cover, alt: news.title %></div>
 					<div class="news_date_title">
-						<p class="news_date v700 mb-2"><%= news.date.strftime("%F") %></p>
-						<h5 class="news_title v700 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
+						<p class="news_date v400 mb-2"><%= news.date.strftime("%F") %></p>
+						<h5 class="news_title v400 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
 					</div>
 				</a>
 			<% end %>

@@ -8,3 +8,16 @@ window.simpleFormat = function(str) {
   }
   return str;
 }
+
+window.isScrolledIntoView = function(el, offset = 0) {
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+
+    // Only completely visible elements return true:
+    // var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    // Partially visible elements return true:
+    var isVisible = (elemTop + offset < window.innerHeight) && (elemBottom - offset >= 0);
+    return isVisible;
+}
+
