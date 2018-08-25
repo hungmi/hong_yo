@@ -1,6 +1,8 @@
 {
   "admin.js": "/packs/admin-220c62958c91217c5744.js",
   "admin.js.map": "/packs/admin-220c62958c91217c5744.js.map",
+  "application.css": "/packs/application-886c575e8ab116c36054cea11cb73dd1.css",
+  "application.css.map": "/packs/application-886c575e8ab116c36054cea11cb73dd1.css.map",
   "application.js": "/packs/application-c1aa72c9887244bdd14c.js",
   "application.js.map": "/packs/application-c1aa72c9887244bdd14c.js.map",
   "combineProductTable.js": "/packs/combineProductTable-ecfd3d7956acf4a21d30.js",
@@ -18,7 +20,5 @@
   "products--index.js": "/packs/products--index-98ed397c7327745e02a2.js",
   "products--index.js.map": "/packs/products--index-98ed397c7327745e02a2.js.map",
   "view_helper.js": "/packs/view_helper-f9a5f2f265f1f4020342.js",
-  "view_helper.js.map": "/packs/view_helper-f9a5f2f265f1f4020342.js.map",
-  "application.css": "/packs/application-340f4e8879bb883fcc03a00ef7d6ad21.css",
-  "application.css.map": "/packs/application-340f4e8879bb883fcc03a00ef7d6ad21.css.map"
+  "view_helper.js.map": "/packs/view_helper-f9a5f2f265f1f4020342.js.map"
 }

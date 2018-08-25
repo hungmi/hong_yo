@@ -1,19 +1,16 @@
-<div id="download_sections_wrapper" class="d-flex">
-	<section id="download_bg_section" class="d-none d-md-flex align-content-end flex-column position-fixed w-50">
-		<div id="download_bg_wrapper" class="d-flex align-items-end justify-content-center">
-			<div id="download_bg"></div>
-		</div>
+<div class="sections-wrapper d-flex">
+	<section class="d-none d-md-flex align-content-end flex-column position-fixed w-50">
+		<div class="section__bg"></div>
 	</section>
 
-	<section id="download_items_section" class="d-flex align-content-end flex-column">
-		<div class="section_title_wrapper align-self-center">
-			<img src="/img/download.svg", height="60px">
-		</div>
-		<div id="right_half" class="align-self-end">
+	<section class="items-section d-flex align-content-end flex-column">
+		<div class="items-section__title"><img src="/img/download.svg", height="60px"></div>
+
+		<div class="items-wrapper">
 			<% @catalogues.each_with_index do |catalogue, index| %>
-				<div class="download-item d-flex">
-					<h2 class="v700 item-number"><%= (index + 1).to_s.rjust(2, '0') %></h2>
-					<p class="v400"><%= catalogue.name %></p>
+				<div class="item d-flex">
+					<h2 class="v700 item__number"><%= (index + 1).to_s.rjust(2, '0') %></h2>
+					<p class="v400 item__name"><%= catalogue.name %></p>
 					<%= link_to rails_blob_path(catalogue.file, disposition: "attachment"), id: "see_more_btn", class: "d-flex" do %>
 						<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
 					<% end %>
