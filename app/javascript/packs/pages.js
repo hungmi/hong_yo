@@ -49,7 +49,7 @@ document.addEventListener("turbolinks:load", function() {
 	var fadeInTimer = setInterval(function() {
 		if (document.querySelectorAll(`ul.slider`).length > 0 && document.querySelectorAll(`#wrapper_home_top > .root`).length > 0) {
 			start = (start % 4) + 1
-			for (indexBg of document.querySelectorAll(`ul.slider > li`)) {
+			for (let indexBg of document.querySelectorAll(`ul.slider > li`)) {
 				indexBg.classList.remove("fadeIn", "fadeOut", "delay-3s")
 				indexBg.classList.add("d-none")
 			}
@@ -58,7 +58,7 @@ document.addEventListener("turbolinks:load", function() {
 				document.querySelector(`ul.slider > li.index-bg${start}`).className += ' fadeIn'
 			}
 
-			for (root of document.querySelectorAll(`#wrapper_home_top > .root`)) {
+			for (let root of document.querySelectorAll(`#wrapper_home_top > .root`)) {
 				root.classList.remove("d-flex", "fadeInLeft", "fadeOutLeft", "delay-3s")
 				root.classList.add("d-none")
 			}
@@ -67,7 +67,7 @@ document.addEventListener("turbolinks:load", function() {
 				document.querySelector(`#wrapper_home_top > .root${start}`).className += ' fadeInLeft'
 			}
 
-			for (seeMoreBtn of document.querySelectorAll(`#wrapper_home_top > .root${start} #see_more_btn`)) {
+			for (let seeMoreBtn of document.querySelectorAll(`#wrapper_home_top > .root${start} #see_more_btn`)) {
 				seeMoreBtn.classList.remove("d-flex", "fadeInLeft", "fadeOutLeft", "delay-3s", "delay-1s", "faster")
 				seeMoreBtn.classList.add("d-none")
 			}

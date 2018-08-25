@@ -9,7 +9,7 @@ window.simpleFormat = function(str) {
   return str;
 }
 
-window.isScrolledIntoView = function(el, offset = 0) {
+function isScrolledIntoView(el, offset = 0) {
     var rect = el.getBoundingClientRect();
     var elemTop = rect.top;
     var elemBottom = rect.bottom;
@@ -21,3 +21,4 @@ window.isScrolledIntoView = function(el, offset = 0) {
     return isVisible;
 }
 
+export default isScrolledIntoView;

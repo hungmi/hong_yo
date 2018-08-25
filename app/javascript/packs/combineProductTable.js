@@ -1,10 +1,10 @@
 document.addEventListener("turbolinks:load", function() {
 	let feature_names = []
-	for (feature_name of document.querySelectorAll(".product_comparison_table_wrapper table:not(.copied_header) tr.attribute_names th")) {
+	for (let feature_name of document.querySelectorAll(".product_comparison_table_wrapper table:not(.copied_header) tr.attribute_names th")) {
 		feature_names.push(feature_name.innerHTML)
 	}
 	// console.log(feature_names)
-	for (feature_name of feature_names) {
+	for (let feature_name of feature_names) {
 		let now_val = ''
 		let expanding = true
 		let tds = document.querySelectorAll(`td[data-name='${feature_name}']`)
@@ -12,7 +12,7 @@ document.addEventListener("turbolinks:load", function() {
 			let current_td = tds[j]
 			now_val = current_td.innerHTML
 			expanding = true
-			console.log(now_val)
+			// console.log(now_val)
 			for (i = 1 + j; i < tds.length; i++) {
 				if (expanding && now_val !== '') {
 					expanding = expanding && (now_val === tds[i].innerHTML)
@@ -25,7 +25,7 @@ document.addEventListener("turbolinks:load", function() {
 		}
 	}
 
-	for (feature_name of feature_names) {
+	for (let feature_name of feature_names) {
 		let now_bg = ''
 		let tds = document.querySelectorAll(`td[data-name='${feature_name}']:not(.d-none)`)
 		for (j = 0; j < tds.length; j++) {

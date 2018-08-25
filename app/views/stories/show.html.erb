@@ -1,6 +1,3 @@
-<a href="/contact" id="contact_btn" class="text-right">
-	<%= image_tag "/img/contact.svg", height: '100px'; %>
-</a>
 <div id="download_sections_wrapper" class="d-flex">
 	<section id="download_bg_section" class="d-flex align-content-end flex-column w-100">
 		<div id="download_bg_wrapper" class="d-flex align-items-end justify-content-center">
@@ -9,7 +6,7 @@
 				background: url(<%= url_for(@story.cover) %>), -moz-linear-gradient(right, #ef0105 0%, #ffd2ad 100%);
 				background: url(<%= url_for(@story.cover) %>), -webkit-linear-gradient(right, #ef0105 0%,#ffd2ad 100%);
 				background: url(<%= url_for(@story.cover) %>), linear-gradient(-45deg, #ef0105 0%,#ffd2ad 100%);
-				background-size: cover;
+				background-size: contain;
 				background-repeat: no-repeat;	
 				background-position: center;"></div>
 			<% else %>
@@ -17,7 +14,7 @@
 				background: -moz-linear-gradient(right, #ef0105 0%, #ffd2ad 100%);
 				background: -webkit-linear-gradient(right, #ef0105 0%,#ffd2ad 100%);
 				background: linear-gradient(-45deg, #ef0105 0%,#ffd2ad 100%);
-				background-size: cover;
+				background-size: contain;
 				background-repeat: no-repeat;	
 				background-position: center;"></div>
 			<% end %>
