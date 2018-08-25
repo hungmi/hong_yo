@@ -1,0 +1,69 @@
+$mainRed: #ef0105
+$mainOrange: #ffd2ad
+$grey: #4d4d4d
+$navbarHeight: 113px
+
+body.pages.download
+	footer
+		width: 100%
+		align-self: flex-end
+		#copyright
+			width: 100% 
+	.main_wrapper
+		height: 100vh
+		max-width: 100%
+	.sections
+		.section
+			&__bg
+				position: absolute
+				top: 0px
+				left: 0px
+				z-index: -1
+				height: 100vh
+				width: 100%
+				background: url("/img/download_bg.jpg") no-repeat right center
+				background-size: cover
+		.items-section
+			margin-top: 150px
+			width: 50%
+			left: 50%
+			position: relative
+			&__title
+				position: absolute
+				left: 0px
+				transform: translateX(-50%)
+			.items-wrapper
+				// height: calc(100vh - 113px - 70px) // - navbarHeight - logoHeight
+				width: 100% // .main_wrapper limit to 1280px max
+				padding: 150px 50px 100px 50px
+				min-height: calc(100vh - 150px)
+				.item
+					margin-bottom: 60px
+					min-height: 110px
+					position: relative
+					&__number
+						min-width: 108px
+						font-size: 54px
+						padding-right: 40px
+						border-right: 1px solid $mainRed
+						color: $mainRed
+					&__name
+						margin-left: 30px
+						margin-bottom: 30px
+						font-size: 18px
+						color: $mainRed
+					#see_more_btn
+						position: absolute
+						bottom: -20px
+						left: 40px
+	@media only screen and (max-width: 767px) // 不含 ipad !!!
+		.items-section
+			width: 100%
+			left: 0
+			&__title
+				left: 50%
+			.item
+				height: auto
+				min-height: 110px
+				&__name
+					padding-bottom: 20px
