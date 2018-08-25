@@ -60,7 +60,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, true
 
-before "deploy:assets:precompile", "deploy:yarn_install"
+# before "deploy:assets:precompile", "deploy:yarn_install"
 
 namespace :deploy do
   desc 'Create Directories for Puma Pids and Socket'
