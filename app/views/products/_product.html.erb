@@ -1,11 +1,11 @@
-<%= link_to product_path(id: product), class: "product_wrapper" do %>
-	<% if product.t_images.attached? %>
-		<div class="product_img" style='background: url("<%= rails_blob_path(product.t_images.first) %>") no-repeat center; background-size: contain;'></div>
-	<% else %>
-		<div class="product_img"></div>
+	<%= link_to product_path(id: product), class: "product_wrapper" do %>
+		<% if product.t_images.attached? %>
+			<div class="product_img" style='background: url("<%= rails_blob_path(product.t_images.first) %>") no-repeat center; background-size: contain;'></div>
+		<% else %>
+			<div class="product_img"></div>
+		<% end %>
+		<span class="product_brand_series">
+			<span class="product_brand"><%= product.category.parent.name %></span> - <span class="product_series"><%= product.category.name %></span>
+		</span>
+		<h3 class="product_name"><%= product.name %></h3>
 	<% end %>
-	<span class="product_brand_series">
-		<span class="product_brand"><%= product.category.parent.name %></span> - <span class="product_series"><%= product.category.name %></span>
-	</span>
-	<h3 class="product_name"><%= product.name %></h3>
-<% end %>

@@ -5,16 +5,16 @@
 	<img src="/img/about_bg.png" alt="" height="100%" width="auto">
 </div>
 <section id="wrapper" class="latest_news d-flex align-content-end flex-column">
-	<div class="section_title_wrapper align-self-center">
+	<div class="section_title_wrapper align-self-center animated fadeInDown fast">
 		<img src="/img/about/latest_news.svg", height="60px">
 	</div>
 	<div id="news_wrapper" class="d-flex justify-content-between flex-wrap align-self-center">
 		<% @stories.each_slice(4).with_index do |news_4, index| %>
-			<% news_4.each do |news| %>
-				<a href="<%= story_path(news) %>" class="news <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
+			<% news_4.each_with_index do |news, delay| %>
+				<a href="<%= story_path(news) %>" class="news animated flipInX <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
 					<div class="news_img"><%= image_tag news.try_cover, alt: news.title %></div>
 					<div class="news_date_title">
-						<p class="news_date v400 mb-2"><%= news.date.strftime("%F") %></p>
+						<p class="news_date v400"><%= news.date.strftime("%Y. %m. %d") %></p>
 						<h5 class="news_title v400 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
 					</div>
 				</a>

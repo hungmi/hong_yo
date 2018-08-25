@@ -1,7 +1,8 @@
-<section id="product_images_section" class="d-flex align-content-end flex-column w-100">
+<section id="product_images_section" class="d-flex align-content-end flex-column">
 	<div id="product_images_wrapper" class="d-flex align-items-end justify-content-center">
 		<% if product.images.attached? %>
-			<div id="product_active_image" style='background-image: url("<%= rails_blob_path(product.images.first) %>")'></div>
+			<div id="product_active_image"
+			style='background-image: url("<%= rails_blob_path(product.images.first) %>"), -moz-linear-gradient(-45deg, #ffd2ad 0%, #ef0105 100%); background-image: url("<%= rails_blob_path(product.images.first) %>"), -webkit-linear-gradient(-45deg, #ffd2ad 0%,#ef0105 100%); background-image: url("<%= rails_blob_path(product.images.first) %>"), linear-gradient(135deg, #ffd2ad 0%,#ef0105 100%);'></div>
 			<div id="product_image_thumbs_wrapper" class="d-flex justify-content-between">
 				<% product.images.each do |img| %>
 					<div class="product_image_thumb">
