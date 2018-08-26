@@ -1,12 +1,12 @@
-<div class="product_comparison">
-	<div class="product_block_title">型號規格</div>
+<div class="product-comparison">
+	<div class="product-data__block-title">型號規格</div>
 	<% if product.persisted? && in_admin? %>
 		<%= link_to new_admin_variety_path(product_id: product.id), class: "btn btn-brand" do %>
       <i class="material-icons">add</i> 建立型號
 		<% end %>
 	<% end %>
 	<% if product.varieties.present? %>
-		<div class="product_comparison_table_wrapper table-responsive">
+		<div class="product-comparison__table-wrapper js-product-comparison__table-wrapper table-responsive">
 			<% names_array = product.all_variety_feature_names.flatten.uniq.sort_by!{ |m| m.downcase } %>
 			<table class="table text-center">
 				<tbody>

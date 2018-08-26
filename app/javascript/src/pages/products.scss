@@ -43,7 +43,7 @@ body.pages.products {
 		}
 		.product_finder_form_wrapper {
 			label {
-				color: white;
+				color: $mainOrange;
 				font-size: 14px;
 			}
 			select {
@@ -78,8 +78,8 @@ body.pages.products {
 		.section_title {
 			height: 100%;
 			margin: 0px;
-  		border-left: 1px solid white;
-  		padding-left: 16px;
+	  		border-left: 1px solid white;
+	  		padding-left: 16px;
 			h2 {
 				margin-bottom: 0px;
 				font-size: 20px;
@@ -100,18 +100,18 @@ body.pages.products {
 		}
 	}
 	#products_section {
-		.product_wrapper {
+		.product {
 			text-decoration: none;
 			cursor: pointer;
 			-webkit-box-flex: 0;
-	    -ms-flex: 0 0 100%;
-	    flex: 0 0 100%;
-	    margin: 0px 53px 90px 53px;
-	    max-width: 289px;
+		    -ms-flex: 0 0 100%;
+		    flex: 0 0 100%;
+		    margin: 0px 53px 90px 53px;
+		    max-width: 289px;
 			width: 289px;
 			// flex: 0 0 289px;
 			// margin-bottom: 90px;
-			.product_img {
+			&__img {
 				height: 334px;
 				background-position: center;
 				background-size: contain;
@@ -122,17 +122,17 @@ body.pages.products {
 				background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 );
 			}
-			.product_brand_series {
+			&__category {
 				color: $mainRed;
-				.product_brand {
+				&--brand {
 					font-size: 16px;
 				}
-				.product_series {
+				&--series {
 					font-size: 15px;
 					font-weight: 400;
 				}
 			}
-			.product_name {
+			&__name {
 				font-size: 20px;
 				font-weight: 400;
 				color: $grey;

@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:before-cache", function() {
-	let copied_header = document.querySelector(".product_comparison_table_wrapper table.table.copied_header")
+	let copied_header = document.querySelector(".js-product-comparison__table-wrapper table.table.copied_header")
 	if (copied_header !== null) {
 		copied_header.parentNode.removeChild(copied_header)	
 		console.log("silently remove!")
@@ -7,7 +7,7 @@ document.addEventListener("turbolinks:before-cache", function() {
 })
 
 document.addEventListener("turbolinks:load", function() {
-	let target_table = document.querySelector(".product_comparison_table_wrapper table.table")
+	let target_table = document.querySelector(".js-product-comparison__table-wrapper table.table")
 	if (target_table !== null) {
 		copyTableHeader(target_table);
 	}

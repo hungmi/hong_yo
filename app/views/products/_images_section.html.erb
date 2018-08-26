@@ -1,22 +1,21 @@
-<section id="product_images_section" class="d-flex align-content-end flex-column">
-	<div id="product_images_wrapper" class="d-flex align-items-end justify-content-center">
+<section class="d-flex align-content-end flex-column images-section">
+	<div class="d-flex align-items-end justify-content-center images-wrapper">
 		<% if product.images.attached? %>
-			<div id="product_active_image"
-			style='background-image: url("<%= rails_blob_path(product.images.first) %>"), -moz-linear-gradient(-45deg, #ffd2ad 0%, #ef0105 100%); background-image: url("<%= rails_blob_path(product.images.first) %>"), -webkit-linear-gradient(-45deg, #ffd2ad 0%,#ef0105 100%); background-image: url("<%= rails_blob_path(product.images.first) %>"), linear-gradient(135deg, #ffd2ad 0%,#ef0105 100%);'></div>
-			<div id="product_image_thumbs_wrapper" class="d-flex justify-content-between">
+			<div class="image--active js-image--active"
+			style='background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>");'></div>
+			<div class="image--blur-bg js-image--blur-bg" style='background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>"); filter: blur(5px);'></div>
+			<div class="d-flex justify-content-between image-thumbs">
 				<% product.images.each do |img| %>
-					<div class="product_image_thumb">
-						<%= image_tag img %>
-					</div>
+					<%= image_tag img, class: "image--thumb js-image--thumb" %>
 				<% end %>
 			</div>
 		<% else %>
-			<div id="product_active_image"></div>
-			<div id="product_image_thumbs_wrapper" class="d-flex justify-content-between">
-				<div class="product_image_thumb">
+			<!-- <div class="image--active"></div>
+			<div class="d-flex justify-content-between images">
+				<div class="image">
 					<img src="">
 				</div>
-			</div>
+			</div> -->
 		<% end %>
 	</div>
 </section>

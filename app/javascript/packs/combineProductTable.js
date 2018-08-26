@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function() {
 	let feature_names = []
-	for (let feature_name of document.querySelectorAll(".product_comparison_table_wrapper table:not(.copied_header) tr.attribute_names th")) {
+	for (let feature_name of document.querySelectorAll(".js-product-comparison__table-wrapper table:not(.copied_header) tr.attribute_names th")) {
 		feature_names.push(feature_name.innerHTML)
 	}
 	// console.log(feature_names)

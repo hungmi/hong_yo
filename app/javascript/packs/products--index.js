@@ -40,10 +40,6 @@ document.addEventListener("turbolinks:load", function() {
 	}
 })
 
-$(document).on("click", ".product_image_thumb img", function(e) {
-	document.querySelector("#product_active_image").style.backgroundImage = `url('${e.target.src}')`
-})
-
 function updateRelatedOptions(target, ref) {
 	$.ajax({
 		url: `/categories/${ref}/children`,

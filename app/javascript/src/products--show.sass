@@ -1,0 +1,143 @@
+$mainRed: #ef0105
+$mainOrange: #ffd2ad
+$grey: #4d4d4d
+$navbarHeight: 113px
+$rightWidth: 800px
+body.products.show
+	.sections
+		.images-section
+			height: 100%
+			width: calc(100% - #{$rightWidth})
+			position: fixed
+			.images-wrapper
+				height: 100%
+				position: relative
+				.image
+					&-thumbs
+						margin-bottom: 28px
+						.image--thumb
+							cursor: pointer
+							width: 90px
+							height: 90px
+							background: white
+							&:not(:last-child)
+								margin-right: 10px 
+							img
+								height: 100%
+					&--active, &--blur-bg
+						position: absolute
+						top: 0px
+						left: 0px
+						z-index: -1
+						height: 100%
+						width: 100%
+						background-position: center
+						background-size: contain
+						background-repeat: no-repeat
+						// background: #ef0105
+						// background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%)
+						// background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%)
+						// background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%)
+						// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 )
+					&--blur-bg
+						z-index: -2
+						background-size: cover
+		.product-data-section
+			margin-top: 150px
+			width: $rightWidth
+			position: absolute
+			right: 0px
+			.product-data
+				padding: 0px 104px
+				&__category
+					color: $mainRed
+					&--brand
+						font-size: 16px
+					&--series
+						font-size: 15px
+						font-weight: 400
+				&__variety
+					margin-top: 20px
+					label
+						color: $mainRed
+						border: 1px solid $mainRed
+						padding: 0px 8px
+						line-height: 40px
+						font-size: 16px
+				&__name
+					margin-top: 45px
+					font-size: 30px
+					color: $grey
+				&__detail
+					margin-top: 77px	
+				&__description
+					font-weight: 200
+					font-size: 16px
+					padding-left: 5px
+					font-family: 'Noto Sans TC', sans-serif
+					line-height: 28px
+				&__title
+					border-bottom: 1px solid $grey
+					font-size: 18px
+					padding-bottom: 6px
+					padding-left: 5px
+					margin-bottom: 17px
+				&__block-title
+					font-size: 18px
+					padding-bottom: 6px
+					padding-left: 5px
+					margin-bottom: 17px
+					border-bottom: 1px solid #4d4d4d
+			#select2-product_variety_name-container
+				border: 1px solid $mainRed
+			.select2-selection.select2-selection--single:focus
+				outline: 0 
+			
+			#see_more_btn
+				width: 100%
+				margin-top: 40px
+				.download_dm_text
+					margin-left: auto
+					margin-right: auto
+			.related-products
+				margin: 90px 0px
+	@media only screen and (max-width: 768px)
+		.product-data-section
+			margin-top: 200px
+			min-width: auto
+			width: 100%
+			left: 0px
+			.product__name
+				margin-bottom: 30px
+			.images-section
+				position: initial
+				height: calc(100vw + 90px + 28px + 10px)  // #product_image_thumbs_wrapper margin
+				.images-wrapper
+					.image
+						&--active
+							width: 100vw
+							height: 100vw
+							left: -30px // .product-data-wrapper padding
+						&-thumbs
+							margin: 10px 0px 28px 0px
+							max-width: 290px
+							overflow-x: scroll
+							.image--thumb
+								min-width: 90px
+			.product-data
+				padding: 0px 30px
+			.product-comparison
+				margin-top: 90px
+
+	footer
+		#copyright
+			width: 100%
+	@media only screen and (max-width: 768px)
+		#main_footer
+			height: 350px
+			padding-top: 120px
+	[id^=select2-product_variety_name-result-]
+		font-size: 16px
+		font-family: 'viato-n7',"viato", Noto Sans TC,PingFangTC-Semibold, xingothic-tc, sans-serif, Microsoft JhengHei
+		font-weight: 700
+		padding-left: 12px

@@ -1,14 +1,14 @@
-<div id="product_sections_wrapper" class="d-flex">
+<div class="d-flex sections">
 
 	<%= render "images_section", product: @product.twin || @product %>
 
-	<section id="product_data_section" class="d-flex align-content-end flex-column">
-		<div id="product_data_wrapper" class="d-flex flex-column">
-			<span class="product_brand_series v700">
-				<span class="product_brand"><%= @product.category.parent.name %></span> - <span class="product_series"><%= @product.category.name %></span>
+	<section class="d-flex align-content-end flex-column product-data-section">
+		<div class="d-flex flex-column product-data">
+			<span class="product-data__category v700">
+				<span class="product-data__category--brand"><%= @product.category.parent.name %></span> - <span class="product__category--series"><%= @product.category.name %></span>
 			</span>
-			<div class="product_variety_name d-flex">
-				<label for="product_variety_name" class="v700 mb-0 border-right-0">MDOEL</label>
+			<div class="product-data__variety d-flex">
+				<label for="product-data_variety_name" class="v700 mb-0 border-right-0">MDOEL</label>
 				<%= select_tag :product_variety_name, options_from_collection_for_select(@product.varieties, "id", "zh_name"), prompt: "Choose one to highlight", class: 'form-control v700 select2' %>
 				<!-- <select name="product[model]" id="product_model" class="form-control v700">
 					<option value="1">01 Life Science Animal Science</option>
@@ -17,11 +17,11 @@
 				</select> -->
 			</div>
 
-			<h2 class="product_name"><%= @product.name %></h2>
+			<h2 class="product-data__name"><%= @product.name %></h2>
 
-			<div class="product_detail">
-				<div class="product_block_title">DETAIL</div>
-				<div class="product_detail_content">
+			<div class="product-data__detail">
+				<div class="product-data__title">DETAIL</div>
+				<div class="product-data__description">
 					<%= simple_format @product.description %>
 				</div>
 				<% if @product.t_file.attached? %>
@@ -33,37 +33,10 @@
 
 			<%= render "comparison_table", product: @product.twin || @product %>
 
-			<div class="product_related">
-				<div class="product_block_title">RELATED PRODUCTS</div>
-				<div class="related_products d-flex flex-wrap justify-content-between">
+			<div class="related-products">
+				<div class="product-data__block-title">RELATED PRODUCTS</div>
+				<div class="related-products__products d-flex flex-wrap justify-content-between">
 					<%= render @product.category.products.limit(4) %>
-					<!-- <a href="#" class="product_wrapper">
-						<div class="product_img">
-							<img src="">
-						</div>
-						<span class="product_brand_series">
-							<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
-						</span>
-						<h3 class="product_name">滅菌型 / 直熱式二氧化碳培養箱</h3>
-					</a>
-					<a href="#" class="product_wrapper">
-						<div class="product_img">
-							<img src="">
-						</div>
-						<span class="product_brand_series">
-							<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
-						</span>
-						<h3 class="product_name">滅菌型 / 直熱式二氧化碳培養箱</h3>
-					</a>
-					<a href="#" class="product_wrapper">
-						<div class="product_img">
-							<img src="">
-						</div>
-						<span class="product_brand_series">
-							<span class="product_brand">ASTEC</span> - <span class="product_series">滅菌型培養箱</span>
-						</span>
-						<h3 class="product_name">滅菌型 / 直熱式二氧化碳培養箱</h3>
-					</a> -->
 				</div>
 			</div>
 		</div>   <!-- #product_data_wrapper -->

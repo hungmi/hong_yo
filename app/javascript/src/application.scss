@@ -2,7 +2,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./vendor/variables";
 @import "./vendor/bootstrap_overrides";
-@import "./vendor/select2_overrides";
+@import "./vendor/select2_overrides.sass";
 @import "./common/nav";
 @import "./common/footer";
 @import "./common/contact_btn";
@@ -16,7 +16,8 @@
 @import "./pages/about";
 @import "./pages/contact_us";
 @import "./pages/stories";
-@import "./products";
+@import "./products.sass";
+@import "./products--show.sass";
 @import "./product_comparison";
 
 .turbolinks-progress-bar {

@@ -1,0 +1,63 @@
+$mainRed: #ef0105
+$mainOrange: #ffd2ad
+$grey: #4d4d4d
+$navbarHeight: 113px
+$rightWidth: 800px
+body.products
+	.select2-container
+		display: block
+		width: auto !important
+	.select2-container--default .select2-selection--single
+		border: none
+		border-radius: 0px
+		height: 40px
+		.select2-selection__rendered
+			color: $mainRed
+			line-height: 40px
+			padding-left: 12px
+			padding-right: 40px
+			font-size: 16px
+			font-family: 'viato-n7',"viato", Noto Sans TC,PingFangTC-Semibold, xingothic-tc, sans-serif, Microsoft JhengHei
+			font-weight: 700
+		.select2-selection__arrow
+			height: 40px
+			b
+				border-color: $mainRed transparent transparent transparent
+				border-width: 10px 8px 0 8px
+				left: 0px
+				top: calc(50% - 4px)
+	.select2-results__options
+		background: -moz-linear-gradient(left, #ffd2ad 0%, #ef0105  100%)
+		background: -webkit-linear-gradient(left, #ffd2ad 0%, #ef0105 100%)
+		background: linear-gradient(to right, #ffd2ad 0%, #ef0105 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 )
+	.select2-container--default .select2-results__option
+		background-color: $mainRed
+		color: white
+		padding: 6px 8px 6px 22px
+		margin-bottom: 1px
+		&:last-child
+			margin-bottom: 0px
+	[id^=select2-product_category-result-], [id^=select2-product_brand-result-]
+		font-size: 16px
+		font-family: 'viato-n7',"viato", Noto Sans TC,PingFangTC-Semibold, xingothic-tc, sans-serif, Microsoft JhengHei
+		font-weight: 700
+	.select2-container--default .select2-results__option--highlighted[aria-selected]
+		background-color: $mainRed
+		// border-left: 1px solid $mainOrange
+		background: #ef0105; /* Old browsers */
+		background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 8px, #ef0105 8px, #ef0105 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 8px,#ef0105 8px,#ef0105 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to right, #ef0105 0%,#ffd2ad 8px,#ef0105 8px,#ef0105 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ef0105',GradientType=1 ); /* IE6-9 */
+	#select2-product_series-container, [id^=select2-product_series-result-]
+		font-size: 15px
+		font-weight: 400
+	label[for="product_category"]
+		width: 100%
+		padding: 0px 13px
+	.two_selects_wrapper
+		padding: 0px 13px
+		label[for="product_brand"], label[for="product_series"]
+			width: 50%
+			padding: 0px

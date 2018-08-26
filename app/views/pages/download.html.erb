@@ -1,6 +1,6 @@
 <div class="sections d-flex">
-	<section class="d-none d-md-flex align-content-end flex-column position-fixed w-50">
-		<div class="section__bg"></div>
+	<section class="bg-section d-none d-md-flex align-content-end flex-column position-fixed">
+		<div class="bg-section__bg"></div>
 	</section>
 
 	<section class="items-section d-flex align-content-end flex-column">
@@ -10,7 +10,7 @@
 			<% @catalogues.each_with_index do |catalogue, index| %>
 				<div class="item d-flex">
 					<h2 class="v700 item__number"><%= (index + 1).to_s.rjust(2, '0') %></h2>
-					<p class="v400 item__name"><%= catalogue.name %></p>
+					<%= simple_format catalogue.name, class: "v400 item__name" %>
 					<%= link_to rails_blob_path(catalogue.file, disposition: "attachment"), id: "see_more_btn", class: "d-flex" do %>
 						<div class="mr-auto align-self-center see_more_text v700">DOWNLOAD</div><div class="align-self-center" id="triangle-right"></div>
 					<% end %>
