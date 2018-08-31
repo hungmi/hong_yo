@@ -3,7 +3,7 @@
 </div>
 <section id="products_finder_section" class="d-flex align-content-end flex-column">
 	<% if @root.finder_bg.attached? %>
-		<div id="products_finder_wrapper" class="d-flex" style="background: url('<%= rails_blob_path(@root.finder_bg) %>'), #ef0105;">
+		<div id="products_finder_wrapper" class="d-flex" style="background: url('<%= rails_blob_path(@root.finder_bg) %>'), #ef0105;" data-target="root_bg">
 	<% else %>
 		<div id="products_finder_wrapper" class="d-flex" data-target="root_bg">
 	<% end %>
