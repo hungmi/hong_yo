@@ -10,6 +10,7 @@ document.addEventListener("turbolinks:load", function() {
 	var $product_model = $("select#product_variety_name")
 	$(document).on('select2:select', $product_category, function (e) {
 	  if (e.target.id == "product_category" && e.params.data.id.length !== 0) {
+	 		console.log("updating")
 		  let selected_option_original_element = e.target.querySelector(`option[value='${e.params.data.id}']`)
 		  document.querySelector("[data-target='root_id']").innerHTML = selected_option_original_element.getAttribute("data-id")
 		  document.querySelector("[data-target='root_name']").innerHTML = simpleFormat(selected_option_original_element.getAttribute("data-name"))
@@ -50,6 +51,7 @@ function updateRelatedOptions(target, ref) {
 	}).done(function(children) {
 		if (children === undefined) {
 			console.log("no children")
+			document.querySelector(`#${target}`).innerHTML = ""
 		}
 	}).fail(function() {
 		console.log("failed")

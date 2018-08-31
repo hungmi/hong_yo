@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
 			if @category.children.present?
 				format.js
 			else
-				format.js { head :ok }
+				format.js { head :no_content }
 			end
 		end
 	end
