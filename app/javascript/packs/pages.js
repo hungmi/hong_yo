@@ -1,37 +1,3 @@
-$(document).on("click", ".dot_wrapper", function(e) {
-	console.log(e.target)
-	var active_page = e.target.getAttribute("data-page")
-	var active_news_group = document.querySelector(`.js-news-group[data-page='${active_page}']`)
-	if ( document.querySelectorAll(`.js-news-group[data-page='${active_page}']`) !== undefined ) {
-		for (let dot of document.querySelectorAll(".dot_wrapper")) { dot.classList.remove("active") }
-		e.target.classList.add("active")
-		console.log(e.target)
-		for (let group of document.querySelectorAll(".js-news-group")) { group.classList.remove("active") }
-		active_news_group.classList.add("active")
-	}
-})
-
-$(document).on("click", ".red_rec", function(e) {
-	e.target.classList.add("active")
-	var active_year = e.target.getAttribute("data-year")
-	if ( historyData[active_year] !== undefined ) {
-		document.querySelector("#wrapper.history").querySelector(".paragraph_wrapper span.year_active").innerHTML = active_year
-		document.querySelector("#wrapper.history").querySelector(".paragraph_wrapper > p").innerHTML = historyData[active_year]
-		document.querySelector("#wrapper.history").querySelector(".years_wrapper .year_anchor").style.top = e.target.style.top
-	}
-})
-
-var historyData = {
-	en: {
-		1998: 'Hongyou Technology Co., Ltd. was founded in 1998 and is the ex&#8208;clusive agent of Japan ASTEC (DNA Amplifier, CO2 Incubator) in Taiwan. The company also represents and sells cutting-edge equipment related to biotechnology/medical research and has obtained various research units in China. The adoption of pharmaceutical related industries. In the field of reproductive centers, we have successfully sold small carbon dioxide / three gas incubators, VOC filters, vitrified rapid freezing / thawing reagents and other related products. Distribution of ADVANTEC filtration related products such as filter membranes, filter paper, filter and pressure tanks and other filtration equipment. In the semiconductor division, we have added various types of PFA products, designed and manufactured stainless steel filtration equipment, various pressure vessels, and agita- tion filtration equipment, and our sales performance customers include major semiconductors, special chemicals, and photovoltaic power plants.',
-		2002: 'this is 2002!'
-	},
-	zh: {
-		1998: "1998 弘優科技創立於台北<br>銷售日本ADVANTEC<br>◎ 濾心、濾紙、過濾設備、快速接頭等",
-		2002: ""
-	},
-}
-
 document.addEventListener("turbolinks:load", function() {
 	let waitfadeIn = 2000
 	let loopTime = 6000

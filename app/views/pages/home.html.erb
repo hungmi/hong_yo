@@ -24,7 +24,7 @@
 				<%= simple_format root.try(:description), class: "v300" %>
 			</div>
 			<a href="<%= products_path(root_id: root.try(:id)) %>" id="see_more_btn" class="animated <%= index == 0 ? 'd-flex fadeInLeft delay-2s faster' : 'd-none' %>">
-				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
+				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center triangle--right"></div>
 			</a>
 		</div>
 	<% end %>
@@ -52,7 +52,7 @@
 		<img src="/img/news_dynamic/8@2x.png" width="100%;" class="fading delayed">
 		<img src="/img/news_dynamic/9@2x.png" width="100%;" class="fading">
 	</div>
-	<div id="news_wrapper" class="d-flex justify-content-center">
+	<div id="news_wrapper" class="news-group d-flex justify-content-center">
 		<% if @stories.present? %>
 			<% @stories.each do |news| %>
 				<a href="<%= story_path(news) %>" class="news">
@@ -72,7 +72,7 @@
 		<% end %>
 	</div>
 	<a href="<%= about_path %>" id="see_more_btn" class="d-flex align-self-center invisible animated">
-		<div class="mr-auto align-self-center see_more_text v700">SEE MORE NEWS</div><div class="align-self-center" id="triangle-right"></div>
+		<div class="mr-auto align-self-center see_more_text v700">SEE MORE NEWS</div><div class="align-self-center triangle--right"></div>
 	</a>
 </section>
 
@@ -100,7 +100,7 @@
 					</div>
 				</div>
 				<a href="<%= products_path(root_id: root.id) %>" id="see_more_btn" class="d-flex">
-					<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
+					<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center triangle--right"></div>
 				</a>
 			</div>
 		</div>
@@ -126,7 +126,7 @@
 				</div>
 			</div>
 			<a href="<%= products_path %>" id="see_more_btn" class="d-flex">
-				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center" id="triangle-right"></div>
+				<div class="mr-auto align-self-center see_more_text v700">SEE MORE</div><div class="align-self-center triangle--right"></div>
 			</a>
 		</div>
 	</div> -->

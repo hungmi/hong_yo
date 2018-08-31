@@ -32,7 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/zh-TW.js"></script>
   </head>
 
-  <body class="<%= controller_name %> <%= action_name %> front <%= 'mobile' if browser.mobile? %>">
+  <body class="<%= controller_name %> <%= action_name %> front <%= 'mobile' if browser.mobile? %> <%= I18n.locale %>">
     <%= render "common/nav" %>
     <%= render "common/contact_btn" %>
     <div class="main_wrapper">
