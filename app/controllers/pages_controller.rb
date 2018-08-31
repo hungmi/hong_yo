@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    disable_turbolinks_preview_cache
     @stories = Story.order(updated_at: :desc).with_attached_cover.published.limit(3)
   end
 

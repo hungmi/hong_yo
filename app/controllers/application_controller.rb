@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 	helper_method :current_user, :user_signed_in?
 	# after_action :verify_authorized
 	before_action :set_locale
+	include TurbolinksCacheControl
 	 
 	def set_locale
 	  I18n.locale = params[:locale] || I18n.default_locale

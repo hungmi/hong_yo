@@ -71,7 +71,9 @@ function getCategoryProducts(category_id) {
 
 function moveImagesSectionToMobilePostion() {
 	let product_images_section = document.querySelector("#product_images_section");
-	let someHTML = product_images_section.outerHTML;
-	product_images_section.parentNode.removeChild(product_images_section);
-	document.querySelector("h2.product_name").insertAdjacentHTML('afterend', someHTML)
+	if (product_images_section !== null) {
+		let someHTML = product_images_section.outerHTML;
+		product_images_section.parentNode.removeChild(product_images_section);
+		document.querySelector("h2.product_name").insertAdjacentHTML('afterend', someHTML)
+	}
 }
