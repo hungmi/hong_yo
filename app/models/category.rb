@@ -12,14 +12,7 @@ class Category < ApplicationRecord
 
 	def destroy_itself_and_children_and_products!
 		# puts self.leaves.pluck(:id)
-		products = Product.where(category_id: self.self_and_descendants.pluck(:id))
-		products.map do |product|
-			twins = Product.where(twin_id: product.id)
-			if twins.present?
-				twins.map(&:destroy!)
-			end
-			product.destroy!
-		end
+		Product.where(category_id: self.self_and_descendants.pluck(:id)).map(&:destroy!)
 		self.destroy!
 	end
 
