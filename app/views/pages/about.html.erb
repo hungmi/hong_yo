@@ -5,10 +5,11 @@
 	<div class="section_title_wrapper align-self-center animated fadeInDown fast">
 		<img src="/img/about/latest_news.svg", height="60px">
 	</div>
-	<div id="news_wrapper" class="d-flex justify-content-between flex-wrap align-self-center">
-		<% @stories.each_slice(4).with_index do |news_4, index| %>
-			<% news_4.each_with_index do |news, delay| %>
-				<a href="<%= story_path(news) %>" class="news animated flipInX <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
+	<% per = browser.mobile? ? 1 : 4 %>
+	<% @stories.each_slice(per).with_index do |news_per, index| %>
+		<div class="news-group js-news-group d-flex justify-content-between flex-wrap align-self-center <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
+			<% news_per.each_with_index do |news, delay| %>
+				<a href="<%= story_path(news) %>" class="news animated flipInX">
 					<div class="news_img"><%= image_tag news.try_cover, alt: news.title %></div>
 					<div class="news_date_title">
 						<p class="news_date v400"><%= news.date.strftime("%Y. %m. %d") %></p>
@@ -16,10 +17,10 @@
 					</div>
 				</a>
 			<% end %>
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 	<div class="dots d-flex justify-content-center">
-		<% @stories.each_slice(4).with_index do |news_4, index| %>
+		<% @stories.each_slice(per).with_index do |news_per, index| %>
 			<div class="dot_wrapper <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
 				<div class="dot"></div>
 			</div>	

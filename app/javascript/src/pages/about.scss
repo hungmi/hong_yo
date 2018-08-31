@@ -18,10 +18,20 @@ body.pages.about {
 	#wrapper.latest_news {
 		margin-top: 160px;
 		margin-bottom: 40px;
-		#news_wrapper {
-			width: 940px;
-			margin-top: 40px;
-			margin-bottom: 35px; // 55 - 上方 news 多的 mb 20px
+		.news-group {
+			margin: 0px;
+			&.active {
+				width: 940px;
+				margin-top: 40px;
+				margin-bottom: 35px; // 55 - 上方 news 多的 mb 20px
+				height: 280px;
+				.news {
+					height: 120px;
+					transition: .5s;
+					display: flex;
+					opacity: 1;
+				}
+			}
 			a.news {
 				text-decoration: none;
 			}
@@ -39,11 +49,6 @@ body.pages.about {
 				transition: .5s;
 				opacity: 0;
 				display: none;
-				&.active {
-					transition: .5s;
-					display: flex;
-					opacity: 1;
-				}
 				.news_date_title {
 					padding-left: 23px;
 					padding-top: 21px;
@@ -257,7 +262,7 @@ body.pages.about {
 			}
 		}
 		&.active {
-			.dot { background: $mainOrange; }
+			.dot { background: #F4443A; }
 		}
 	}
 	.dot {

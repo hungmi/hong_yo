@@ -16,7 +16,7 @@ body.pages.home {
 				}
 			}
 		}
-		#news_wrapper {
+		.news-group {
 			z-index: $zindex-dropdown; // 1000
 			padding-top: 165px; // 187px;
 			.news {

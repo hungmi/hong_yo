@@ -1,13 +1,13 @@
 $(document).on("click", ".dot_wrapper", function(e) {
 	console.log(e.target)
 	var active_page = e.target.getAttribute("data-page")
-	var active_news = document.querySelectorAll(`#news_wrapper .news[data-page='${active_page}']`)
-	if ( document.querySelectorAll(`#news_wrapper .news[data-page='${active_page}']`) !== undefined ) {
+	var active_news_group = document.querySelector(`.js-news-group[data-page='${active_page}']`)
+	if ( document.querySelectorAll(`.js-news-group[data-page='${active_page}']`) !== undefined ) {
 		for (let dot of document.querySelectorAll(".dot_wrapper")) { dot.classList.remove("active") }
 		e.target.classList.add("active")
 		console.log(e.target)
-		for (let single_one of document.querySelectorAll("#news_wrapper .news")) { single_one.classList.remove("active") }
-		for (let active_one of active_news) { active_one.classList.add("active") }
+		for (let group of document.querySelectorAll(".js-news-group")) { group.classList.remove("active") }
+		active_news_group.classList.add("active")
 	}
 })
 
