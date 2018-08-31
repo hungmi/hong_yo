@@ -31,7 +31,9 @@
 				<% end %>
 			</div>
 
-			<%= render "comparison_table", product: @product.twin || @product %>
+			<% if @product.varieties.present? %>
+				<%= render "comparison_table", product: @product.twin || @product %>
+			<% end %>
 
 			<div class="related-products">
 				<div class="product-data__block-title">RELATED PRODUCTS</div>
