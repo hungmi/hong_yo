@@ -79,8 +79,11 @@ body.pages.contact_us {
 		}
 	}
 	@media only screen and (max-width: 768px) {
+		.main_wrapper {
+			background-position: -1160px;
+		}
 		#wrapper {
-			padding-top: 140px;
+			padding-top: 190px;
 		}
 		#contact_us_wrapper {
 			margin-top: -28px;
