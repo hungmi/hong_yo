@@ -66,10 +66,9 @@ body.products.show
 						font-size: 16px
 				&__name
 					margin-top: 45px
+					margin-bottom: 70px
 					font-size: 30px
 					color: $grey
-				&__detail
-					margin-top: 77px	
 				&__description
 					font-weight: 200
 					font-size: 16px
@@ -102,32 +101,39 @@ body.products.show
 			.related-products
 				margin: 90px 0px
 	@media only screen and (max-width: 768px)
-		.product-data-section
-			margin-top: 200px
-			min-width: auto
-			width: 100%
-			left: 0px
-			.product__name
-				margin-bottom: 30px
-			.images-section
-				position: initial
-				height: calc(100vw + 90px + 28px + 10px)  // #product_image_thumbs_wrapper margin
-				.images-wrapper
-					.image
-						&--active
-							width: 100vw
-							height: 100vw
-							left: -30px // .product-data-wrapper padding
-						&-thumbs
-							margin: 10px 0px 28px 0px
-							max-width: 290px
-							overflow-x: scroll
-							.image--thumb
-								min-width: 90px
-			.product-data
-				padding: 0px 30px
-			.product-comparison
-				margin-top: 90px
+		.sections
+			.product-data-section
+				margin-top: 200px
+				min-width: auto
+				width: 100%
+				left: 0px
+				.product__name
+					margin-bottom: 30px
+				.images-section
+					position: initial
+					height: calc(100vw + 90px + 28px + 10px)  // #product_image_thumbs_wrapper margin
+					width: 100%
+					margin-bottom: 55px
+					.images-wrapper
+						.image
+							&--active, &--blur-bg
+								width: 100vw
+								height: 100vw
+								left: -30px // .product-data-wrapper padding
+							&--blur-bg
+								height: 100%
+							&-thumbs
+								margin: 10px 0px 28px 0px
+								max-width: 290px
+								overflow-x: scroll
+								.image--thumb
+									min-width: 90px
+				.product-data
+					padding: 0px 30px
+					&__name
+						margin-bottom: 45px
+				.product-comparison
+					margin-top: 90px
 
 	footer
 		#copyright
