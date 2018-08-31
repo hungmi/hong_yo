@@ -35,7 +35,10 @@
 					<label for="content">Content *</label>
 					<textarea name="contact[content]" rows="10" required></textarea>
 				</div>
-				<%= f.submit "SEND", data: { disable_with: "Sending..." }, id: "see_more_btn", class: "submit align-self-end" %>
+				<div class="input_wrapper">
+					<label for="submit" class="invisible"></label>
+					<%= f.submit "SEND", data: { disable_with: "Sending..." }, id: "see_more_btn", class: "submit align-self-end" %>				
+				</div>
 			<% end %>
 		</div>
 	</div>
