@@ -27,6 +27,9 @@
 									<%= link_to edit_admin_category_path(root), class: "btn btn-primary btn-sm nav-sm-link" do %>
 			              編輯名稱及圖示
 			            <% end %>
+			            <%= link_to admin_category_path(root), class: "btn btn-danger btn-sm nav-sm-link", method: :delete, data: { confirm: "這會刪除底下的所有分類、產品、資料，而且無法復原，真的要繼續嗎？" } do %>
+			              刪除
+			            <% end %>
 			          </span>
 							</li>
 						<% end %>
@@ -63,6 +66,9 @@
 						          <% end %>
 					            <%= link_to edit_admin_category_path(child), class: "btn btn-primary btn-sm nav-sm-link" do %>
 					              編輯
+					            <% end %>
+					            <%= link_to admin_category_path(child), class: "btn btn-danger btn-sm nav-sm-link", method: :delete, data: { confirm: "這會刪除底下的所有分類、產品及其複製的產品、資料，而且無法復原，真的要繼續嗎？" } do %>
+					              刪除
 					            <% end %>
 										</span>
 									</li>

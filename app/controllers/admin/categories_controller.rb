@@ -54,7 +54,8 @@ class Admin::CategoriesController < AdminController
 	end
 
 	def destroy
-		if @category.destroy
+		leave_ids = @category.leaves.pluck(:id)
+		if @category.destroy_itself_and_children_and_products!
 			flash[:success] = "刪除成功。"
 		else
 			flash[:danger] = "刪除失敗。"

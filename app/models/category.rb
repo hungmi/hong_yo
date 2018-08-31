@@ -4,11 +4,24 @@ class Category < ApplicationRecord
 
 	validates :zh_name, presence: { message: "中文、英文名稱至少需填寫一個。" }, unless: Proc.new { |s| s.en_name.present? }
 	acts_as_nested_set
-	has_many :products
+	has_many :products, dependent: :destroy
 	has_one_attached :cover
 	has_one_attached :product_cover
 	has_one_attached :hero_cover
 	has_one_attached :finder_bg
+
+	def destroy_itself_and_children_and_products!
+		# puts self.leaves.pluck(:id)
+		products = Product.where(category_id: self.self_and_descendants.pluck(:id))
+		products.map do |product|
+			twins = Product.where(twin_id: product.id)
+			if twins.present?
+				twins.map(&:destroy!)
+			end
+			product.destroy!
+		end
+		self.destroy!
+	end
 
 	def self.available_levels
 		[["總類", self.roots.pluck(:zh_name, :id)], ["品牌", self.brand.pluck(:zh_name, :id)]]

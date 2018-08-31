@@ -142,6 +142,9 @@
 
 <div class="card-footer ">
 	<%= submit_tag I18n.t("helpers.submit.#{action_name}"), class: "btn btn-fill btn-brand", form: @form_id %>
+	<% if product.persisted? %>
+		<%= link_to I18n.t("text.destroy"), admin_product_path(product), class: "btn btn-fill btn-danger float-right", method: :delete, data: { confirm: "這會刪除產品資料，以及所有複製品，並且無法復原，真的要繼續嗎？" } %>
+	<% end %>
 </div>
 
 <script>
