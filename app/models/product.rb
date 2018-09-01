@@ -15,7 +15,7 @@ class Product < ApplicationRecord
 	end
 
 	def detroy_twins!
-		puts "callback is called"
+		# puts "callback is called"
 		twins = Product.where(twin_id: self.id)
 		if twins.present?
 			twins.map(&:destroy!)

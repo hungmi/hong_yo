@@ -1,0 +1,72 @@
+body.pages.home 
+	.latest-news-section 
+		padding-top: 150px
+		#news_bg_wrapper 
+			position: relative
+			padding-top: 85px
+			& > img 
+				position: absolute
+				&.fading 
+					opacity: 0
+					/*-- Add animation --*/ 
+					animation: fade-out 8s infinite both
+					&.delayed 
+						animation-delay: 4s
+		
+		.news-group 
+			z-index: $zindex-dropdown // 1000
+			padding-top: 165px // 187px
+			.news 
+				border: 12px solid $mainRed
+				border-bottom: 30px solid $mainRed
+				background: $mainRed
+				width: 280px
+				text-decoration: none
+				&:not(:last-child) 
+					margin-right: 12px
+				&__img 
+					img 
+						width: 100%
+					background: #ffcccc
+					background: -webkit-linear-gradient(left, #ffcccc 0%, #e5e5e5 100%)
+					background: -o-linear-gradient(left, #ffcccc 0%, #e5e5e5 100%)
+					background: linear-gradient(to right, #ffcccc 0%, #e5e5e5 100%)
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcccc', endColorstr='#e5e5e5',GradientType=1 )
+				&__date-title
+					padding-left: 8px
+				&__date
+					margin-top: 12px
+					font-size: 15px
+					color: #FFD0B1
+				&__title 
+					font-size: 24px
+					color: white
+					height: 56px
+					overflow: hidden
+				
+		#see_more_btn 
+			margin-top: 75px
+		
+	@media only screen and (max-width: 768px) 
+		.latest-news-section 
+			padding-top: 400px
+			#news_bg_wrapper 
+				display: none
+			.news-group 
+				padding-top: 35px
+				.news
+					border: 8px solid $mainRed
+					border-bottom: 19px solid $mainRed
+					&__title 
+						line-height: normal
+						font-size: 18px
+			#see_more_btn
+				margin-top: -20px
+
+@keyframes fade-out 
+	33%
+		opacity: 1
+	
+	66%
+		opacity: 0
+	

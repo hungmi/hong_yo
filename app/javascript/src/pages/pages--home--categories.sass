@@ -1,0 +1,125 @@
+body.pages.home
+	.categories-section
+		padding-top: 220px
+		width: 1120px
+		margin-bottom: 262px
+		.home_product
+			margin-top: 230px
+			background-size: contain
+			background-repeat: no-repeat
+			&_wrapper
+				min-height: 450px
+				width: 750px
+				background: $mainRed
+				background-size: contain
+				background-repeat: no-repeat
+				position: relative
+				animation-delay: 0.5s;
+			&__cover
+				display: none
+			&_text
+				width: 374px
+				padding-top: 41px
+				padding: 41px 37px 86px 37px
+				.number_title_wrapper
+					height: 47px
+					margin-bottom: 57px
+					.section_number
+						height: 100%
+						line-height: 47px
+						width: 103px
+						h2
+							margin-right: 24px
+							font-size: 77px
+							color: white
+					.section_title
+						height: 100%
+						margin: 0px
+						border-left: 1px solid white
+						padding-left: 16px
+						h2
+							word-break: break-all
+							margin-bottom: 0px
+							font-size: 20px
+							color: white	
+				.paragraph_wrapper
+					width: 100%
+					min-height: 220px
+					overflow: hidden
+					color: white
+					p
+						font-size: 14px
+						text-align: justify		
+		#see_more_btn
+			position: absolute
+			bottom: -20px
+		
+		.home_product.even
+			background-image: url('/img/products/product1_p_471x450.png')
+			background-position: left
+			.home_product_wrapper
+				background-image: url('/img/products/product1_360x450.png')
+				background-position: right
+				margin-left: auto
+			#see_more_btn
+			    left: 77px
+		
+		.home_product.odd
+			background-image: url('/img/products/product2_p_471x450.png')
+			background-position: right
+			.home_product_wrapper
+				background-image: url('/img/products/product2_360x450.png')
+				background-position: left
+				flex-direction: row-reverse
+				margin-right: auto
+			#see_more_btn
+			    right: 77px
+		  
+	@media only screen and (max-width: 768px)
+		.categories-section
+			width: 100%
+			padding-top: 100px
+			.home_product
+				margin-top: 50px
+				&.odd, &.even
+					background-image: none !important
+					.home_product_wrapper
+						background-image: none !important
+					#see_more_btn
+						right: 50%
+						left: auto
+						transform: translateX(50%)
+				&_wrapper
+					margin-top: -42px
+					z-index: -1
+					width: 100%
+					min-height: 305px
+				&__cover
+					margin: 0px auto
+					max-width: 300px
+					display: block
+				&_text
+					width: 100%
+					padding: 95px 30px 42px 30px
+					.number_title_wrapper
+						margin-bottom: 44px
+						.section_number
+							width: auto
+							h2
+								font-size: 87px
+						.section_title
+							padding-left: 16px
+							h2
+								font-size: 18px
+								line-height: normal
+								letter-spacing: 0.5px
+					.paragraph_wrapper
+						min-height: 92px
+						p
+							font-size: 15px
+							text-align: initial
+			#home-product-4
+				.home_product__cover
+					max-width: 320px
+				.home_product_wrapper
+					margin-top: -66px

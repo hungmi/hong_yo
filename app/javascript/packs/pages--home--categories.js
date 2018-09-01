@@ -1,7 +1,7 @@
 import isScrolledIntoView from 'packs/view_helper';
 
 document.addEventListener("scroll", function() {
-	var wrapperTitle = document.querySelector('#wrapper3 .section_title_wrapper')
+	var wrapperTitle = document.querySelector('.js-categories-section .section_title_wrapper')
 	if (wrapperTitle !== null) {
 		if ( isScrolledIntoView(wrapperTitle, 200) ) {
 			wrapperTitle.classList.remove("invisible")

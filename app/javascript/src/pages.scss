@@ -66,6 +66,20 @@ body.pages {
     top: calc((60px - 163px) / 2);
     z-index: -1;	
 	}
+	@media only screen and (max-width: 768px) {
+		img {
+			height: 43.5px;
+		}
+		div.middle_bar {
+			animation: mobileMiddleBarIn 2.5s infinite;
+			height: 114px;
+			top: calc((43.5px - 114px) / 2);
+		}
+		div.middle_bar_overlay {
+			animation: mobileMiddleBarOut 2.5s infinite;
+			top: calc((43.5px - 114px) / 2);
+		}
+	}
 }
 
 @keyframes middleBarIn {
@@ -78,6 +92,18 @@ body.pages {
   0%   { height: 0px }
   80%  { height: 0px }
   100% { height: 163px }
+}
+
+@keyframes mobileMiddleBarIn {
+  0%   { height: 0px }
+  20%  { height: 114px }
+  100% { height: 114px }
+}
+
+@keyframes mobileMiddleBarOut {
+  0%   { height: 0px }
+  80%  { height: 0px }
+  100% { height: 114px }
 }
 
 body.front.active {

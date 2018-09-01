@@ -1,5 +1,5 @@
 body.pages.home {
-	#wrapper_home_top {
+	.home-top-section {
 		height: 100vh;
 		width: 100%;
 		margin-left: 48px;
@@ -80,6 +80,21 @@ body.pages.home {
 		}
 		li.index-bg4 {
 			// animation-delay: 18s;
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		ul.slider {
+			li {
+				height: 362px;
+				background-position-x: right;
+				&.index-bg1 {
+		    	background-position-y: 25px;
+				}
+			}
+		}
+		.home-top-section {
+			margin-left: 0px;
+			display: none;
 		}
 	}
 }

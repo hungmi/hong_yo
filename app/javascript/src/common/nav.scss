@@ -34,6 +34,23 @@ body.front {
 				font-size: 16px;
 			}
 		}
+		@media only screen and (max-width: 768px) {
+			#logo {
+				width: 54px;
+				margin-left: 42px;
+			}
+			#menu-title-wrapper {
+				margin-right: 35px;
+				.toggler {
+					height: 45px;
+					width: 45px;
+				}
+				.menu-title {
+					width: 45px;
+					font-size: 14px;
+				}
+			}
+		}
 	} // nav.navbar END
 	#menu {
 		// left: 100%;
