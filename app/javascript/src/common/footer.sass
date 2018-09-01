@@ -51,8 +51,9 @@
 		line-height: 41px
 		font-size: 25px
 		margin-bottom: 0px
-	
-	@media only screen and (max-width: 768px) 
+
+=smallFooter
+	.footer
 		&__top-bar 
 			height: 10px
 			background: #ffd2ad
@@ -79,3 +80,9 @@
 		  display: initial
 		  text-align: left
 		  font-size: 17px
+
+body
+	&.products.show, &.pages.download
+		+smallFooter
+@media only screen and (max-width: 768px)
+	+smallFooter
