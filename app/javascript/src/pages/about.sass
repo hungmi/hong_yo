@@ -9,13 +9,21 @@ body.pages.about
 		position: absolute
 		top: 0px
 		left: 0px
-		background-size: contain
 		background-repeat: no-repeat	
 		background-position: center
 		background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%)
 		background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%)
 		background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%)
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 )
+		&:before
+			content: ''
+			position: absolute
+			top: 0px
+			left: 0px
+			height: 625px
+			width: 100vw
+			background: url("/img/about/top-bg-section.png")
+			background-size: 540px
 	
 	.latest-news-section
 		margin-top: 160px
