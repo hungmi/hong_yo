@@ -33,6 +33,9 @@
   </head>
 
   <body class="<%= controller_name %> <%= action_name %> front <%= 'mobile' if browser.mobile? %> <%= I18n.locale %>">
+    <div class="loading-cover">
+        <img src="/img/logo.svg" width="100px" class="pulse infinite animated">
+    </div>
     <%= render "common/nav" %>
     <%= render "common/contact_btn" %>
     <div class="main_wrapper">

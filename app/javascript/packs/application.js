@@ -14,14 +14,12 @@ Rails.start()
 import * as ActiveStorage from "activestorage"
 ActiveStorage.start()
 
-var Turbolinks = require("turbolinks")
-Turbolinks.start()
-
 import "jquery"
 import "bootstrap"
 import 'src/application.scss'
 import './pages'
 import './nav'
+import './loading-cover'
 import './pages--home--news'
 import './pages--home--categories'
 import './pages--about--news'

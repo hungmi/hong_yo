@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("DOMContentLoaded", function() {
 	let waitfadeIn = 2000
 	let loopTime = 6000
 	// console.log(window.pagesHomeTimers)
@@ -62,15 +62,15 @@ document.addEventListener("turbolinks:load", function() {
 	window.pagesHomeTimers.push(fadeInInterval)
 })
 
-document.addEventListener("turbolinks:before-cache", function() {
-	// console.log(window.pagesHomeTimers.length)
-	for (let i = 0; i < window.pagesHomeTimers.length; i++) {
-		clearInterval(window.pagesHomeTimers[i]);
-	}
-	if (document.querySelectorAll(`ul.slider`).length > 0 && document.querySelectorAll(`.home-top-section > .root`).length > 0) {
-		for (let slide of document.querySelectorAll(`ul.slider > li`)) {
-			slide.classList.remove("fadeIn", "delay-1s", "fadeOut", "delay-3s", "fadeOutLeft", "fadeInLeft")
-		}
-	}
-	// console.log(window.pagesHomeTimers)
-})
+// document.addEventListener("turbolinks:before-cache", function() {
+// 	// console.log(window.pagesHomeTimers.length)
+// 	for (let i = 0; i < window.pagesHomeTimers.length; i++) {
+// 		clearInterval(window.pagesHomeTimers[i]);
+// 	}
+// 	if (document.querySelectorAll(`ul.slider`).length > 0 && document.querySelectorAll(`.home-top-section > .root`).length > 0) {
+// 		for (let slide of document.querySelectorAll(`ul.slider > li`)) {
+// 			slide.classList.remove("fadeIn", "delay-1s", "fadeOut", "delay-3s", "fadeOutLeft", "fadeInLeft")
+// 		}
+// 	}
+// 	// console.log(window.pagesHomeTimers)
+// })

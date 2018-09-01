@@ -1,8 +1,8 @@
-document.addEventListener("turbolinks:before-cache", function() {
-  $("select.select2").select2('destroy')
-});
+// document.addEventListener("turbolinks:before-cache", function() {
+//   $("select.select2").select2('destroy')
+// });
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("DOMContentLoaded", function() {
 	$("select.select2").select2({ minimumResultsForSearch: Infinity })
 	var $product_category = $("select#product_category")
 	var $product_brand = $("select#product_brand")

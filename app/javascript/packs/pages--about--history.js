@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("DOMContentLoaded", function() {
 	if (document.querySelector("body").classList.contains("en")) {
 		window.locale = "en"
 	} else {

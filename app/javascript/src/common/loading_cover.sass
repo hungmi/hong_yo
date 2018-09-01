@@ -1,0 +1,36 @@
+body.front
+	.main_wrapper, nav.navbar, #contact_btn, footer.footer
+		transition: opacity 1s ease-out
+		opacity: 0
+	.loading-cover
+		display: flex
+		justify-content: center
+		position: fixed
+		top: 0px
+		width: 100vw
+		height: 100vh
+		z-index: 30000
+		background: #ef0105
+		background: -moz-linear-gradient(right, #ffd2ad 0%, #ef0105 100%)
+		background: -webkit-linear-gradient(right, #ffd2ad 0%,#ef0105 100%)
+		background: linear-gradient(to left, #ffd2ad 0%,#ef0105 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd2ad', endColorstr='#ef0105',GradientType=1 )
+		transform: translateX(0)
+		transition: opacity 1s cubic-bezier(0.18, 0.89, 0.7, 1.19), transform 1s cubic-bezier(0.18, 0.89, 0.7, 1.19)
+		animation: fadeIn .8s
+		img
+			transition: opacity .5s
+			z-index: 30001
+	&.loaded
+		.main_wrapper, nav.navbar, #contact_btn, footer.footer
+			opacity: 1
+		.loading-cover
+			opacity: 0
+			transform: translateX(110%) translateY(100%)
+			img
+				opacity: 0
+@keyframes fadeIn
+	from
+		opacity: 0
+	to
+		opacity: 1

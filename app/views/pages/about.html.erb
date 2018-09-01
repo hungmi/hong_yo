@@ -10,7 +10,7 @@
 	<% @stories.each_slice(per).with_index do |news_per, index| %>
 		<div class="news-group js-news-group <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
 			<% news_per.each_with_index do |news, delay| %>
-				<a href="<%= story_path(news) %>" class="news animated flipInX">
+				<a href="<%= story_path(news) %>" class="news animated">
 					<div class="news__img">
 						<%= image_tag news.try_cover, alt: news.title, class: "img-fluid" %>
 					</div>
