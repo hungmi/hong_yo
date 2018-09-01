@@ -1,0 +1,79 @@
+.footer 
+	z-index: $zindex-tooltip + 2 // 1072 配合 #contact_btn
+	position: relative
+	&__top-bar 
+		height: 10px
+		background: #ef0105
+		background: -moz-linear-gradient(right, #ef0105 0%, #ffd2ad 100%)
+		background: -webkit-linear-gradient(right, #ef0105 0%,#ffd2ad 100%)
+		background: linear-gradient(to left, #ef0105 0%,#ffd2ad 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 )
+	&__content 
+		padding: 65px 265px 23px 265px
+		position: relative
+		background: #ef0205
+		background: -moz-linear-gradient(-45deg, #ef0205 0%, #ffd2ae 100%)
+		background: -webkit-linear-gradient(-45deg, #ef0205 0%,#ffd2ae 100%)
+		background: linear-gradient(135deg, #ef0205 0%,#ffd2ae 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0205', endColorstr='#ffd2ae',GradientType=1 )
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+	&__logo 
+		height: 41px
+	&__logo-name
+		display: flex
+	&__phone, &__address
+		color: white
+		text-align: left
+		font-size: 20px
+		margin-bottom: 0px
+	&__address
+		margin-bottom: 29px
+	&__copyright
+		color: white
+		text-align: left
+		font-size: 20px
+		margin-bottom: 0px
+		text-align: center
+		flex: 1 1 100%
+		display: flex
+		justify-content: center
+		&--icon
+			font-size: 10px
+			margin-right: 4px
+			margin-top: 4px
+	&__company-name
+		color: white
+		margin-left: 10px
+		line-height: 41px
+		font-size: 25px
+		margin-bottom: 0px
+	
+	@media only screen and (max-width: 768px) 
+		&__top-bar 
+			height: 10px
+			background: #ffd2ad
+			background: -moz-linear-gradient(right, #ffd2ad 0%, #ef0105 100%)
+			background: -webkit-linear-gradient(right, #ffd2ad 0%, #ef0105 100%)
+			background: linear-gradient(to left, #ffd2ad 0%,#ef0105 100%)
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd2ad', endColorstr='#ef0105',GradientType=1 )
+		&__logo-name
+			display: block
+		&__logo 
+			height: 66px
+			margin-bottom: 21px
+		&__content 
+			background: #ef0205
+			padding: 24px 25px 16px 33px
+			display: block
+		&__phone, &__address
+			font-size: 15px
+		&__company-name
+			line-height: normal
+			font-size: 15px
+			margin-left: 0px
+		&__copyright
+		  display: initial
+		  text-align: left
+		  font-size: 17px

@@ -5,10 +5,11 @@
 		height: 100px;
 	}
 	@media only screen and (max-width: 768px) {
-		width: 66px;
+		width: 56px;
 		& > img {
-			height: 66px;
+			height: 56px;
 		}
+		right: -3px
 	}
 	right: 30px;
 	bottom: 34px;
