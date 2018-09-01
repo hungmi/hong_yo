@@ -93,7 +93,7 @@
 				<%= image_tag root.product_cover, class: "home_product__cover img-fluid" %>
 			<% end %>
 			<% root_cover_style = !browser.mobile? && root.cover.attached? ? "background-image: url('#{url_for(root.cover)}');" : "" %>
-			<div class="d-flex home_product_wrapper animated <%= index.even? ? 'even' : 'odd' %>" style="<%= root_cover_style %>">
+			<div class="d-flex home_product_wrapper invisible animated <%= index.even? ? 'even' : 'odd' %>" style="<%= root_cover_style %>">
 				<div class="d-flex home_product_text flex-wrap">
 					<div class="d-flex number_title_wrapper">
 						<div class="section_number d-flex">

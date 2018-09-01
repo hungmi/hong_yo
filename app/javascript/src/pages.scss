@@ -45,7 +45,7 @@ body.pages {
 .section_title_wrapper {
 	position: relative;
 	div.middle_bar {
-		animation: middleBarIn 2.5s infinite;
+		animation: middleBarIn 3.5s infinite;
 		content: ' ';
     background: red;
     width: 1px;
@@ -56,7 +56,7 @@ body.pages {
     z-index: -2;	
 	}
 	div.middle_bar_overlay {
-		animation: middleBarOut 2.5s infinite;
+		animation: middleBarOut 3.5s infinite;
 		content: ' ';
     background: white;
     width: 2px;
@@ -71,12 +71,12 @@ body.pages {
 			height: 43.5px;
 		}
 		div.middle_bar {
-			animation: mobileMiddleBarIn 2.5s infinite;
+			animation: mobileMiddleBarIn 3.5s infinite;
 			height: 114px;
 			top: calc((43.5px - 114px) / 2);
 		}
 		div.middle_bar_overlay {
-			animation: mobileMiddleBarOut 2.5s infinite;
+			animation: mobileMiddleBarOut 3.5s infinite;
 			top: calc((43.5px - 114px) / 2);
 		}
 	}
@@ -84,25 +84,25 @@ body.pages {
 
 @keyframes middleBarIn {
   0%   { height: 0px }
-  20%  { height: 163px }
+  30%  { height: 163px }
   100% { height: 163px }
 }
 
 @keyframes middleBarOut {
   0%   { height: 0px }
-  80%  { height: 0px }
+  70%  { height: 0px }
   100% { height: 163px }
 }
 
 @keyframes mobileMiddleBarIn {
   0%   { height: 0px }
-  20%  { height: 114px }
+  30%  { height: 114px }
   100% { height: 114px }
 }
 
 @keyframes mobileMiddleBarOut {
   0%   { height: 0px }
-  80%  { height: 0px }
+  70%  { height: 0px }
   100% { height: 114px }
 }
 
