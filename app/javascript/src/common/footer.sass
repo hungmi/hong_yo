@@ -1,6 +1,11 @@
 .footer 
 	z-index: $zindex-tooltip + 2 // 1072 配合 #contact_btn
 	position: relative
+	background: #ef0205
+	background: -moz-linear-gradient(-45deg, #ef0205 0%, #ffd2ae 100%)
+	background: -webkit-linear-gradient(-45deg, #ef0205 0%,#ffd2ae 100%)
+	background: linear-gradient(135deg, #ef0205 0%,#ffd2ae 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0205', endColorstr='#ffd2ae',GradientType=1 )
 	&__top-bar 
 		height: 10px
 		background: #ef0105
@@ -9,13 +14,10 @@
 		background: linear-gradient(to left, #ef0105 0%,#ffd2ad 100%)
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 )
 	&__content 
-		padding: 65px 265px 23px 265px
+		max-width: 910px
+		padding: 65px 0px 23px 0px
+		margin: 0px auto
 		position: relative
-		background: #ef0205
-		background: -moz-linear-gradient(-45deg, #ef0205 0%, #ffd2ae 100%)
-		background: -webkit-linear-gradient(-45deg, #ef0205 0%,#ffd2ae 100%)
-		background: linear-gradient(135deg, #ef0205 0%,#ffd2ae 100%)
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0205', endColorstr='#ffd2ae',GradientType=1 )
 		display: flex
 		flex-wrap: wrap
 		justify-content: space-between
