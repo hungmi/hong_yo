@@ -106,6 +106,18 @@ body.pages {
   100% { height: 114px }
 }
 
+@keyframes halfMiddleBarIn {
+  0%   { height: 0px }
+  30%  { height: 82px }
+  100% { height: 82px }
+}
+
+@keyframes halfMiddleBarOut {
+  0%   { height: 0px }
+  70%  { height: 0px }
+  100% { height: 82px }
+}
+
 body.front.active {
 	#menu {
 		z-index: $zindex-tooltip + 3;

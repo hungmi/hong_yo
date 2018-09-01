@@ -4,8 +4,8 @@ document.addEventListener("turbolinks:load", function() {
 	} else {
 		window.locale = "zh"
 	}
-	if (document.querySelector(".js-red-rec.active") !== null)
-		document.querySelector(".js-red-rec.active").click()
+	if (document.querySelector(".js-rec.active") !== null)
+		document.querySelector(".js-rec.active").click()
 })
 
 window.historyData = {
@@ -19,8 +19,8 @@ window.historyData = {
 	},
 }
 
-$(document).on("click", ".js-red-rec", function(e) {
-	for (let active_one of document.querySelectorAll(".js-red-rec.active")) {
+$(document).on("click", ".js-rec", function(e) {
+	for (let active_one of document.querySelectorAll(".js-rec.active")) {
 		active_one.classList.remove("active")
 	}
 	e.target.classList.add("active")
