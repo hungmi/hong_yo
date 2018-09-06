@@ -98,6 +98,8 @@ body.pages.about
 		max-width: 1280px
 		padding-top: 120px
 		margin-bottom: 220px
+		.red-bg
+			z-index: -1
 		.about-hong-u1
 			margin-top: 210px
 			position: relative
@@ -162,7 +164,16 @@ body.pages.about
 			position: relative
 			.slogan
 				margin: 0px 35px
+				&:nth-child(1) .slogan__img
+					animation-delay: .3s
+				&:nth-child(2) .slogan__img
+					animation-delay: .6s
+				&:nth-child(3) .slogan__img
+					animation-delay: .9s
+				&:nth-child(4) .slogan__img
+					animation-delay: 1.2s
 			.bar
+				animation-delay: 1.2s
 				width: 100vw
 				position: absolute
 				top: -38px
@@ -194,6 +205,12 @@ body.pages.about
 	.goals-section
 		text-align: center
 		margin-bottom: 260px;
+		.section_title_wrapper
+			z-index: 1
+			.middle_bar
+				animation-name: halfMiddleBarIn
+			.middle_bar_overlay
+				animation-name: halfMiddleBarOut
 		.goals
 			&__content
 				padding-top: 100px
