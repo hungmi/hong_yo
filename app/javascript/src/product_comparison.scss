@@ -1,29 +1,33 @@
 .product-comparison {
 	margin-top: 60px;
 	position: relative;
-	.product-comparison__table-wrapper {
-		table.table {
-			tr {
-		    height: 50px;
-			}
-			tr:nth-child(even) {
-				background: #f2f2f2;
-			}
-			th, td {
-				vertical-align: middle;
-				border: 1px solid #ccc;
-		    border-top-color: transparent;
-		    border-bottom-color: transparent;
-		    padding: 1rem 2rem;
-		    font-size: 14px;
-		    color: #4d4d4d;
-		    &.chinese {
-		    	font-size: 15px;
-		    }
-			}
-			tr:not(:first-child) .chinese {
-				font-weight: 200;
-			}
+	&__table-wrapper {
+		-webkit-overflow-scrolling: touch;
+		overflow-x: scroll;
+		overflow-y: auto;
+	}
+	table.table {
+		margin-bottom: 10px;
+		tr {
+	    height: 50px;
+		}
+		tr:nth-child(even) {
+			background: #f2f2f2;
+		}
+		th, td {
+			vertical-align: middle;
+			border: 1px solid #ccc;
+	    border-top-color: transparent;
+	    border-bottom-color: transparent;
+	    padding: 1rem 2rem;
+	    font-size: 14px;
+	    color: #4d4d4d;
+	    &.chinese {
+	    	font-size: 15px;
+	    }
+		}
+		tr:not(:first-child) .chinese {
+			font-weight: 200;
 		}
 		tr.attribute_names {
 			th {
@@ -33,10 +37,15 @@
 				}
 			}
 		}
-		.table.copied_header {
+		&.copied_header {
+			tbody {
+				background: white;
+			}
+			-webkit-overflow-scrolling: touch; // add this to make z-index work, since safari create its own mask.
+			z-index: 10000;
+			background: transparent;
 			position: absolute;
 			left: -7px; // 為了蓋住左邊不知道為啥會透光
-			background: white;
 			box-shadow: 7px 2px 8px -4px #ddd;
 			tr th:first-child {
 				border-top-color: transparent;
