@@ -42,7 +42,7 @@
 				background: white;
 			}
 			-webkit-overflow-scrolling: touch; // add this to make z-index work, since safari create its own mask.
-			z-index: 10000;
+			z-index: $zindex-tooltip - 1; // 避免出現在 menu 上XDDD
 			background: transparent;
 			position: absolute;
 			left: -7px; // 為了蓋住左邊不知道為啥會透光
