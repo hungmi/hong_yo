@@ -75,6 +75,10 @@ body.pages.contact_us {
 					outline: 1px solid white;
 					box-shadow: 0px 0px 10px white;
 				}
+				&:after {
+					top: 0px;
+					height: 32px;
+				}
 			}
 		}
 	}

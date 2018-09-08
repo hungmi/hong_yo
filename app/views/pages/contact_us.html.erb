@@ -2,7 +2,7 @@
 	<div class="section_title_wrapper align-self-center">
 		<img src="/img/contact_us.svg", height="60px">
 	</div>
-	<div id="contact_us_wrapper" class="d-flex justify-content-end flex-wrap align-self-center">
+	<div id="contact_us_wrapper" class="d-flex justify-content-end flex-wrap align-self-center animated" data-animated="tada">
 		<%= image_tag "/img/contact_success.svg", id: "contact_success_svg", class: "align-self-center" %>
 		<div id="contact_form_wrapper">
 			<%= form_with url: contact_us_path, class: "d-flex flex-column" do |f| %>
@@ -37,7 +37,7 @@
 				</div>
 				<div class="input_wrapper">
 					<label for="submit" class="invisible"></label>
-					<%= f.submit "SEND", data: { disable_with: "Sending..." }, id: "see_more_btn", class: "submit align-self-end" %>				
+					<%= f.button "SEND", data: { disable_with: "Sending..." }, id: "see_more_btn", class: "submit align-self-end" %>				
 				</div>
 			<% end %>
 		</div>

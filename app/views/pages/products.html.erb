@@ -27,7 +27,7 @@
 					<div class="two_selects_wrapper d-flex">
 						<label for="product_brand" class="v300">
 						  Brand
-						  <%= select_tag :product_brand, options_from_collection_for_select(Category.roots.first.children, "id", "name", nil), prompt: "-", class: 'form-control v700 select2' %>
+						  <%= select_tag :product_brand, options_from_collection_for_select(@root.children, "id", "name", params[:brand_id]), prompt: "-", class: 'form-control v700 select2' %>
 						  <!-- <select name="product[brand]" id="product_brand" class="form-control v700">
 								<option value="">-</option>
 							</select> -->

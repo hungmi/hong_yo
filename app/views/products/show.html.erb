@@ -5,7 +5,7 @@
 	<section class="d-flex align-content-end flex-column product-data-section">
 		<div class="d-flex flex-column product-data">
 			<span class="product-data__category v700">
-				<span class="product-data__category--brand"><%= @product.category.parent.name %></span> - <span class="product__category--series"><%= @product.category.name %></span>
+				<%= link_to @product.category.parent.name, products_path(root_id: @product.category.try(:parent).try(:parent).id, brand_id: @product.category.try(:parent).id), class: "product-data__category--brand" %> - <span class="product__category--series"><%= @product.category.name %></span>
 			</span>
 			<div class="product-data__variety d-flex">
 				<label for="product-data_variety_name" class="v700 mb-0 border-right-0">MDOEL</label>
