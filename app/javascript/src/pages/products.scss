@@ -3,6 +3,7 @@ body.pages.products {
 		max-width: 100%;
 	}
 	#full_bg {
+		overflow-x: hidden;
 		height: 452px;
 		z-index: -1;
 		position: absolute;
