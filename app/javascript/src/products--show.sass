@@ -95,6 +95,9 @@ body.products.show
 			#see_more_btn
 				width: 100%
 				margin-top: 40px
+				height: 60px
+				&:after
+					height: 60px
 				.download_dm_text
 					margin-left: auto
 					margin-right: auto
@@ -142,8 +145,10 @@ body.products.show
 		#main_footer
 			height: 350px
 			padding-top: 120px
-	[id^=select2-product_variety_name-result-]
+	#select2-product_variety_name-results > li
 		font-size: 16px
 		font-family: 'viato-n7',"viato", Noto Sans TC,PingFangTC-Semibold, xingothic-tc, sans-serif, Microsoft JhengHei
-		font-weight: 700
-		padding-left: 12px
+		font-weight: 400
+	.feature--highlight
+		color: red
+		font-weight: bold

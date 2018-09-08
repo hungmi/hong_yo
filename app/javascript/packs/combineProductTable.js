@@ -20,6 +20,7 @@
 						if (expanding) {
 							tds[i].classList.add("d-none")
 							current_td.rowSpan += 1
+							current_td.classList.add("combined")
 						}
 					}
 				}

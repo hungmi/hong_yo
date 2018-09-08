@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	var $product_category = $("select#product_category")
 	var $product_brand = $("select#product_brand")
 	var $product_series = $("select#product_series")
-	var $product_model = $("select#product_variety_name")
+
 	$(document).on('select2:select', $product_category, function (e) {
 	  if (e.target.id == "product_category" && e.params.data.id.length !== 0) {
 	 		console.log("updating")

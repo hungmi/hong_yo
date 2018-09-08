@@ -18,7 +18,7 @@
 					</tr>
 					<% product.varieties.each do |va| %>
 						<tr>
-							<th nowrap="true">
+							<th nowrap="true" data-highlight="<%= va.id %>">
 								<%= va.name %><br>
 								<% if in_admin? %>
 									<%= link_to edit_admin_variety_path(va), data: { turbolinks: false } do %>
@@ -32,9 +32,9 @@
 							<% names_array.each_with_index do |feature_name, index| %>
 								<% if va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).present? %>
 									<% value = va.features.where("zh_name LIKE :name OR en_name LIKE :name", name: feature_name).first.value %>
-									<td data-name="<%= feature_name %>" rowspan=""><%= value %></td>
+									<td data-name="<%= feature_name %>" data-highlight="<%= va.id %>" rowspan=""><%= value %></td>
 								<% else %>
-									<td data-name="<%= feature_name %>" rowspan="">X</td>
+									<td data-name="<%= feature_name %>" data-highlight="<%= va.id %>" rowspan="">X</td>
 								<% end %>
 							<% end %>
 						</tr>

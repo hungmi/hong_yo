@@ -9,7 +9,7 @@
 			</span>
 			<div class="product-data__variety d-flex">
 				<label for="product-data_variety_name" class="v700 mb-0 border-right-0">MDOEL</label>
-				<%= select_tag :product_variety_name, options_from_collection_for_select(@product.varieties, "id", "zh_name"), prompt: "Choose one to highlight", class: 'form-control v700 select2' %>
+				<%= select_tag :product_variety_name, options_from_collection_for_select(@product.varieties, "id", "zh_name"), prompt: "Choose one to highlight", class: 'form-control nt400 select2' %>
 				<!-- <select name="product[model]" id="product_model" class="form-control v700">
 					<option value="1">01 Life Science Animal Science</option>
 					<option value="2">01 Life Science Animal Science</option>
@@ -21,12 +21,12 @@
 
 			<div class="product-data__detail">
 				<div class="product-data__title">DETAIL</div>
-				<div class="product-data__description">
+				<div class="product-data__description nt100">
 					<%= simple_format @product.description %>
 				</div>
 				<% if @product.t_file.attached? %>
 					<%= link_to rails_blob_path(@product.t_file, disposition: "attachment"), id: "see_more_btn", class: "d-flex" do %>
-						<div class="mr-auto align-self-center see_more_text download_dm_text v700">廠商型錄下載</div>
+						<div class="mr-auto align-self-center see_more_text download_dm_text nt500">廠商型錄下載</div>
 					<% end %>
 				<% end %>
 			</div>

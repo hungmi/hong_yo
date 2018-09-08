@@ -3,7 +3,7 @@
 		<% if product.images.attached? %>
 			<div class="image--active js-image--active"
 			style='background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>");'></div>
-			<div class="image--blur-bg js-image--blur-bg" style='background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>"); filter: blur(5px);'></div>
+			<div class="image--blur-bg js-image--blur-bg" style='background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>"); background-image: url("<%= rails_blob_path(product.images.first) %>"); filter: blur(7px); opacity: 0.6;'></div>
 			<div class="d-flex justify-content-between image-thumbs">
 				<% product.images.each do |img| %>
 					<%= image_tag img, class: "image--thumb js-image--thumb" %>
