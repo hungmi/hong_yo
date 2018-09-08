@@ -66,5 +66,32 @@ body.stories.show {
 			}
 		}
 	}
-
+	@media only screen and (max-width: 768px) {
+		.main_wrapper {
+			height: auto;
+			max-height: initial;
+		}
+		#download_sections_wrapper {
+			flex-direction: column;
+		}
+		#download_bg_section {
+			height: 282px;
+			#download_bg {
+				height: 282px;
+			}
+		}
+		#download_items_section {
+			min-width: 100vw;
+			margin-top: 30px;
+			#right_half {
+				padding: 0px 25px 100px 25px;
+				.download-item {
+					height: auto;
+					#back_btn {
+						margin-left: 10px;	
+					}
+				}
+			}
+		}
+	}
 }
