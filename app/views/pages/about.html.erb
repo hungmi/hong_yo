@@ -16,7 +16,9 @@
 					</div>
 					<div class="news__date-title">
 						<p class="news__date v400"><%= news.date.strftime("%Y. %m. %d") %></p>
-						<h5 class="news__title v400 mb-0 <%= render_chinese_class(news.title) %>"><%= news.title %></h5>
+						<h5 class="news__title v400 mb-0">
+							<%= render_chinese_class_loop(news.title) %>		
+						</h5>
 					</div>
 				</a>
 			<% end %>

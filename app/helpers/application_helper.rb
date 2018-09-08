@@ -5,6 +5,20 @@ module ApplicationHelper
     end
   end
 
+  def render_chinese_class_loop(str)
+  	output_html = ""
+  	if str.size > 0
+	  	str.each_char do |chr|
+		    if !!(chr =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/)
+		      output_html += (content_tag :span, chr, class: "chinese")
+		    else
+		    	output_html += chr
+		    end
+		  end
+		end
+	  output_html.html_safe
+  end
+
   def turbolinks_cache_control_meta_tag
 	  tag :meta, name: 'turbolinks-cache-control', content: @turbolinks_cache_control || 'cache'
 	end
