@@ -15,9 +15,12 @@ $(document).on('select2:select', $product_model, function (e) {
 })
 
 document.addEventListener("scroll", function() {
-	var starter = document.querySelector("#products_finder_wrapper").getBoundingClientRect().top
-	var ender = document.querySelector("#products_section").getBoundingClientRect().top
-	console.log(starter)
+	if (document.querySelector("#products_finder_wrapper") !== null) {
+		var starter = document.querySelector("#products_finder_wrapper").getBoundingClientRect().top
+	}
+	if (document.querySelector("#products_section") !== null) {
+		var ender = document.querySelector("#products_section").getBoundingClientRect().top
+	}
 	if (ender >= 210) {
 		document.querySelector("body").classList.remove("fixed-finder")
 	} else if (starter <= 0) {
