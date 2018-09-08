@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @stories = Story.order(updated_at: :desc).with_attached_cover.published.limit(3)
+    @stories = Story.order(updated_at: :desc).with_attached_cover.with_attached_images.published.limit(3)
   end
 
   def about

@@ -45,8 +45,9 @@ class Admin::StoriesController < AdminController
 					@story.cover.attach(story_params[:cover])
 				end
 			end
+      @story.images.where(id: params[:story][:remove_images].keys).map(&:purge_later) if params[:story][:remove_images].present?
       flash[:success] = "更新成功。 "
-      redirect_to admin_stories_url
+      redirect_to edit_admin_story_url(@story)
     else
     	flash.now[:danger] = @story.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :edit
@@ -69,6 +70,6 @@ class Admin::StoriesController < AdminController
 	end
 
 	def story_params
-		params.require(:story).permit(:en_title, :zh_title, :en_content, :zh_content, :status, :cover, :publish_date)
+		params.require(:story).permit(:en_title, :zh_title, :en_content, :zh_content, :status, :publish_date, :cover, images: [])
 	end
 end

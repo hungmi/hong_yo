@@ -1,36 +1,47 @@
-<div id="download_sections_wrapper" class="d-flex">
-	<section id="download_bg_section" class="d-flex align-content-end flex-column w-100">
-		<div id="download_bg_wrapper" class="d-flex align-items-end justify-content-center">
-			<% if @story.cover.attached? %>
-				<div id="download_bg" style="background: url(<%= url_for(@story.cover) %>), #ef0105;
-				background: url(<%= url_for(@story.cover) %>), -moz-linear-gradient(right, #ef0105 0%, #ffd2ad 100%);
-				background: url(<%= url_for(@story.cover) %>), -webkit-linear-gradient(right, #ef0105 0%,#ffd2ad 100%);
-				background: url(<%= url_for(@story.cover) %>), linear-gradient(-45deg, #ef0105 0%,#ffd2ad 100%);
-				background-size: contain;
-				background-repeat: no-repeat;	
-				background-position: center;"></div>
-			<% else %>
-				<div id="download_bg" style="background: #ef0105;
-				background: -moz-linear-gradient(right, #ef0105 0%, #ffd2ad 100%);
-				background: -webkit-linear-gradient(right, #ef0105 0%,#ffd2ad 100%);
-				background: linear-gradient(-45deg, #ef0105 0%,#ffd2ad 100%);
-				background-size: contain;
-				background-repeat: no-repeat;	
-				background-position: center;"></div>
-			<% end %>
-		</div>
-	</section>
+<div class="story-sections d-flex">
+	<section class="bg-section d-flex">
+		<% initial_photo = if @story.cover.attached?
+				url_for(@story.cover)
+			elsif @story.images.attached?
+				url_for(@story.images.first)
+			else
+				nil
+			end %>
+		<% if initial_photo.present? %>
+			<div class="bg js-bg" style="background: url(<%= initial_photo %>), #ef0105;
+			background: url(<%= initial_photo %>), -moz-linear-gradient(right, #ef0105 0%, #ffd2ad 100%);
+			background: url(<%= initial_photo %>), -webkit-linear-gradient(right, #ef0105 0%,#ffd2ad 100%);
+			background: url(<%= initial_photo %>), linear-gradient(-45deg, #ef0105 0%,#ffd2ad 100%);
+			background-size: contain;
+			background-repeat: no-repeat;	
+			background-position: center;"></div>
+		<% else %>
+			<div class="bg js-bg" style="background: #ef0105;
+			background: -moz-linear-gradient(right, #ef0105 0%, #ffd2ad 100%);
+			background: -webkit-linear-gradient(right, #ef0105 0%,#ffd2ad 100%);
+			background: linear-gradient(-45deg, #ef0105 0%,#ffd2ad 100%);
+			background-size: contain;
+			background-repeat: no-repeat;	
+			background-position: center;"></div>
+		<% end %>
 
-	<section id="download_items_section" class="d-flex align-content-end flex-column">
-		<div id="right_half" class="align-self-end">
-			<div class="download-item d-flex flex-column">
-				<h5 class="v700 mb-0 story-date"><%= @story.date.strftime("%Y.%m.%d") %></h5>
-				<h2 class="v700 story-title"><%= @story.title %></h2>
-				<p class="v400 ml-0"><%= @story.content %></p>
-				<%= link_to :back, id: "back_btn" do %>
-					<img src="/img/about/back.svg" style="max-width: 130px;">
+		<% if @story.images.attached? %>
+			<div class="img-thumbs">
+				<% @story.images.each_with_index do |img, index| %>
+					<%= image_tag img, class: "img-thumb js-story-image--thumb #{'img-thumb--active' if index == 0}" %>
 				<% end %>
 			</div>
+		<% end %>
+	</section>
+
+	<section class="content-section d-flex flex-column">
+		<div class="story d-flex flex-column">
+			<h5 class="v700 mb-0 story__date"><%= @story.date.strftime("%Y.%m.%d") %></h5>
+			<h2 class="v700 story__title"><%= @story.title %></h2>
+			<%= simple_format @story.content, class: "v400 ml-0 story__content" %>
+			<%= link_to :back, id: "back_btn" do %>
+				<img src="/img/about/back.svg" style="max-width: 130px;">
+			<% end %>
 		</div>
 	</section>
 </div>

@@ -16,12 +16,55 @@
           <span class="fileinput-exists">更換</span>
           <input type="hidden">
           <%= f.file_field :cover, accept: ".png, .jpg, .jpeg" %>
-          <%#= image_tag story.try_cover, style: "max-width: 100%;", class: "previewer", data: { file: "input#tag_icon" } %>
         	<div class="ripple-container"></div>
       	</span>
         <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a>
 	    </div>
 	  </div>
+
+		<div class="form-group bmd-form-group">
+	  	<% images_exist = f.object.images.attached? %>
+	  	<label>消息圖片</label>
+	    <div class="d-flex flex-wrap fileinput <%= images_exist ? 'fileinput-exists' : 'fileinput-new' %> text-center">
+	    	<% if images_exist %>
+        	<% story.images.each do |img| %>
+        		<div class="uploaded_image_wrapper mb-5">
+	        		<div class="fileinput-preview fileinput-exists thumbnail" style="">
+				        <%= image_tag img %>
+				      </div>
+				      <!-- <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a> -->
+				      <div class="form-check mt-1">
+	              <label class="form-check-label">
+	                <!-- <input class="form-check-input" type="checkbox" value="" checked=""> Checked -->
+						      <%= check_box_tag "story[remove_images][#{img.id}]", "true", false, { class: "form-check-input" } %> 移除
+	                <span class="form-check-sign">
+	                  <span class="check"></span>
+	                </span>
+	              </label>
+	            </div>
+	          </div>
+		      <% end %>
+		    <% end %>
+			  <div style="flex-basis: 100%;">
+	        <span class="btn btn-rose btn-round btn-file float-left">
+	          <span class="fileinput-new">選擇圖片</span>
+	          <span class="fileinput-exists">上傳更多</span>
+	          <input type="hidden">
+	          <%= f.file_field :images, multiple: true, accept: ".png, .jpg, .jpeg", class: "previewable" %>
+	        	<div class="ripple-container"></div>
+	      	</span>
+	        <!-- <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> 移除</a> -->
+	      </div>
+	      <% if story.errors[:images].present? %>
+	        <div class="invalid-feedback">
+	          <%= story.errors[:images].join(", ") %>
+	        </div>
+	      <% end %>
+	  	</div>
+	  	<label id="newImagePreviewLabel" class="d-none">尚未上傳的圖片</label>
+	  	<div id="newImagePreview" class="d-flex flex-wrap mb-5"></div>
+	  </div>
+
 	  <div class="form-group bmd-form-group">
 			<%= f.label :zh_title, class: "bmd-label-floating" %>
 			<%= f.text_area :zh_title, class: "form-control", rows: 2 %>

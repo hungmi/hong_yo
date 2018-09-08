@@ -2,6 +2,7 @@ class Story < ApplicationRecord
 	validates :zh_title, presence: { message: "中文、英文標題至少需填寫一個。" }, unless: Proc.new { |s| s.en_title.present? }
 	enum status: { draft: 0, published: 1 }
 	has_one_attached :cover
+	has_many_attached :images
 
 	def try_cover
 		cover.attached? ? cover : "/img/about/fake_news1.png"
