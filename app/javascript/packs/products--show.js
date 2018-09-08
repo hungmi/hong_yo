@@ -13,3 +13,14 @@ $(document).on('select2:select', $product_model, function (e) {
 		feature.classList.add("feature--highlight")
 	}
 })
+
+document.addEventListener("scroll", function() {
+	var starter = document.querySelector("#products_finder_wrapper").getBoundingClientRect().top
+	var ender = document.querySelector("#products_section").getBoundingClientRect().top
+	console.log(starter)
+	if (ender >= 210) {
+		document.querySelector("body").classList.remove("fixed-finder")
+	} else if (starter <= 0) {
+		document.querySelector("body").classList.add("fixed-finder")
+	}
+})
