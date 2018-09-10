@@ -6,7 +6,7 @@
 			<%= f.text_field :zh_name, class: "zh_name awesomplete form-control", list: "feature_zh_name_list" %>
 		</div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-2">
   	<div class="form-group bmd-form-group">
 			<%= f.label :zh_value, class: "bmd-label-floating" %>
 			<%= f.text_field :zh_value, class: "zh_value form-control awesomplete", list: "feature_zh_value_list" %>
@@ -24,14 +24,18 @@
 			<%= f.text_field :en_value, class: "en_value form-control awesomplete", list: "feature_en_value_list" %>
 		</div>
   </div>
-  <div class="col-md-1">
+  <div class="col-md-2">
     <div class="form-group bmd-form-group">
-      <%= f.label :go_top, class: "bmd-label-floating" %>
-      <%= f.check_box :go_top, class: "form-control" %>
+      <div class="togglebutton">
+        <label>
+          <%= f.check_box :go_top %>
+          <span class="toggle bg-brand"></span>
+            規格置前
+        </label>
+      </div>
     </div>
   </div>
   <div class="col-md-1">
     <%= link_to_remove_association "移除", f %>
-    
   </div>
 </div>
