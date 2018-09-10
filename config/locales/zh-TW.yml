@@ -65,7 +65,7 @@ zh-TW:
         zh_name: 中文規格名稱
         en_name: 英文規格名稱
         zh_value: 中文規格內容
-        en_name: 英文規格內容
+        en_value: 英文規格內容
       variety:
         id: "#"
         zh_name: 中文名稱
