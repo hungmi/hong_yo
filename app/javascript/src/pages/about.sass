@@ -288,9 +288,25 @@ body.pages.about
 					font-size: 30px
 					color: white
 					line-height: 19px
+				[data-year="1998"]
+					top: 0px
+				[data-year="2002"]
+					top: 120px
+				[data-year="2004"]
+					top: 240px
+				[data-year="2006"]
+					top: 300px
+				[data-year="2007"]
+					top: 360px
+				[data-year="2008"]
+					top: 420px
+				[data-year="2009"]
+					top: 480px
+				[data-year="2010"]
+					top: 540px
 				
 	
-	@media only screen and (max-width: 768px)
+	@media only screen and (max-width: 414px)
 		.bg-section
 			height: 760px
 		
@@ -399,16 +415,65 @@ body.pages.about
 				width: auto
 				max-width: auto
 				margin-left: 20px
+				margin-right: 0px
+				padding-left: 142px
 				.years
-					min-width: 130px
+					.year_bar
+						left: 17px
+						height: 550px
+					.year_anchor
+						transform: rotateZ(180deg)
+						left: 81px
+						top: -4px
 					.year
-						font-size: 21px
-						left: 41px
+						font-size: 18px
+						left: 43px
+					.rec
+						left: 14px
+						height: 12px
+						width: 12px
+					[data-year="1998"]
+						top: 0px
+						&.year
+							top: -4px
+					[data-year="2002"]
+						top: 120px
+						&.year
+							top: 116px
+					[data-year="2004"]
+						top: 240px
+						&.year
+							top: 236px
+					[data-year="2006"]
+						top: 300px
+						&.year
+							top: 296px
+					[data-year="2007"]
+						top: 360px
+						&.year
+							top: 356px
+					[data-year="2008"]
+						top: 420px
+						&.year
+							top: 414px
+					[data-year="2009"]
+						top: 480px
+						&.year
+							top: 476px
+					[data-year="2010"]
+						top: 540px
+						&.year
+							top: 536px
 				.history__text
-					margin-top: -20px
-					width: auto
+					margin-top: -15px
+					width: 100%
+					.red-bg
+						height: 145px
+						margin-bottom: 30px
 					.year--active
-						font-size: 23px
+						font-size: 21px
+						top: 2px
+						left: 16px
 
 
 				

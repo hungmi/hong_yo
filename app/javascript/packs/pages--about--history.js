@@ -45,6 +45,10 @@ $(document).on("click", ".js-rec", function(e) {
 	if ( historyHTML !== undefined && historyHTML.length > 0 ) {
 		document.querySelector(".history-section").querySelector(".year--active").innerHTML = active_year
 		document.querySelector(".history-section").querySelector(".history__text > p").innerHTML = historyHTML
-		document.querySelector(".history-section").querySelector(".years .year_anchor").style.top = e.target.style.top
+		if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 414 || document.querySelector("body").classList.contains("mobile")) {
+			document.querySelector(".history-section").querySelector(".years .year_anchor").style.top = (parseInt(e.target.style.top) - 4).toString() + "px"
+		} else {
+			document.querySelector(".history-section").querySelector(".years .year_anchor").style.top = e.target.style.top
+		}
 	}
 })

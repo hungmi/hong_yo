@@ -27,3 +27,15 @@ document.addEventListener("scroll", function() {
 		document.querySelector("body").classList.add("fixed-finder")
 	}
 })
+
+document.addEventListener("DOMContentLoaded", function() {
+	// 行動版把圖片移到對的地方
+	if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 768 || document.querySelector("body").classList.contains("mobile")) {
+		let product_images_section = document.querySelector(".js-images-section");
+		if (product_images_section !== null) {
+			let someHTML = product_images_section.outerHTML;
+			product_images_section.parentNode.removeChild(product_images_section);
+			document.querySelector("h2.js-product-data__name").insertAdjacentHTML('afterend', someHTML)
+		}
+	}
+})
