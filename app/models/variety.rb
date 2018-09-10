@@ -14,9 +14,7 @@ class Variety < ApplicationRecord
 
 	def all_feature_names
 		if features.present?
-			features.map do |feature|
-				feature.name
-			end
+			features.order(go_top: :desc, zh_name: :asc, en_name: :asc).map(&:name)
 		else
 			[]
 		end

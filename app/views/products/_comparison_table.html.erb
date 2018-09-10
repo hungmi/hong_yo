@@ -7,7 +7,7 @@
 	<% end %>
 	<% if product.varieties.present? %>
 		<div class="product-comparison__table-wrapper js-product-comparison__table-wrapper">
-			<% names_array = product.all_variety_feature_names.flatten.uniq.sort_by!{ |m| m.downcase } %>
+			<% names_array = product.all_variety_feature_names.flatten.uniq#.sort_by!{ |m| m.downcase } %>
 			<table class="table text-center">
 				<tbody>
 					<tr class="attribute_names">
