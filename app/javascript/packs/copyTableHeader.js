@@ -6,14 +6,20 @@
 // 	}
 // })
 
-["DOMContentLoaded", "turbolinks:load"].forEach(function(e) {
-	document.addEventListener(e, function() {
-		// 要記得不要把複製好的 table header 放在同一個 webkit touch 內，要分開，然後另加 z-index
-		let target_table = document.querySelector(".js-product-comparison__table-wrapper")
-		if (target_table !== null) {
-			copyTableHeader(target_table);
-		}
-	})
+document.addEventListener("DOMContentLoaded", function() {
+	// 要記得不要把複製好的 table header 放在同一個 webkit touch 內，要分開，然後另加 z-index
+	let target_table = document.querySelector(".js-product-comparison__table-wrapper")
+	if (target_table !== null && document.querySelector("body.admin") == null) {
+		copyTableHeader(target_table);
+	}
+})
+
+document.addEventListener("turbolinks:load", function() {
+	// 要記得不要把複製好的 table header 放在同一個 webkit touch 內，要分開，然後另加 z-index
+	let target_table = document.querySelector(".js-product-comparison__table-wrapper")
+	if (target_table !== null && document.querySelector("body.admin") !== null) {
+		copyTableHeader(target_table);
+	}
 })
 
 function copyTableHeader(target_table) {
