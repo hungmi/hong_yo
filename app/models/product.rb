@@ -55,9 +55,13 @@ class Product < ApplicationRecord
 	def all_variety_feature_names
 		p = twins? ? self.twin : self
 		if p.varieties.present?
-			p.varieties.map do |va|
-				va.all_feature_names
+			top_features = p.varieties.map do |va|
+				va.top_feature_names
 			end
+			normal_features = p.varieties.map do |va|
+				va.normal_feature_names
+			end
+			top_features.flatten.uniq.sort_by!{ |m| m.downcase } + normal_features.flatten.uniq.sort_by!{ |m| m.downcase }
 		else
 			[]
 		end
