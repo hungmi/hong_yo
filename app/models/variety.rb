@@ -14,7 +14,7 @@ class Variety < ApplicationRecord
 
 	def top_feature_names
 		if features.present?
-			features.where(go_top: true).order(zh_name: :asc, en_name: :asc).map(&:name)
+			features.where(go_top: true).order(id: :asc).map(&:name)
 		else
 			[]
 		end
@@ -22,7 +22,7 @@ class Variety < ApplicationRecord
 
 	def normal_feature_names
 		if features.present?
-			features.where(go_top: false).order(zh_name: :asc, en_name: :asc).map(&:name)
+			features.where(go_top: false).order(id: :asc).map(&:name)
 		else
 			[]
 		end
@@ -30,7 +30,7 @@ class Variety < ApplicationRecord
 
 	def all_feature_names
 		if features.present?
-			features.order(go_top: :desc, zh_name: :asc, en_name: :asc).map(&:name)
+			features.order(go_top: :desc, id: :asc).map(&:name)
 		else
 			[]
 		end
