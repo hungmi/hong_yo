@@ -21,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<%= f.fields_for :features, @variety.features.order(zh_name: :asc, en_name: :asc) do |feature_form| %>
+		<%= f.fields_for :features, @variety.features.order(go_top: :desc, id: :asc) do |feature_form| %>
 			<%= render "feature_fields", f: feature_form %>
 		<% end %>
 		<div class="links">
