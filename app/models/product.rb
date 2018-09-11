@@ -61,7 +61,7 @@ class Product < ApplicationRecord
 			normal_features = p.varieties.map do |va|
 				va.normal_feature_names
 			end
-			top_features.flatten.uniq.sort_by!{ |m| m.downcase } + normal_features.flatten.uniq.sort_by!{ |m| m.downcase }
+			top_features.flatten.uniq + normal_features.flatten.uniq
 		else
 			[]
 		end
