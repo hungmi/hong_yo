@@ -33,7 +33,7 @@ window.historyData = {
 	},
 }
 
-$(document).on("click", ".js-rec", function(e) {
+$(document).on("click", ".js-rec, .js-year", function(e) {
 	for (let active_one of document.querySelectorAll(".js-rec.active")) {
 		active_one.classList.remove("active")
 	}
@@ -45,10 +45,11 @@ $(document).on("click", ".js-rec", function(e) {
 	if ( historyHTML !== undefined && historyHTML.length > 0 ) {
 		document.querySelector(".history-section").querySelector(".year--active").innerHTML = active_year
 		document.querySelector(".history-section").querySelector(".history__text > p").innerHTML = historyHTML
+		console.log(e.target.getAttribute("data-top"))
 		if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 414 || document.querySelector("body").classList.contains("mobile")) {
-			document.querySelector(".history-section").querySelector(".years .year_anchor").style.top = (parseInt(e.target.style.top) - 4).toString() + "px"
+			document.querySelector(".history-section").querySelector(".years .year_anchor").style.top = (parseInt(e.target.getAttribute("data-top")) - 4).toString() + "px"
 		} else {
-			document.querySelector(".history-section").querySelector(".years .year_anchor").style.top = e.target.style.top
+			document.querySelector(".history-section").querySelector(".years .year_anchor").style.top = e.target.getAttribute("data-top")
 		}
 	}
 })
