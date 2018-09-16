@@ -1,17 +1,21 @@
 body.front {
 	overflow-x: hidden;
-	nav.navbar {
-		width: 100vw;
+	nav {
 		position: fixed;
 		top: 0px;
 		padding-top: 24px;
-		z-index: $zindex-tooltip + 1; // 1071
+		z-index: $zindex-tooltip + 1; // 1074
 		#logo {
 			width: 80px;
 			margin-left: 30px;
 		}
 		#menu-title-wrapper {
 			margin-right: 24px;
+			position: fixed;
+			top: 0px;
+			right: 0px;
+			padding-top: 24px;
+			z-index: 1071;
 			.toggler {
 				cursor: pointer;
 				background: $mainRed;
@@ -147,7 +151,9 @@ body.front.active {
 			display: flex;
 		}
 	}
-	nav.navbar {
+	nav {
+		width: auto;
+		z-index: $zindex-tooltip + 4; // 1074
 		#menu-title-wrapper {
 			.toggler {
 				padding-left: 9px;
