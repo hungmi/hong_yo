@@ -1,0 +1,17 @@
+<div class="card-body">
+	<%= form_with model: [:admin, user], local: true, class: "mb-5" do |f| %>
+		<div class="form-group bmd-form-group">
+			<%= f.label :password, "新密碼", class: "bmd-label-floating" %>
+			<%= f.password_field :password, class: "form-control" %>
+		</div>
+
+		<div class="form-group bmd-form-group">
+			<%= f.label :password_confirmation, "確認新密碼", class: "bmd-label-floating" %>
+			<%= f.password_field :password_confirmation, class: "form-control" %>
+		</div>
+
+	  <div class="clear-fix mb-3"></div>
+
+	  <%= f.submit "儲存", class: "btn btn-lg btn-block btn-primary" %>
+	<% end %>
+</div>

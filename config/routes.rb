@@ -20,9 +20,11 @@ Rails.application.routes.draw do
     end
     post 'contact_us', to: "contacts#create"
 	end
+
   namespace :admin do
     root to: "pages#home"
     get "pages/home"
+    resources :users, only: [:edit, :update]
     resources :stories
     resources :products do
       collection do
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
     resources :varieties, except: [:show]
   	resources :catalogues
   	resources :categories
+    get 'signin', to: 'sessions#new'
+    post 'signin', to: 'sessions#create'
+    delete 'logout', to: 'sessions#destroy'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

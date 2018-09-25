@@ -1,0 +1,32 @@
+<div class="content">
+	<div class="container ml-0" style="max-width: 450px;">
+		<div class="card ">
+			<div class="card-header card-header-warning card-header-icon">
+				<div class="card-icon">
+					<i class="material-icons">dashboard</i>
+				</div>
+				<h4 class="card-title">登入主控台</h4>
+			</div>
+			<div class="card-body ">
+				<%= form_for :session, url: admin_signin_path, html: { class: "form-signin" } do |f| %>
+					<%= f.hidden_field :back_path, value: params[:back_path] %>
+					<div class="form-group bmd-form-group mt-5">
+						<%= f.label :user_name, "使用者名稱", class: "bmd-label-floating" %>
+						<%= f.text_field :user_name, class: "form-control", required: true, autofocus: true %>
+					</div>
+					<div class="form-group bmd-form-group">
+						<%= f.label :password, "密碼", class: "bmd-label-floating" %>
+						<%= f.password_field :password, class: "form-control" %>
+					</div>
+
+				  <div class="clear-fix mb-3"></div>
+
+				  <%= f.submit "登入", class: "btn btn-lg btn-block btn-primary" %>
+				<% end %>
+			</div>
+			<div class="text-center mt-5">
+				<p class="text-muted"><%= link_to "返回前台", root_url %></p>
+			</div>
+		</div>
+	</div>
+</div>
