@@ -1,10 +1,13 @@
 <tr>
 	<td></td>
-	<td class="truncate"><%= product.category.ancestors_names %></td>
+	<td><%= product.category.ancestors_names %></td>
 	<td class="truncate"><%= product.admin_name %></td>
 	<td><%= simple_format product.description.to_s.truncate(120) %></td>
 	<td>
 		<span class="badge<%= product.published? ? ' btn-brand' : ' btn-secondary' %>"><%= I18n.t("activerecord.product_status.#{product.status}") %></span>
+	</td>
+	<td>
+		<%= text_field_tag "products[#{product.id}][ordering]", product.ordering, class: "product-ordering-input form-control", style: "max-width: 30px;" %>
 	</td>
 	<td class="text-right">
 		<%= link_to edit_admin_product_path(product), class: "btn btn-link btn-primary btn-just-icon" do %>

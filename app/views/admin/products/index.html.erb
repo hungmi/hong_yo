@@ -10,6 +10,13 @@
 				</div>
 			<% end %>
 		<% end %>
+		<% if @category.present? && @category.level == 0 %>
+			<%= link_to reorder_admin_products_path, id: "submit_ordering_inputs" do %>
+				<div class="card-icon rounded-circle float-right subBtn" style="margin-right: 20px;">
+					<i class="material-icons">save</i>
+				</div>
+			<% end %>
+		<% end %>
 		<h4 class="card-title"><%= Product.model_name.human count: 2 %></h4>
 	</div>
 	<div class="card-body">
@@ -24,7 +31,8 @@
 						<th class="all"><%= Product.human_attribute_name(:category) %></th>
 						<th class="all"><%= Product.human_attribute_name(:name) %></th>
 						<th class="none"><%= Product.human_attribute_name(:description) %></th>
-						<th><%= Product.human_attribute_name(:status) %></th>  
+						<th><%= Product.human_attribute_name(:status) %></th>
+						<th><%= Product.human_attribute_name(:ordering) %></th>
 						<th class="disabled-sorting text-right"><%= I18n.t("text.actions") %></th>
 					</tr>
 				</thead>
@@ -34,7 +42,8 @@
 						<th class="all"><%= Product.human_attribute_name(:category) %></th>
 						<th class="all"><%= Product.human_attribute_name(:name) %></th>
 						<th class="none"><%= Product.human_attribute_name(:description) %></th>
-						<th><%= Product.human_attribute_name(:status) %></th>  
+						<th><%= Product.human_attribute_name(:status) %></th>
+						<th><%= Product.human_attribute_name(:ordering) %></th>
 						<th class="disabled-sorting text-right"><%= I18n.t("text.actions") %></th>
 					</tr>
 				</tfoot>
@@ -45,3 +54,17 @@
 		</div>
 	</div><!-- end content-->
 </div>
+
+<script type="text/javascript">
+	document.querySelector("#submit_ordering_inputs").addEventListener("click", function(e) {
+		e.preventDefault()
+		var url = this.getAttribute("href")
+		$.ajax({
+			url: url,
+			method: "post",
+			data: $(".product-ordering-input").serialize()
+		}).done(function() {
+			location.reload()
+		})
+	})
+</script>

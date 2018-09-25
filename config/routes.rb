@@ -24,7 +24,11 @@ Rails.application.routes.draw do
     root to: "pages#home"
     get "pages/home"
     resources :stories
-    resources :products
+    resources :products do
+      collection do
+        post "reorder"
+      end
+    end
     resources :varieties, except: [:show]
   	resources :catalogues
   	resources :categories

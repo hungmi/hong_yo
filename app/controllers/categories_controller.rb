@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
 				Product.where(id: @category.leaves.map { |leaf| leaf.products.pluck(:id) }.flatten.uniq)
 			else
 				@category.products
-			end.order(id: :desc).published.limit(36)
+			end.order(ordering: :asc, id: :desc).published.limit(36)
 			format.js
 		end
 	end

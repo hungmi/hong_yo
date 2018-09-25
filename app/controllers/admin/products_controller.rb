@@ -1,6 +1,6 @@
 class Admin::ProductsController < AdminController
 	layout 'admin'
-	before_action :set_product, except: [:index, :create, :new]
+	before_action :set_product, except: [:index, :create, :new, :reorder]
 
 	def index
 		disable_turbolinks_cache
@@ -10,7 +10,7 @@ class Admin::ProductsController < AdminController
 			Product.includes(:category, :twin).where(category_id: @category.self_and_descendants.pluck(:id))
 		else
 			Product.includes(:category, :twin).all
-		end.order(updated_at: :desc)
+		end.order(ordering: :asc, id: :desc)
 	end
 
 	def new
@@ -26,7 +26,7 @@ class Admin::ProductsController < AdminController
 
 		if @product.save
       flash[:success] = "建立成功。 "
-      redirect_to admin_products_url
+      redirect_to admin_products_url(category_id: @product.category_id)
     else
     	flash.now[:danger] = @product.errors.messages.values.reject { |v| v.empty? }.join("<br>")
       render :new
@@ -75,6 +75,15 @@ class Admin::ProductsController < AdminController
 		redirect_to admin_products_url
 	end
 
+	def reorder
+		params[:products].each do |id, ordering_hash|
+			product = Product.find(id)
+			if product.present?
+				product.update(ordering: ordering_hash["ordering"])
+			end
+		end
+	end
+
 	private
 
 	def set_product
@@ -86,6 +95,6 @@ class Admin::ProductsController < AdminController
 	end
 
 	def product_params
-		params.require(:product).permit(:twin_id, :category_id, :en_name, :zh_name, :en_description, :zh_description, :status, :file, images: [])
+		params.require(:product).permit(:twin_id, :category_id, :ordering, :en_name, :zh_name, :en_description, :zh_description, :status, :file, images: [])
 	end
 end

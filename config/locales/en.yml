@@ -60,6 +60,7 @@ en:
         name: Name
         description: Description
         status: Status
+        ordering: Order
       user:
         name: Name
         password: Password
