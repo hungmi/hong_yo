@@ -34,9 +34,13 @@
 						</label>
 						<label for="product_series" class="v300">
 						  Series
-						  <select name="product[series]" id="product_series" class="form-control v700 select2">
-								<option value="1">-</option>
-							</select>
+						  <% if @brand.present? %>
+						  	<%= select_tag :product_series, options_from_collection_for_select(@brand.children, "id", "name", params[:series_id]), prompt: "-", class: 'form-control v700 select2' %>
+						  <% else %>
+							  <select name="product[series]" id="product_series" class="form-control v700 select2">
+									<option value="1">-</option>
+								</select>
+							<% end %>
 						</label>
 					</div>
 				<% end %>

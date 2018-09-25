@@ -1,6 +1,6 @@
 <div class="d-flex sections">
 
-	<%= render "images_section", product: @product.twin || @product %>
+	<%= render "images_section", product: @product %>
 
 	<section class="d-flex align-content-end flex-column product-data-section">
 		<div class="d-flex flex-column product-data">
@@ -32,7 +32,7 @@
 			</div>
 
 			<% if @product.varieties.present? %>
-				<%= render "comparison_table", product: @product.twin || @product %>
+				<%= render "comparison_table", product: @product %>
 			<% end %>
 
 			<div class="related-products">

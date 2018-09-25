@@ -21,12 +21,14 @@ document.addEventListener("DOMContentLoaded", function() {
 		  // selected_option_original_element.getAttribute("data-id")
 	  	updateRelatedOptions('product_brand', e.params.data.id)
 	  	getCategoryProducts(e.params.data.id)
+	  	history.pushState(null, '', `${location.pathname}?root_id=${$product_category.val()}`);
 	  }
 	});
 	$(document).on('select2:select', $product_brand, function (e) {
 	 	if (e.target.id == "product_brand" && e.params.data.id.length !== 0) {
 		  updateRelatedOptions('product_series', e.params.data.id)
 		  getCategoryProducts(e.params.data.id)
+		  history.pushState(null, '', `${location.pathname}?root_id=${$product_category.val()}&brand_id=${$product_brand.val()}`);
 	 	} else if (e.target.id !== "product_series") {
 	 		$("select#product_series option").remove();
 	 	}
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	$(document).on('select2:select', $product_series, function (e) {
 	 	if (e.target.id == "product_series" && e.params.data.id.length !== 0) {
 		  getCategoryProducts(e.params.data.id)
+		  history.pushState(null, '', `${location.pathname}?root_id=${$product_category.val()}&brand_id=${$product_brand.val()}&series_id=${e.params.data.id}`);
 	 	}
 	});
 })

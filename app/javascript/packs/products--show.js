@@ -1,3 +1,7 @@
+$(document).on('select2:select', "select#product_variety_name", function (e) {
+	window.scrollTo(0, document.querySelector("#js-choose-highlight-jump-here").offsetTop)
+})
+
 $(document).on("click", ".js-image--thumb", function(e) {
 	document.querySelector(".js-image--active").style.backgroundImage = `url('${e.target.src}')`
 	document.querySelector(".js-image--blur-bg").style.backgroundImage = `url('${e.target.src}')`
