@@ -8,8 +8,8 @@ class Admin::UsersController < AdminController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      flash[:success] = I18n.t('flash.update_success')
-      redirect_to [:admin, @user]
+      flash[:success] = "更新成功"
+      redirect_to admin_root_path
     else
       render :edit
     end
