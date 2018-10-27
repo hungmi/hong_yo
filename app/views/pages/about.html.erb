@@ -1,38 +1,3 @@
-<section class="bg-section">
-	<!-- <img src="/img/about/top-bg-secion.png" alt="" height="100%" width="auto"> -->
-</section>
-
-<section class="latest-news-section d-flex align-content-end flex-column">
-	<div class="align-self-center animated fadeInDown fast">
-		<img src="/img/about/latest_news.svg" height="60px">
-	</div>
-	<% per = browser.mobile? ? 1 : 4 %>
-	<% @stories.each_slice(per).with_index do |news_per, index| %>
-		<div class="news-group js-news-group <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
-			<% news_per.each_with_index do |news, delay| %>
-				<a href="<%= story_path(news) %>" class="news animated">
-					<div class="news__img">
-						<%= image_tag news.try_cover, alt: news.title, class: "img-fluid" %>
-					</div>
-					<div class="news__date-title">
-						<p class="news__date v400"><%= news.date.strftime("%Y. %m. %d") %></p>
-						<h5 class="news__title v400 mb-0">
-							<%= render_chinese_class_loop(news.title) %>		
-						</h5>
-					</div>
-				</a>
-			<% end %>
-		</div>
-	<% end %>
-	<div class="dots d-flex justify-content-center">
-		<% @stories.each_slice(per).with_index do |news_per, index| %>
-			<div class="dot js-dot <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
-				<div class="dot__bg"></div>
-			</div>	
-		<% end %>
-	</div>
-</section>
-
 <section class="hong-u-section d-flex justify-content-center flex-column mx-auto">
 	<div class="section_title_wrapper align-self-center">
 		<img src="/img/about/hong_u.svg" height="60px">
@@ -133,5 +98,40 @@
 				Hongyou Technology Co., Ltd. was founded in 1998 and is the ex&#8208;clusive agent of Japan ASTEC (DNA Amplifier, CO2 Incubator) in Taiwan. The company also represents and sells cutting-edge equipment related to biotechnology/medical research and has obtained various research units in China. The adoption of pharmaceutical related industries. In the field of reproductive centers, we have successfully sold small carbon dioxide / three gas incubators, VOC filters, vitrified rapid freezing / thawing reagents and other related products. Distribution of ADVANTEC filtration related products such as filter membranes, filter paper, filter and pressure tanks and other filtration equipment. In the semiconductor division, we have added various types of PFA products, designed and manufactured stainless steel filtration equipment, various pressure vessels, and agita- tion filtration equipment, and our sales performance customers include major semiconductors, special chemicals, and photovoltaic power plants.
 			</p>
 		</div>
+	</div>
+</section>
+
+<section class="bg-section">
+	<!-- <img src="/img/about/top-bg-secion.png" alt="" height="100%" width="auto"> -->
+</section>
+
+<section class="latest-news-section d-flex align-content-end flex-column">
+	<div class="align-self-center animated fadeInDown fast">
+		<img src="/img/about/latest_news.svg" height="60px">
+	</div>
+	<% per = browser.mobile? ? 1 : 4 %>
+	<% @stories.each_slice(per).with_index do |news_per, index| %>
+		<div class="news-group js-news-group <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
+			<% news_per.each_with_index do |news, delay| %>
+				<a href="<%= story_path(news) %>" class="news animated">
+					<div class="news__img">
+						<%= image_tag news.try_cover, alt: news.title, class: "img-fluid" %>
+					</div>
+					<div class="news__date-title">
+						<p class="news__date v400"><%= news.date.strftime("%Y. %m. %d") %></p>
+						<h5 class="news__title v400 mb-0">
+							<%= render_chinese_class_loop(news.title) %>		
+						</h5>
+					</div>
+				</a>
+			<% end %>
+		</div>
+	<% end %>
+	<div class="dots d-flex justify-content-center">
+		<% @stories.each_slice(per).with_index do |news_per, index| %>
+			<div class="dot js-dot <%= 'active' if index == 0 %>" data-page="<%= index + 1 %>">
+				<div class="dot__bg"></div>
+			</div>	
+		<% end %>
 	</div>
 </section>

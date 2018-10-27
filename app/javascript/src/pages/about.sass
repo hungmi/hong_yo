@@ -1,102 +1,11 @@
 body.pages.about
 	.main_wrapper
 		max-width: 100%
-
-	.bg-section
-		height: 625px
-		width: 100vw
-		z-index: -1
-		position: absolute
-		top: 0px
-		left: 0px
-		background-repeat: no-repeat
-		background-position: center
-		background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%)
-		background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%)
-		background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%)
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 )
-		&:before
-			content: ''
-			position: absolute
-			top: 0px
-			left: 0px
-			height: 625px
-			width: 100vw
-			background: url("/img/about/top-bg-section.png")
-			background-size: 540px
-	
-	.latest-news-section
-		margin-top: 160px
-		margin-bottom: 40px
-		.news-group
-			margin: 0px
-			display: flex
-			justify-content: space-between
-			flex-wrap: wrap
-			align-self: center
-			width: 940px
-			&.active
-				height: 280px
-				margin-top: 40px
-				margin-bottom: 35px // 55 - 上方 news 多的 mb 20px
-				.news
-					opacity: 1
-					display: flex
-			.news
-				text-decoration: none
-				&:first-child
-					animation-delay: 0.3s 
-				&:nth-child(2)
-					animation-delay: 0.6s 
-				&:nth-child(3)
-				  animation-delay: 0.9s 
-				&:nth-child(4)
-				  animation-delay: 1.2s 
-				&:nth-child(odd)
-				  margin-right: 10px 
-				&:nth-child(even)
-				  margin-left: 10px 
-				margin-bottom: 20px
-				flex: 1 1 calc(50% - 10px)
-				max-width: calc(50% - 10px)
-				background: $mainRed
-				transition: .5s
-				opacity: 0
-				height: 120px
-				transition: .5s
-				display: none
-				&__date-title
-					padding-left: 23px
-					padding-top: 21px
-				
-				&__img img
-					width: auto
-					height: 120px
-				
-				&__date
-					font-size: 15px
-					color: $mainOrange
-					margin-bottom: 0px
-				
-				&__title
-					font-size: 24px
-					line-height: 25px
-					letter-spacing: 0.6px
-					.chinese
-						font-size: 21px
-						line-height: 24px
-					
-					color: white
-					height: 53px // 47px 會把英文字母下襬切掉
-					overflow: hidden
-					width: 240px
-				
-			
-		
+		position: relative
 	
 	.hong-u-section
 		max-width: 1280px
-		padding-top: 120px
+		padding-top: 212px
 		margin-bottom: 220px
 		.red-bg
 			z-index: -1
@@ -307,6 +216,95 @@ body.pages.about
 					top: 480px
 				[data-year="2010"]
 					top: 540px
+
+
+	.bg-section
+		height: 625px
+		width: 100vw
+		z-index: -1
+		position: absolute
+		background-repeat: no-repeat
+		background-position: center
+		background: -moz-linear-gradient(left, #ef0105 0%, #ffd2ad 100%)
+		background: -webkit-linear-gradient(left, #ef0105 0%,#ffd2ad 100%)
+		background: linear-gradient(to right, #ef0105 0%,#ffd2ad 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef0105', endColorstr='#ffd2ad',GradientType=1 )
+		&:before
+			content: ''
+			position: absolute
+			top: 0px
+			left: 0px
+			height: 625px
+			width: 100vw
+			background: url("/img/about/top-bg-section.png")
+			background-size: 540px
+	
+	.latest-news-section
+		margin-top: 160px
+		margin-bottom: 30px
+		.news-group
+			margin: 0px
+			display: flex
+			justify-content: space-between
+			flex-wrap: wrap
+			align-self: center
+			width: 940px
+			&.active
+				height: 280px
+				margin-top: 40px
+				margin-bottom: 35px // 55 - 上方 news 多的 mb 20px
+				.news
+					opacity: 1
+					display: flex
+			.news
+				text-decoration: none
+				&:first-child
+					animation-delay: 0.3s 
+				&:nth-child(2)
+					animation-delay: 0.6s 
+				&:nth-child(3)
+				  animation-delay: 0.9s 
+				&:nth-child(4)
+				  animation-delay: 1.2s 
+				&:nth-child(odd)
+				  margin-right: 10px 
+				&:nth-child(even)
+				  margin-left: 10px 
+				margin-bottom: 20px
+				flex: 1 1 calc(50% - 10px)
+				max-width: calc(50% - 10px)
+				background: $mainRed
+				transition: .5s
+				opacity: 0
+				height: 120px
+				transition: .5s
+				display: none
+				&__date-title
+					padding-left: 23px
+					padding-top: 21px
+				
+				&__img img
+					width: auto
+					height: 120px
+				
+				&__date
+					font-size: 15px
+					color: $mainOrange
+					margin-bottom: 0px
+				
+				&__title
+					font-size: 24px
+					line-height: 25px
+					letter-spacing: 0.6px
+					.chinese
+						font-size: 21px
+						line-height: 24px
+					
+					color: white
+					height: 53px // 47px 會把英文字母下襬切掉
+					overflow: hidden
+					width: 240px
+				
 				
 	
 	@media only screen and (max-width: 414px)
@@ -314,6 +312,8 @@ body.pages.about
 			height: 760px
 		
 		.latest-news-section
+			margin-top: 70px
+			margin-bottom: 30px
 			.news-group
 				width: 300px
 				margin-left: auto
@@ -321,6 +321,7 @@ body.pages.about
 				height: auto
 				&.active
 					margin-top: 50px
+					margin-bottom: 0px
 					height: auto
 				
 				.news
@@ -477,7 +478,6 @@ body.pages.about
 						font-size: 21px
 						top: 2px
 						left: 16px
-
 
 				
 .dots
