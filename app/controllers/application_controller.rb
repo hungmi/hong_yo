@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	 
 	def set_locale
 	  I18n.locale = params[:locale] || I18n.default_locale
-	  @page_title ||= "弘優生技"
+	  @page_title ||= "弘優科技"
 	end
 
 	def default_url_options
