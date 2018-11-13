@@ -88,7 +88,7 @@
 
 	<% Category.roots.with_attached_cover.with_attached_product_cover.each_with_index do |root, index| %>
 		<% product_cover_style = root.product_cover.attached? ? "background-image: url('#{url_for(root.product_cover)}');" : "" %>
-		<div class="home_product invisible animated <%= index.even? ? 'even' : 'odd' %>" style="<%#= product_cover_style %>" id="<%= 'home-product-' + (index + 1).to_s %>">
+		<div class="home_product invisible animated <%= index.even? ? 'even' : 'odd' %>" style="<%= product_cover_style %>" id="<%= 'home-product-' + (index + 1).to_s %>">
 			<% if root.product_cover.attached? %>
 				<%= image_tag root.product_cover, class: "home_product__cover img-fluid" %>
 			<% end %>
