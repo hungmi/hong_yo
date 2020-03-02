@@ -38,7 +38,7 @@
 		<div class="story d-flex flex-column">
 			<h5 class="v700 mb-0 story__date"><%= @story.date.strftime("%Y.%m.%d") %></h5>
 			<h2 class="v700 story__title"><%= @story.title %></h2>
-			<%= simple_format @story.content, class: "v400 ml-0 story__content" %>
+			<%= simple_format(sanitize(Rinku.auto_link(@story.content, :urls, 'target="_blank"'), attributes: ["href", "target"]), { class: "v400 ml-0 story__content" }, sanitize: false) %>
 			<%= link_to :back, id: "back_btn" do %>
 				<img src="/img/about/back.svg" style="max-width: 130px;">
 			<% end %>
